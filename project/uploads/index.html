@@ -1,0 +1,1621 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gerson · Comunicación digital para tu negocio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --void:#000; --coal:#0A0A0C; --slate:#131316;
+  --line:rgba(255,255,255,.10); --line2:rgba(255,255,255,.06);
+  --bone:#F5F5F7; --dim:#C2C2C8; --mute:#86868B;
+  --red:#FF3B30; --red2:#FF6961; --blood:#6E0D14;
+  --glass:rgba(255,255,255,.045); --gbrd:rgba(255,255,255,.10);
+  --ui:'Archivo',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+  --mono:ui-monospace,'SF Mono',monospace;
+  --wrap:1120px; --pad:clamp(20px,5vw,40px); --sec:clamp(84px,11vw,152px); --r:20px;
+  --e:cubic-bezier(.16,1,.3,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--void);color:var(--bone);font-family:var(--ui);font-size:17px;line-height:1.52;letter-spacing:-.011em;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px;border-radius:6px}
+::selection{background:var(--red);color:#fff}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--pad)}
+.sec{padding:var(--sec) 0;position:relative}
+.tight{padding-top:calc(var(--sec)*.48)}
+
+h1,h2,h3,h4{font-weight:800;line-height:1.0;letter-spacing:-.045em}
+h1{font-size:clamp(2.9rem,8.2vw,6.2rem);letter-spacing:-.055em;line-height:.96}
+h2{font-size:clamp(2.3rem,5.4vw,4.2rem);letter-spacing:-.05em}
+h3{font-size:clamp(1.15rem,1.9vw,1.45rem);letter-spacing:-.028em;line-height:1.2}
+p{color:var(--mute)}
+.lead{font-size:clamp(1.08rem,1.7vw,1.32rem);color:var(--dim);max-width:56ch;line-height:1.5;letter-spacing:-.015em}
+.eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--red)}
+.center{text-align:center}
+.center .lead{margin-left:auto;margin-right:auto}
+em{font-style:normal;color:var(--red)}
+.glass{background:var(--glass);backdrop-filter:blur(28px) saturate(160%);-webkit-backdrop-filter:blur(28px) saturate(160%);border:1px solid var(--gbrd)}
+
+#prog{position:fixed;top:0;left:0;height:2px;background:var(--red);width:100%;transform:scaleX(0);transform-origin:0 50%;z-index:99}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:80;backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);background:rgba(0,0,0,.55);border-bottom:1px solid transparent;transition:.5s var(--e)}
+nav.stuck{border-bottom-color:var(--line2);background:rgba(0,0,0,.78)}
+.nav-in{max-width:var(--wrap);margin:0 auto;padding:13px var(--pad);display:flex;align-items:center;gap:30px}
+.logo{font-weight:800;font-size:1.12rem;letter-spacing:.01em;text-transform:uppercase;display:flex;align-items:center;gap:10px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--red);flex:0 0 auto;animation:beat 2.6s infinite}
+@keyframes beat{0%{box-shadow:0 0 0 0 rgba(255,59,48,.5)}70%{box-shadow:0 0 0 11px rgba(255,59,48,0)}100%{box-shadow:0 0 0 0 rgba(255,59,48,0)}}
+.nav-links{display:flex;gap:26px;margin-left:auto;font-size:.88rem;color:var(--mute)}
+.nav-links a{transition:color .3s}
+.nav-links a:hover{color:var(--bone)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 26px;border-radius:980px;border:1px solid transparent;font-weight:500;font-size:.96rem;letter-spacing:-.01em;cursor:pointer;transition:.4s var(--e)}
+.btn-primary{background:var(--red);color:#fff}
+.btn-primary:hover{background:#FF554B;transform:scale(1.03)}
+.btn-ghost{border-color:var(--gbrd);background:var(--glass);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.btn-ghost:hover{background:rgba(255,255,255,.09);transform:scale(1.03)}
+.btn-sm{padding:9px 18px;font-size:.85rem}
+.link{color:var(--red);font-weight:500;display:inline-flex;align-items:center;gap:6px;transition:.3s var(--e)}
+.link:hover{gap:11px}
+
+/* HERO */
+.hero{padding-top:150px;padding-bottom:var(--sec);position:relative;overflow:hidden}
+.aura{position:absolute;inset:0;pointer-events:none;background:radial-gradient(900px 520px at 20% -10%,rgba(255,59,48,.18),transparent 62%),radial-gradient(700px 480px at 88% 4%,rgba(110,13,20,.4),transparent 66%)}
+.mesh{position:absolute;inset:0;pointer-events:none;opacity:.35;background-image:linear-gradient(rgba(255,255,255,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.055) 1px,transparent 1px);background-size:80px 80px;-webkit-mask-image:radial-gradient(720px 460px at 42% 0%,#000,transparent 74%);mask-image:radial-gradient(720px 460px at 42% 0%,#000,transparent 74%)}
+.hero .wrap{position:relative;z-index:2}
+.hero h1{max-width:16ch;margin:22px 0 28px}
+.ln{display:block;overflow:hidden;padding-bottom:.04em}
+.ln>span{display:block;transform:translateY(108%);animation:rise 1s var(--e) forwards}
+@keyframes rise{to{transform:none}}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:30px}
+.chip{font-size:.8rem;color:var(--dim);border:1px solid var(--gbrd);border-radius:980px;padding:7px 15px;background:var(--glass);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+
+/* MURO */
+.wall{margin-top:54px;border-radius:var(--r);overflow:hidden;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid var(--gbrd);backdrop-filter:blur(30px) saturate(160%);-webkit-backdrop-filter:blur(30px) saturate(160%);box-shadow:0 50px 110px -50px #000}
+.wall-h{padding:22px 26px;border-bottom:1px solid var(--line2);display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.wall-h .t{font-size:1.02rem;font-weight:600;letter-spacing:-.022em}
+.wall-h .c{font-size:2.4rem;font-weight:700;letter-spacing:-.05em;color:var(--red);line-height:1;font-variant-numeric:tabular-nums}
+.wall-h .c small{font-size:.72rem;font-weight:500;letter-spacing:-.01em;color:var(--mute);display:block;margin-top:2px}
+.skills{display:flex;flex-wrap:wrap;gap:8px;padding:24px 26px}
+.sk{font-size:.85rem;color:var(--dim);border:1px solid var(--line);border-radius:11px;padding:9px 14px;background:rgba(255,255,255,.03);opacity:0;transform:translateY(10px) scale(.96);filter:blur(4px);animation:skin .55s var(--e) forwards}
+@keyframes skin{to{opacity:1;transform:none;filter:none}}
+.wall-f{padding:0 26px 24px;font-size:.95rem;color:var(--mute)}
+.wall-x{display:flex;align-items:center;gap:18px;padding:0 26px;font-size:.8rem;font-weight:600;color:var(--mute)}
+.wall-x::before,.wall-x::after{content:'';flex:1;height:1px;background:var(--line2)}
+
+.solve{margin:22px;border-radius:16px;padding:clamp(24px,3vw,34px);background:linear-gradient(150deg,rgba(255,59,48,.13),rgba(255,59,48,.03));border:1px solid rgba(255,59,48,.28)}
+.solve h3{font-size:clamp(1.25rem,2.2vw,1.65rem);margin-bottom:14px;max-width:22ch}
+.solve p{font-size:1rem;color:var(--dim);line-height:1.55;max-width:60ch}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}
+.duo-c{border-radius:14px;padding:20px;background:rgba(0,0,0,.32);border:1px solid var(--line)}
+.duo-c .k{font-size:.76rem;font-weight:600;color:var(--red);margin-bottom:8px}
+.duo-c .n{font-size:1.05rem;font-weight:600;letter-spacing:-.025em;margin-bottom:6px}
+.duo-c p{font-size:.9rem;line-height:1.45;color:var(--mute)}
+
+/* foco que sigue al ratón */
+.spot{position:relative;overflow:hidden}
+.spot::before{content:'';position:absolute;inset:0;background:radial-gradient(340px circle at var(--mx,50%) var(--my,50%),rgba(255,59,48,.15),transparent 62%);opacity:0;transition:opacity .45s var(--e);pointer-events:none;z-index:0}
+.spot:hover::before{opacity:1}
+.spot>*{position:relative;z-index:1}
+
+/* mini gráficos del problema */
+.mini{margin-top:22px;padding-top:18px;border-top:1px solid var(--line2)}
+.mini .mv{font-size:1.75rem;font-weight:700;letter-spacing:-.05em;color:var(--red);font-variant-numeric:tabular-nums;line-height:1}
+.mini .ml{font-size:.78rem;color:var(--mute);margin-top:5px}
+.stack{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:14px}
+.stack i{width:13px;height:19px;border-radius:3px;background:rgba(255,255,255,.08);transition:background .45s var(--e),transform .45s var(--e)}
+.stack i.on{background:var(--red);transform:translateY(-2px)}
+.dots{display:flex;gap:7px;margin-bottom:14px}
+.dots i{width:34px;height:9px;border-radius:980px;background:rgba(255,255,255,.09);transition:.5s var(--e)}
+.dots i.cold{background:rgba(255,59,48,.22)}
+.dots i.gone{background:rgba(255,255,255,.045);transform:scaleX(.5);transform-origin:left}
+.spark{width:100%;height:52px;display:block;margin-bottom:12px;overflow:visible}
+.spark path{fill:none;stroke:var(--red);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.spark .base{stroke:rgba(255,255,255,.1);stroke-width:1;stroke-dasharray:3 4}
+
+/* curva del método */
+.curve{margin-top:44px;border-radius:var(--r);background:var(--glass);border:1px solid var(--gbrd);backdrop-filter:blur(28px) saturate(160%);-webkit-backdrop-filter:blur(28px) saturate(160%);padding:clamp(22px,3vw,34px);overflow:hidden}
+.curve-h{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:22px}
+.curve-h .now{font-size:.8rem;color:var(--mute)}
+.curve-h .nowv{font-size:1.5rem;font-weight:700;letter-spacing:-.04em;margin-top:4px}
+.curve-h .nowv em{color:var(--red)}
+.curve-h .rd{text-align:right}
+.curve-h .rd .v{font-size:1.5rem;font-weight:700;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.curve svg{width:100%;height:auto;display:block}
+.zlab{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
+.zl{border-radius:12px;padding:14px 16px;background:rgba(255,255,255,.035);border:1px solid var(--line2);transition:.5s var(--e)}
+.zl.on{background:rgba(255,59,48,.1);border-color:rgba(255,59,48,.4)}
+.zl .zn{font-size:.76rem;color:var(--mute)}
+.zl .zt{font-weight:600;font-size:1rem;letter-spacing:-.025em;margin-top:3px}
+.zl.on .zt{color:var(--red)}
+
+/* tira de intentos fallidos */
+.strip{margin-top:44px;border-radius:var(--r);overflow:hidden;border:1px solid var(--gbrd);background:var(--glass);backdrop-filter:blur(28px) saturate(160%);-webkit-backdrop-filter:blur(28px) saturate(160%)}
+.sr{display:grid;grid-template-columns:auto 1fr auto;gap:clamp(14px,3vw,30px);align-items:center;padding:clamp(20px,2.6vw,28px) clamp(20px,3vw,32px);border-bottom:1px solid var(--line2);transition:background .4s}
+.sr:last-child{border-bottom:none}
+.sr:hover{background:rgba(255,255,255,.04)}
+.sr .sn{font-size:.8rem;font-weight:700;color:var(--mute);letter-spacing:.05em}
+.sr .sh{font-size:clamp(1.05rem,2.1vw,1.5rem);font-weight:700;letter-spacing:-.035em;position:relative;display:inline-block}
+.sr .sh::after{content:'';position:absolute;left:-2px;top:53%;height:2px;border-radius:2px;background:var(--red);width:0;transition:width .9s var(--e) .35s;box-shadow:0 0 14px rgba(255,59,48,.9)}
+.sr.in .sh::after{width:calc(100% + 4px)}
+.sr .sres{font-size:.9rem;font-weight:600;color:var(--red);text-align:right;white-space:nowrap}
+@media(max-width:640px){
+  .sr{grid-template-columns:auto 1fr;row-gap:6px}
+  .sr .sres{grid-column:2;text-align:left}
+}
+
+/* fórmula del precio */
+.formula{display:flex;align-items:center;justify-content:center;gap:clamp(12px,2.6vw,30px);flex-wrap:wrap;margin-top:40px;padding:clamp(22px,3vw,34px);border-radius:var(--r);background:var(--glass);border:1px solid var(--gbrd);backdrop-filter:blur(28px) saturate(160%);-webkit-backdrop-filter:blur(28px) saturate(160%)}
+.fx{text-align:center;min-width:96px}
+.fx .v{font-size:clamp(1.6rem,3.4vw,2.4rem);font-weight:800;letter-spacing:-.055em;font-variant-numeric:tabular-nums;line-height:1}
+.fx .l{font-size:.78rem;color:var(--mute);margin-top:8px}
+.fop{font-size:clamp(1.3rem,2.4vw,1.9rem);font-weight:800;color:var(--red);opacity:.7}
+.fx.res .v{color:var(--red)}
+
+/* planes preseleccionados */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:28px}
+.plan{position:relative;text-align:left;cursor:pointer;border-radius:var(--r);padding:30px 28px;background:var(--glass);border:1px solid var(--gbrd);backdrop-filter:blur(28px) saturate(160%);-webkit-backdrop-filter:blur(28px) saturate(160%);color:inherit;font:inherit;transition:.5s var(--e)}
+.plan:hover{transform:translateY(-5px);border-color:rgba(255,59,48,.45)}
+.plan.on{border-color:var(--red);background:linear-gradient(160deg,rgba(255,59,48,.15),rgba(255,255,255,.03));box-shadow:0 20px 50px -24px rgba(255,59,48,.7)}
+.plan .badge{position:absolute;top:-11px;left:26px;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--red);color:#fff;padding:5px 12px;border-radius:980px}
+.plan .nm{font-size:1.4rem;font-weight:800;letter-spacing:-.045em}
+.plan .for{font-size:.89rem;color:var(--mute);margin-top:8px;min-height:40px;line-height:1.4}
+.plan .pr{font-size:clamp(2.2rem,4vw,2.8rem);font-weight:800;letter-spacing:-.055em;margin:18px 0 2px;line-height:1}
+.plan .pr small{font-size:.78rem;font-weight:500;color:var(--mute);letter-spacing:-.01em}
+.plan .det{font-size:.85rem;color:var(--red);font-weight:600}
+.plan ul{list-style:none;display:grid;gap:9px;margin:20px 0}
+.plan li{font-size:.88rem;color:var(--dim);display:flex;gap:10px;line-height:1.4}
+.plan li::before{content:'✓';color:var(--red);font-weight:700;flex:0 0 auto}
+.plan .pick{display:block;text-align:center;padding:12px;border-radius:980px;border:1px solid var(--gbrd);font-size:.88rem;font-weight:600;background:rgba(255,255,255,.04);transition:.4s var(--e)}
+.plan.on .pick{background:var(--red);border-color:var(--red);color:#fff}
+.inc li.hot{color:var(--bone);font-weight:600}
+.inc li.hot::before{content:'★'}
+
+/* para quién es */
+.forwho{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:48px}
+.fw{border-radius:var(--r);padding:clamp(26px,3.2vw,38px);background:var(--glass);border:1px solid var(--gbrd);backdrop-filter:blur(28px) saturate(160%);-webkit-backdrop-filter:blur(28px) saturate(160%)}
+.fw.yes{background:linear-gradient(160deg,rgba(255,59,48,.11),rgba(255,255,255,.03));border-color:rgba(255,59,48,.28)}
+.fw h3{margin-bottom:22px;display:flex;align-items:center;gap:11px}
+.fw .ic{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-size:.9rem;font-weight:700;flex:0 0 auto}
+.fw.yes .ic{background:var(--red);color:#fff}
+.fw.no .ic{background:rgba(255,255,255,.12);color:var(--mute)}
+.fw ul{list-style:none;display:grid;gap:15px}
+.fw li{font-size:.97rem;color:var(--dim);display:flex;gap:12px;line-height:1.45}
+.fw li::before{flex:0 0 auto;font-weight:700}
+.fw.yes li::before{content:'✓';color:var(--red)}
+.fw.no li::before{content:'✕';color:var(--mute)}
+.fw .ft{margin-top:24px;padding-top:18px;border-top:1px solid var(--line2);font-size:.9rem;color:var(--mute);line-height:1.5}
+
+/* lanzamiento */
+.launch{border-radius:var(--r);padding:clamp(24px,3vw,34px);background:linear-gradient(140deg,rgba(255,59,48,.17),rgba(255,255,255,.03));border:1px solid rgba(255,59,48,.38);margin-top:40px;display:grid;grid-template-columns:auto 1fr auto;gap:24px;align-items:center}
+.launch .tagz{font-size:.74rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;background:var(--red);color:#fff;padding:6px 13px;border-radius:980px;white-space:nowrap}
+.launch h3{font-size:clamp(1.1rem,2vw,1.4rem);margin-bottom:7px}
+.launch p{font-size:.94rem;color:var(--dim);line-height:1.5;max-width:62ch}
+.launch .left{text-align:right;white-space:nowrap}
+.launch .left .n{font-size:2.2rem;font-weight:700;letter-spacing:-.05em;color:var(--red);line-height:1}
+.launch .left .l{font-size:.78rem;color:var(--mute);margin-top:4px}
+.strike{text-decoration:line-through;opacity:.55}
+.free{color:var(--red);font-weight:600}
+
+/* confianza / pago */
+.trust{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;justify-content:center}
+.tr-i{display:flex;align-items:center;gap:9px;font-size:.86rem;color:var(--mute);border:1px solid var(--line);border-radius:980px;padding:9px 16px;background:rgba(255,255,255,.03)}
+.tr-i b{color:var(--bone);font-weight:600}
+
+/* agente de reservas */
+.bkbtn{position:fixed;right:20px;bottom:20px;z-index:90;width:60px;height:60px;border-radius:50%;border:none;cursor:pointer;background:var(--red);box-shadow:0 12px 32px -8px rgba(255,59,48,.85);display:grid;place-items:center;transition:.45s var(--e)}
+.bkbtn:hover{transform:scale(1.08)}
+.bkbtn::after{content:'';position:absolute;inset:0;border-radius:50%;border:1.5px solid var(--red);animation:ring 2.6s ease-out infinite}
+@keyframes ring{0%{transform:scale(1);opacity:.75}100%{transform:scale(1.75);opacity:0}}
+.bkbtn svg{width:26px;height:26px}
+.bkbtn .x{display:none}
+.bkbtn.open .o{display:none}
+.bkbtn.open .x{display:block}
+.bkpanel{position:fixed;right:20px;bottom:92px;z-index:91;width:min(370px,calc(100vw - 40px));max-height:min(560px,calc(100vh - 130px));border-radius:22px;overflow:hidden;display:none;flex-direction:column;background:rgba(16,16,20,.86);backdrop-filter:blur(34px) saturate(180%);-webkit-backdrop-filter:blur(34px) saturate(180%);border:1px solid var(--gbrd);box-shadow:0 30px 80px -20px #000}
+.bkpanel.open{display:flex;animation:bkin .45s var(--e)}
+@keyframes bkin{from{opacity:0;transform:translateY(16px) scale(.97)}to{opacity:1;transform:none}}
+.bk-h{padding:16px 18px;border-bottom:1px solid var(--line2);display:flex;align-items:center;gap:11px}
+.bk-h .av{width:34px;height:34px;border-radius:50%;background:var(--red);display:grid;place-items:center;flex:0 0 auto}
+.bk-h .av svg{width:17px;height:17px}
+.bk-h .t{font-weight:600;font-size:.95rem;letter-spacing:-.02em}
+.bk-h .s{font-size:.76rem;color:var(--mute);display:flex;align-items:center;gap:6px;margin-top:2px}
+.bk-h .s i{width:6px;height:6px;border-radius:50%;background:#32D74B;display:inline-block}
+.bk-body{padding:16px;overflow-y:auto;display:grid;gap:10px;align-content:start;flex:1}
+.bk-body .bub{max-width:88%;padding:11px 15px;border-radius:18px;font-size:.9rem;line-height:1.42;animation:fadeup .35s var(--e) backwards}
+.bk-body .bub.them{background:rgba(255,255,255,.09);border-bottom-left-radius:6px;justify-self:start;color:var(--bone)}
+.bk-body .bub.us{background:var(--red);border-bottom-right-radius:6px;justify-self:end;color:#fff}
+.qr{display:flex;flex-wrap:wrap;gap:7px;justify-self:start;max-width:100%}
+.qr button{background:rgba(255,255,255,.07);border:1px solid var(--gbrd);color:var(--bone);border-radius:980px;padding:9px 15px;font-size:.85rem;cursor:pointer;transition:.3s var(--e)}
+.qr button:hover{background:var(--red);border-color:var(--red)}
+.bk-f{display:flex;gap:8px;padding:12px 14px;border-top:1px solid var(--line2)}
+.bk-f input{flex:1;min-width:0;background:rgba(255,255,255,.07);border:1px solid var(--line);border-radius:980px;padding:11px 16px;font-size:.9rem}
+.bk-f input::placeholder{color:var(--mute)}
+.bk-f input:focus{outline:none;border-color:rgba(255,59,48,.55)}
+.bk-f button{background:var(--red);border:none;color:#fff;border-radius:50%;width:40px;height:40px;flex:0 0 auto;cursor:pointer;display:grid;place-items:center;transition:.3s var(--e)}
+.bk-f button:hover{transform:scale(1.07)}
+.bk-f button svg{width:16px;height:16px}
+.summ{border-radius:14px;padding:14px 16px;background:rgba(255,59,48,.1);border:1px solid rgba(255,59,48,.35);font-size:.88rem;justify-self:start;max-width:92%}
+.summ .r{display:flex;justify-content:space-between;gap:14px;padding:5px 0;color:var(--mute)}
+.summ .r b{color:var(--bone);font-weight:600;text-align:right}
+
+@media(max-width:560px){
+  .launch{grid-template-columns:1fr;gap:16px}
+  .launch .left{text-align:left}
+  .bkbtn{right:14px;bottom:14px;width:54px;height:54px}
+  .bkpanel{right:14px;left:14px;bottom:78px;width:auto}
+}
+
+/* PROBLEMA */
+.cols3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:48px}
+.cell{border-radius:var(--r);padding:32px 28px;background:var(--glass);border:1px solid var(--gbrd);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);transition:.5s var(--e)}
+.cell:hover{background:rgba(255,255,255,.075);transform:translateY(-4px)}
+.cell .num{font-size:.78rem;font-weight:600;color:var(--red);margin-bottom:16px}
+.cell h3{margin-bottom:10px}
+.cell p{font-size:.95rem;line-height:1.5}
+.bridge{max-width:24ch;margin:52px auto 0;text-align:center;font-size:clamp(1.35rem,2.8vw,2rem);font-weight:700;letter-spacing:-.035em;line-height:1.18;color:var(--bone)}
+.bridge em{color:var(--red)}
+
+/* INTENTOS */
+.tried{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:48px}
+.tr-c{border-radius:var(--r);padding:32px 28px;background:var(--glass);border:1px solid var(--gbrd);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);transition:opacity .9s var(--e),transform .9s var(--e),filter .9s var(--e),background .4s}
+.tr-c:hover{background:rgba(255,255,255,.07)}
+.tr-c .tag{font-size:.78rem;font-weight:600;color:var(--mute);margin-bottom:16px}
+.tr-c h3{margin-bottom:12px;position:relative;display:inline-block}
+.tr-c h3::after{content:'';position:absolute;left:-2px;right:auto;top:53%;height:2px;background:var(--red);width:0;transition:width 1s var(--e) .5s;box-shadow:0 0 14px rgba(255,59,48,.9);border-radius:2px}
+.tr-c.in h3::after{width:calc(100% + 4px)}
+.tr-c p{font-size:.95rem;line-height:1.5}
+.tr-c .res{margin-top:20px;padding-top:16px;border-top:1px solid var(--line2);font-size:.88rem;font-weight:600;color:var(--red);letter-spacing:-.015em}
+
+/* GIRO */
+.turn{position:relative;overflow:hidden;border-top:1px solid var(--line2);border-bottom:1px solid var(--line2);background:linear-gradient(180deg,#000,#0C0304 48%,#000)}
+.turn::before{content:'';position:absolute;inset:0;background:radial-gradient(800px 380px at 50% 50%,rgba(255,59,48,.16),transparent 68%);pointer-events:none}
+.turn .wrap{position:relative;z-index:2;text-align:center}
+.big{font-size:clamp(2rem,5vw,3.5rem);font-weight:700;letter-spacing:-.045em;line-height:1.06;max-width:17ch;margin:26px auto 0}
+.big em{color:var(--red)}
+.turn .sub{max-width:52ch;margin:30px auto 0;font-size:1.08rem;color:var(--dim);line-height:1.55}
+.turn .kick{margin-top:30px;font-size:1rem;font-weight:600;color:var(--bone)}
+
+/* PRUEBA */
+.proof{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:48px}
+.pf{border:1px dashed rgba(255,59,48,.45);border-radius:var(--r);padding:34px 26px;background:rgba(255,59,48,.04);text-align:center}
+.pf .v{font-size:clamp(2.2rem,4.6vw,3rem);font-weight:700;letter-spacing:-.05em;color:var(--red);line-height:1}
+.pf .l{font-size:.95rem;color:var(--dim);margin-top:12px;line-height:1.4}
+.pf .hint{font-size:.72rem;color:var(--mute);margin-top:18px;padding-top:14px;border-top:1px dashed var(--line)}
+
+/* MÉTODO resumen */
+.phases{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:48px}
+.pz{border-radius:var(--r);padding:30px 26px;background:var(--glass);border:1px solid var(--gbrd);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);position:relative;overflow:hidden;transition:.5s var(--e)}
+.pz:hover{transform:translateY(-4px);background:rgba(255,255,255,.075)}
+.pz .bar{position:absolute;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--red),transparent);border-radius:0 0 3px 0}
+.pz1 .bar{width:33%}.pz2 .bar{width:66%}.pz3 .bar{width:100%}
+.pz .ph{font-size:.78rem;font-weight:600;color:var(--red);margin:8px 0 12px}
+.pz h3{margin-bottom:10px}
+.pz p{font-size:.94rem;line-height:1.5}
+.pz .got{margin-top:18px;padding-top:15px;border-top:1px solid var(--line2);font-size:.88rem;color:var(--dim);line-height:1.45}
+
+/* AGENTE */
+.agent-wrap{margin-top:48px;border-radius:var(--r);overflow:hidden;background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.015));border:1px solid var(--gbrd);backdrop-filter:blur(30px) saturate(160%);-webkit-backdrop-filter:blur(30px) saturate(160%);display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:clamp(20px,3vw,40px);padding:clamp(24px,3.4vw,44px)}
+.orb{position:relative;width:100%;aspect-ratio:1;max-width:420px;margin:0 auto}
+.orb canvas{width:100%;height:100%;display:block}
+.ag-list{list-style:none;display:grid;gap:14px;margin-top:22px}
+.ag-list li{font-size:.96rem;color:var(--dim);display:flex;gap:12px;line-height:1.45}
+.ag-list li::before{content:'';flex:0 0 7px;height:7px;border-radius:50%;background:var(--red);margin-top:8px}
+.ag-note{margin-top:22px;padding-top:18px;border-top:1px solid var(--line2);font-size:.9rem;color:var(--mute)}
+
+/* ACABADOS */
+.fin{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:48px}
+.fin-c{border-radius:var(--r);padding:30px 28px;background:var(--glass);border:1px solid var(--gbrd);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);transition:.5s var(--e)}
+.fin-c:hover{transform:translateY(-5px);background:rgba(255,255,255,.075)}
+.fin-c .strip{height:4px;border-radius:3px;width:46px;margin-bottom:20px}
+.s1{background:var(--mute)}.s2{background:var(--red)}.s3{background:linear-gradient(90deg,var(--red),var(--blood))}
+.fin-c .nm{font-size:1.3rem;font-weight:700;letter-spacing:-.035em}
+.fin-c .pr{font-size:.9rem;color:var(--red);margin:7px 0 18px;font-weight:600}
+.fin-c ul{list-style:none;display:grid;gap:9px}
+.fin-c li{font-size:.9rem;color:var(--dim);display:flex;gap:10px;line-height:1.42}
+.fin-c li::before{content:'';flex:0 0 5px;height:5px;border-radius:50%;background:rgba(255,255,255,.3);margin-top:8px}
+.fin-c .use{margin-top:20px;padding-top:16px;border-top:1px solid var(--line2);font-size:.87rem;color:var(--mute)}
+
+/* CARRUSELES */
+.reels{margin-top:44px;display:grid;gap:28px}
+.reel-h{display:flex;align-items:baseline;gap:14px;margin-bottom:14px;flex-wrap:wrap}
+.rl-n{font-weight:700;font-size:1.1rem;letter-spacing:-.03em}
+.rl-d{font-size:.85rem;color:var(--mute)}
+.rl-p{margin-left:auto;font-size:.85rem;color:var(--red);font-weight:600}
+.reel{overflow:hidden;position:relative;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+.reel-track{display:flex;gap:12px;width:max-content;animation:slide 46s linear infinite}
+.reel:hover .reel-track,.reel:focus-within .reel-track{animation-play-state:paused}
+.reel.rev .reel-track{animation-direction:reverse;animation-duration:54s}
+@keyframes slide{to{transform:translateX(calc(-50% - 6px))}}
+.vt{width:126px;flex:0 0 126px;aspect-ratio:9/16;border-radius:13px;border:1px solid var(--line);overflow:hidden;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:10px;transition:.5s var(--e)}
+.vt:hover{transform:translateY(-6px) scale(1.03);border-color:rgba(255,59,48,.55)}
+.vt .bg{position:absolute;inset:0;z-index:0}
+.vt .ov{position:relative;z-index:3;display:flex;flex-direction:column;gap:6px}
+.vt .dur{position:absolute;bottom:8px;right:9px;z-index:3;font-size:.55rem;color:rgba(255,255,255,.75);background:rgba(0,0,0,.45);padding:2px 6px;border-radius:5px;backdrop-filter:blur(8px)}
+.b1 .cap{font-size:.6rem;font-weight:500;line-height:1.3;color:#fff;background:rgba(0,0,0,.6);padding:4px 6px;border-radius:4px;align-self:flex-start}
+.b2 .mark{position:absolute;top:9px;left:9px;z-index:3;width:19px;height:19px;border-radius:6px;background:var(--red);display:grid;place-items:center;font-weight:700;font-size:.6rem;color:#fff}
+.b2 .bar{height:3px;background:var(--red);border-radius:2px;width:54%}
+.b2 .cap{font-weight:700;font-size:.7rem;line-height:1.12;letter-spacing:-.03em;text-transform:uppercase;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.7)}
+.b2 .cap u{text-decoration:none;background:var(--red);padding:0 3px;border-radius:3px}
+.b3 .sh{position:absolute;z-index:1;border-radius:50%}
+.b3 .sh.a{width:62px;height:62px;top:22%;left:-14px;border:1px solid rgba(255,59,48,.55);animation:spin 9s linear infinite}
+.b3 .sh.b{width:32px;height:32px;top:14%;right:12px;background:rgba(255,59,48,.32);animation:float 4s ease-in-out infinite}
+.b3 .sh.c{width:44px;height:44px;top:41%;right:-12px;border:1px dashed rgba(255,255,255,.35);border-radius:9px;animation:spin 15s linear infinite reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes float{50%{transform:translateY(-9px)}}
+.b3 .kpi{position:absolute;top:10px;right:9px;z-index:3;font-size:.54rem;border:1px solid rgba(255,255,255,.35);border-radius:6px;padding:3px 6px;color:#fff;background:rgba(0,0,0,.35);backdrop-filter:blur(8px)}
+.b3 .cap{font-weight:700;font-size:.72rem;line-height:1.12;letter-spacing:-.03em;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.75)}
+.b3 .bar{height:3px;border-radius:2px;background:linear-gradient(90deg,var(--red),transparent);width:76%}
+
+/* APP */
+.app{border-radius:var(--r);overflow:hidden;margin-top:48px;background:rgba(255,255,255,.035);border:1px solid var(--gbrd);backdrop-filter:blur(30px) saturate(160%);-webkit-backdrop-filter:blur(30px) saturate(160%);box-shadow:0 60px 130px -60px #000}
+.app-top{display:flex;align-items:center;gap:9px;padding:13px 20px;border-bottom:1px solid var(--line2)}
+.tl{display:flex;gap:6px;margin-right:10px}
+.tl i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.16)}
+.app-url{font-size:.78rem;color:var(--mute)}
+.planbar{display:flex;align-items:center;gap:clamp(14px,2.4vw,28px);padding:18px 22px;border-bottom:1px solid var(--line2);background:linear-gradient(90deg,rgba(255,59,48,.07),transparent);flex-wrap:wrap}
+.pb-l{font-size:.76rem;color:var(--mute)}
+.pb-v{font-size:1.05rem;font-weight:600;letter-spacing:-.025em;margin-top:3px}
+.pbwrap{flex:1;min-width:190px}
+.pbtrack{height:8px;border-radius:980px;background:rgba(255,255,255,.08);overflow:hidden;margin-top:9px}
+.pbfill{height:100%;width:0;background:linear-gradient(90deg,var(--blood),var(--red));border-radius:980px;transition:width 1.8s var(--e)}
+.tabs{display:flex;gap:2px;padding:0 14px;border-bottom:1px solid var(--line2);overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{background:none;border:none;padding:15px 15px;font-size:.89rem;color:var(--mute);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:.3s}
+.tab:hover{color:var(--bone)}
+.tab.on{color:var(--bone);border-bottom-color:var(--red)}
+.panel{display:none;padding:clamp(18px,2.6vw,28px);min-height:400px}
+.panel.on{display:block;animation:fadeup .5s var(--e)}
+@keyframes fadeup{from{opacity:0;transform:translateY(10px);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
+.panel-head{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:20px}
+.panel-head h4{font-size:1.1rem;letter-spacing:-.028em}
+.panel-head p{font-size:.87rem;margin-top:3px}
+
+.board{display:grid;grid-template-columns:repeat(5,minmax(178px,1fr));gap:12px;overflow-x:auto;padding-bottom:6px}
+.col-h{font-size:.76rem;color:var(--mute);margin-bottom:12px;display:flex;justify-content:space-between;font-weight:500}
+.card{border:1px solid var(--line);border-radius:13px;padding:13px 14px;margin-bottom:9px;background:rgba(255,255,255,.045);transition:.4s var(--e)}
+.card:hover{border-color:rgba(255,59,48,.5);transform:translateY(-3px)}
+.card .k{font-size:.88rem;font-weight:500;line-height:1.35;margin-bottom:10px;color:var(--bone)}
+.card .m{font-size:.72rem;color:var(--mute);display:flex;justify-content:space-between;align-items:center;gap:8px}
+.pill{font-size:.63rem;padding:3px 8px;border-radius:6px;font-weight:600}
+.p-ig{background:rgba(255,59,48,.16);color:var(--red2)}
+.p-tk{background:rgba(255,255,255,.12);color:var(--bone)}
+.p-li{background:rgba(134,134,139,.2);color:var(--mute)}
+
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
+.cal .dow{font-size:.7rem;color:var(--mute);text-align:center;padding-bottom:6px}
+.day{aspect-ratio:1/.86;border:1px solid var(--line2);border-radius:10px;background:rgba(255,255,255,.035);padding:7px;font-size:.7rem;color:var(--mute);display:flex;flex-direction:column;gap:4px;transition:.3s}
+.day.off{opacity:.3}
+.day:hover{border-color:rgba(255,59,48,.4)}
+.day .slots{display:flex;gap:3px;flex-wrap:wrap;margin-top:auto}
+.day .slots i{width:100%;height:4px;border-radius:2px;display:block}
+.s-ig{background:var(--red)}.s-tk{background:var(--bone)}.s-li{background:var(--mute)}
+.legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:16px;font-size:.8rem;color:var(--mute)}
+.legend span{display:flex;align-items:center;gap:7px}
+.legend b{width:9px;height:9px;border-radius:3px;display:inline-block}
+
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:22px}
+.kpi{border:1px solid var(--line2);border-radius:15px;padding:17px 18px;background:rgba(255,255,255,.035);transition:.4s var(--e)}
+.kpi:hover{border-color:rgba(255,59,48,.4);transform:translateY(-3px)}
+.kpi .l{font-size:.76rem;color:var(--mute)}
+.kpi .v{font-size:1.95rem;font-weight:700;letter-spacing:-.048em;margin:8px 0 3px}
+.kpi .d{font-size:.78rem;color:var(--red)}
+.chart{border:1px solid var(--line2);border-radius:15px;padding:22px 20px 15px;background:rgba(255,255,255,.035)}
+.chart-bars{display:flex;align-items:flex-end;gap:clamp(5px,1.4vw,14px);height:152px}
+.cb{flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:8px;height:100%}
+.cb u{display:block;background:linear-gradient(180deg,var(--red),rgba(110,13,20,.4));border-radius:6px 6px 0 0;transition:height 1.2s var(--e);height:0}
+.cb small{font-size:.66rem;color:var(--mute);text-align:center}
+.read{margin-top:16px;border:1px solid rgba(255,59,48,.3);background:rgba(255,59,48,.06);border-radius:15px;padding:19px 21px}
+.read .h{font-size:.8rem;font-weight:600;color:var(--red);margin-bottom:10px;display:flex;align-items:center;gap:9px}
+.read p{font-size:.94rem;color:var(--dim);line-height:1.5}
+.read .acts{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}
+
+.crm{border:1px solid var(--line2);border-radius:15px;overflow:hidden}
+.row{display:grid;grid-template-columns:1.1fr 2fr .8fr .7fr;gap:14px;padding:14px 18px;border-bottom:1px solid var(--line2);align-items:center;transition:.3s}
+.row:last-child{border-bottom:none}
+.row:hover{background:rgba(255,255,255,.03)}
+.row.hd{background:rgba(255,255,255,.03);font-size:.74rem;color:var(--mute)}
+.who{font-weight:600;font-size:.93rem}
+.who small{display:block;font-weight:400;color:var(--mute);font-size:.78rem}
+.msg{font-size:.88rem;color:var(--mute);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.st{font-size:.7rem;padding:4px 10px;border-radius:8px;text-align:center;font-weight:600}
+.st-new{background:rgba(255,59,48,.16);color:var(--red2)}
+.st-warm{background:rgba(255,255,255,.1);color:var(--bone)}
+.st-cli{background:rgba(134,134,139,.18);color:var(--mute)}
+.ago{font-size:.78rem;color:var(--mute);text-align:right}
+
+.led{width:7px;height:7px;border-radius:50%;background:var(--red);flex:0 0 auto}
+.chat{border:1px solid var(--line2);border-radius:15px;background:rgba(255,255,255,.035);overflow:hidden}
+.chat-h{padding:13px 16px;border-bottom:1px solid var(--line2);font-size:.8rem;color:var(--mute);display:flex;align-items:center;gap:10px}
+.msgs{padding:16px;display:grid;gap:10px;min-height:180px;max-height:290px;overflow-y:auto}
+.bub{max-width:80%;padding:11px 16px;border-radius:19px;font-size:.91rem;line-height:1.42;animation:fadeup .4s var(--e) backwards}
+.bub.them{background:rgba(255,255,255,.09);border-bottom-left-radius:6px;justify-self:start;color:var(--bone)}
+.bub.us{background:var(--red);border-bottom-right-radius:6px;justify-self:end;color:#fff}
+.chat-f{display:flex;gap:8px;padding:12px 14px;border-top:1px solid var(--line2)}
+.chat-f input{flex:1;min-width:0;background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:980px;padding:11px 17px;font-size:.9rem}
+.chat-f input::placeholder{color:var(--mute)}
+.chat-f input:focus{outline:none;border-color:rgba(255,59,48,.5)}
+.thinking{display:flex;align-items:center;gap:10px;font-size:.85rem;color:var(--mute)}
+.bars{display:flex;gap:3px;align-items:flex-end;height:14px}
+.bars i{width:3px;background:var(--red);border-radius:2px;animation:eq .9s ease-in-out infinite}
+.bars i:nth-child(2){animation-delay:.15s}.bars i:nth-child(3){animation-delay:.3s}.bars i:nth-child(4){animation-delay:.45s}
+@keyframes eq{0%,100%{height:4px}50%{height:14px}}
+
+/* PRECIOS */
+.calc{display:grid;grid-template-columns:1.32fr 1fr;gap:12px;margin-top:48px}
+.calc-l,.calc-r{border-radius:var(--r);background:var(--glass);border:1px solid var(--gbrd);backdrop-filter:blur(28px) saturate(160%);-webkit-backdrop-filter:blur(28px) saturate(160%);padding:clamp(26px,3.4vw,40px)}
+.calc-r{background:linear-gradient(160deg,rgba(255,59,48,.14),rgba(255,255,255,.03));display:flex;flex-direction:column}
+.blk{margin-bottom:34px}
+.blk:last-child{margin-bottom:0}
+.blk .lbl{font-size:.8rem;font-weight:600;color:var(--mute);margin-bottom:16px;display:flex;justify-content:space-between;align-items:baseline}
+.blk .lbl b{font-size:1.7rem;font-weight:700;color:var(--bone);letter-spacing:-.05em;font-variant-numeric:tabular-nums}
+input[type=range]{width:100%;-webkit-appearance:none;appearance:none;background:transparent;cursor:pointer}
+input[type=range]::-webkit-slider-runnable-track{height:6px;border-radius:980px;background:rgba(255,255,255,.12)}
+input[type=range]::-moz-range-track{height:6px;border-radius:980px;background:rgba(255,255,255,.12)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:#fff;margin-top:-10px;box-shadow:0 2px 10px rgba(0,0,0,.6)}
+input[type=range]::-moz-range-thumb{width:22px;height:22px;border:none;border-radius:50%;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.6)}
+.ticks{display:flex;justify-content:space-between;font-size:.75rem;color:var(--mute);margin-top:12px}
+.segs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:rgba(255,255,255,.06);padding:5px;border-radius:14px}
+.seg{border:none;background:transparent;border-radius:10px;padding:13px 10px;cursor:pointer;text-align:center;transition:.35s var(--e);color:var(--mute)}
+.seg:hover{color:var(--bone)}
+.seg.on{background:var(--red);color:#fff;box-shadow:0 4px 16px -4px rgba(255,59,48,.8)}
+.seg .n{font-weight:600;font-size:.93rem;display:block}
+.seg .p{font-size:.75rem;margin-top:3px;display:block;opacity:.8}
+.tog{display:flex;gap:16px;align-items:flex-start;border:1px solid var(--line);border-radius:16px;padding:19px 20px;background:rgba(255,255,255,.035);cursor:pointer;transition:.4s var(--e)}
+.tog:hover{background:rgba(255,255,255,.06)}
+.tog.on{border-color:rgba(255,59,48,.5);background:rgba(255,59,48,.09)}
+.sw{flex:0 0 46px;height:28px;border-radius:980px;background:rgba(255,255,255,.14);position:relative;transition:.4s var(--e);margin-top:2px}
+.sw::after{content:'';position:absolute;top:2px;left:2px;width:24px;height:24px;border-radius:50%;background:#fff;transition:.4s var(--e);box-shadow:0 2px 6px rgba(0,0,0,.5)}
+.tog.on .sw{background:var(--red)}
+.tog.on .sw::after{transform:translateX(18px)}
+.tog .tt{font-weight:600;font-size:.98rem;display:block;letter-spacing:-.02em}
+.tog .td{font-size:.87rem;color:var(--mute);margin-top:6px;line-height:1.45}
+.total{font-size:clamp(3.2rem,7vw,4.6rem);font-weight:700;letter-spacing:-.055em;line-height:1;display:flex;align-items:baseline;gap:6px;font-variant-numeric:tabular-nums}
+.total small{font-size:.8rem;font-weight:500;color:var(--mute);letter-spacing:-.01em}
+.brk{font-size:.88rem;color:var(--mute);margin-top:18px}
+.brk span{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--line2)}
+.brk span:last-child{border-bottom:none;color:var(--bone);font-weight:600}
+.brk i{font-style:normal}
+.inc{list-style:none;margin:22px 0 0;display:grid;gap:11px}
+.inc li{font-size:.9rem;color:var(--dim);display:flex;gap:11px;line-height:1.42}
+.inc li::before{content:'✓';color:var(--red);font-weight:700;flex:0 0 auto}
+.calc-r .btn{margin-top:auto;width:100%}
+.note{margin-top:22px;font-size:.9rem;color:var(--mute);text-align:center}
+
+/* BIO */
+.bio{display:grid;grid-template-columns:.82fr 1.18fr;gap:clamp(28px,4.6vw,64px);align-items:center;margin-top:48px}
+.photo{position:relative;border-radius:var(--r);overflow:hidden;border:1px solid var(--gbrd);aspect-ratio:4/5;background:linear-gradient(155deg,rgba(255,255,255,.07),rgba(255,255,255,.02))}
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
+.photo .empty{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:24px}
+.photo .empty .ring{width:66px;height:66px;border-radius:50%;border:1px dashed rgba(255,59,48,.55);display:grid;place-items:center;color:var(--red);font-size:1.5rem;margin:0 auto 14px}
+.photo .empty p{font-size:.85rem;color:var(--mute);line-height:1.6}
+.photo .frame{position:absolute;inset:0;z-index:3;pointer-events:none;background:linear-gradient(180deg,transparent 56%,rgba(0,0,0,.85))}
+.photo .name{position:absolute;left:0;right:0;bottom:0;z-index:4;padding:24px}
+.photo .name .n{font-size:1.45rem;font-weight:700;letter-spacing:-.04em}
+.photo .name .r{font-size:.85rem;color:var(--red);margin-top:5px;font-weight:500}
+.quote{font-size:clamp(1.4rem,2.6vw,1.95rem);font-weight:700;letter-spacing:-.035em;line-height:1.2;color:var(--bone)}
+.creds{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+.cred{font-size:.83rem;color:var(--dim);border:1px solid var(--line);border-radius:980px;padding:8px 15px;background:rgba(255,255,255,.04)}
+.who-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:48px}
+.ws{border-radius:var(--r);padding:26px 24px;background:var(--glass);border:1px solid var(--gbrd);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px)}
+.ws .v{font-size:2.1rem;font-weight:700;letter-spacing:-.05em;color:var(--red)}
+.ws .l{font-size:.88rem;color:var(--mute);margin-top:6px;line-height:1.4}
+
+/* FAQ */
+.faq{margin-top:44px;border-top:1px solid var(--line2)}
+.q{border-bottom:1px solid var(--line2)}
+.q button{width:100%;background:none;border:none;text-align:left;padding:24px 46px 24px 0;font-weight:600;font-size:clamp(1.02rem,1.7vw,1.2rem);letter-spacing:-.028em;cursor:pointer;position:relative;color:var(--bone);transition:color .3s}
+.q button:hover{color:var(--red)}
+.q button::after{content:'';position:absolute;right:8px;top:50%;width:13px;height:13px;margin-top:-7px;border-right:2px solid var(--red);border-bottom:2px solid var(--red);transform:rotate(45deg) translateY(-3px);transition:transform .45s var(--e)}
+.q.open button::after{transform:rotate(-135deg) translateY(-3px)}
+.q .a{max-height:0;overflow:hidden;transition:max-height .5s var(--e)}
+.q .a p{padding:0 0 24px;font-size:.97rem;max-width:70ch;line-height:1.55}
+
+.final{border-radius:var(--r);padding:clamp(38px,5.6vw,72px);background:radial-gradient(680px 340px at 50% 0%,rgba(255,59,48,.18),transparent 68%),rgba(255,255,255,.04);border:1px solid var(--gbrd);backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);text-align:center}
+.final h2{max-width:19ch;margin:18px auto}
+.final .lead{margin:0 auto 32px}
+.cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+footer{border-top:1px solid var(--line2);padding:56px 0 40px;margin-top:var(--sec)}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px}
+.fcol h5{font-size:.8rem;font-weight:600;color:var(--mute);margin-bottom:16px}
+.fcol ul{list-style:none;display:grid;gap:11px}
+.fcol a{font-size:.92rem;color:var(--dim);transition:color .3s}
+.fcol a:hover{color:var(--red)}
+.fbot{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;font-size:.85rem;color:var(--mute);margin-top:44px;padding-top:26px;border-top:1px solid var(--line2)}
+
+.rv{opacity:0;transform:translateY(26px);filter:blur(8px);transition:opacity 1s var(--e),transform 1s var(--e),filter 1s var(--e)}
+.rv.in{opacity:1;transform:none;filter:none}
+
+@media(max-width:900px){
+  .cols3,.tried,.proof,.phases,.fin,.calc,.bio,.duo,.agent-wrap,.plans,.forwho{grid-template-columns:1fr}
+  .who-stats{grid-template-columns:repeat(2,1fr)}
+  .kpis{grid-template-columns:repeat(2,1fr)}
+  .fgrid{grid-template-columns:1fr 1fr}
+  .nav-links{display:none}
+  .row{grid-template-columns:1.2fr .8fr;gap:10px}
+  .row .msg,.row.hd .msg,.row .ago,.row.hd .ago{display:none}
+  .orb{max-width:320px}
+}
+@media(max-width:560px){
+  body{font-size:16px}
+  .board{grid-template-columns:repeat(5,72vw)}
+  .cal{gap:3px}.day{padding:5px;font-size:.62rem}
+  .segs{grid-template-columns:1fr}
+  .fgrid{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .rv{opacity:1;transform:none;filter:none}
+  .ln>span{transform:none}
+}
+</style>
+</head>
+<body>
+
+<div id="prog"></div>
+
+<nav id="nav">
+  <div class="nav-in">
+    <div class="logo"><span class="dot"></span>Gerson</div>
+    <div class="nav-links">
+      <a href="metodo.html">El método</a>
+      <a href="#agente">El agente</a>
+      <a href="#plataforma">La plataforma</a>
+      <a href="#precios">Precios</a>
+    </div>
+    <a href="#" class="btn btn-primary btn-sm" data-book>Reservar</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="aura" id="aura"></div><div class="mesh" id="mesh"></div>
+  <div class="wrap">
+    <div class="eyebrow">Desde 80 € al mes</div>
+    <h1>
+      <span class="ln"><span style="animation-delay:.05s">Todos sabemos</span></span>
+      <span class="ln"><span style="animation-delay:.15s">que hay que subir contenido.</span></span>
+      <span class="ln"><span style="animation-delay:.25s">Y casi todos <em>nos quedamos ahí</em>.</span></span>
+    </h1>
+    <p class="lead">Nadie te ha explicado qué grabar, cuándo subirlo, ni cómo saber si funciona.</p>
+    <p class="lead" style="margin-top:16px">Aquí te damos las tres cosas que faltan: <strong style="color:var(--bone);font-weight:600">un plan</strong>, <strong style="color:var(--bone);font-weight:600">alguien que haga los vídeos</strong> y <strong style="color:var(--bone);font-weight:600">una pantalla donde ver si va bien</strong>.</p>
+
+    <div class="wall">
+      <div class="wall-h">
+        <div class="t">Si lo haces tú solo, tendrías que aprender todo esto</div>
+        <div class="c"><span id="skCount">0</span><small>cosas nuevas</small></div>
+      </div>
+      <div class="skills" id="skills"></div>
+      <div class="wall-x">o esto</div>
+
+      <div class="solve">
+        <h3>El motor y la gasolina</h3>
+        <p>Un vídeo bonito no sirve si nadie reacciona. Hacen falta las dos cosas.</p>
+        <div class="duo">
+          <div class="duo-c">
+            <div class="k">El motor</div>
+            <div class="n">El agente</div>
+            <p>Todo tu mundo digital en una pantalla.</p>
+          </div>
+          <div class="duo-c">
+            <div class="k">La gasolina</div>
+            <div class="n">Plan y vídeos</div>
+            <p>Seis meses planificados y el contenido hecho.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chips">
+      <span class="chip">Plan de 6 meses</span>
+      <span class="chip">Equipo propio de edición</span>
+      <span class="chip">Responde tus mensajes</span>
+      <span class="chip">Publica solo</span>
+      <span class="chip">Sin permanencia</span>
+    </div>
+  </div>
+</header>
+
+<!-- PROBLEMA -->
+<section class="sec tight">
+  <div class="wrap">
+    <div class="eyebrow rv">Lo que pasa de verdad</div>
+    <h2 class="rv" style="margin-top:16px;max-width:17ch">No es que no quieras. Es que no da la vida.</h2>
+    <div class="cols3">
+      <div class="cell spot rv" id="pc1">
+        <div class="num">El tiempo</div>
+        <h3>Grabas y ahí se queda</h3>
+        <p>Editar lleva más rato que grabar. Siempre hay algo más urgente.</p>
+        <div class="mini">
+          <div class="stack" id="st1"></div>
+          <div class="mv"><span id="n1">0</span></div>
+          <div class="ml">vídeos grabados y sin subir</div>
+        </div>
+      </div>
+      <div class="cell spot rv" id="pc2">
+        <div class="num">Los mensajes</div>
+        <h3>Contestas tarde y se van</h3>
+        <p>Te escriben de noche. Lo ves dos días después. Ya han comprado a otro.</p>
+        <div class="mini">
+          <div class="dots" id="dt2"><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="mv"><span id="n2">0</span> h</div>
+          <div class="ml">tardas de media en responder</div>
+        </div>
+      </div>
+      <div class="cell spot rv" id="pc3">
+        <div class="num">Las dudas</div>
+        <h3>No sabes si sirve de algo</h3>
+        <p>300 visitas. ¿Eso es bueno o malo? Nadie te lo explica.</p>
+        <div class="mini">
+          <svg class="spark" viewBox="0 0 220 52" preserveAspectRatio="none" aria-hidden="true">
+            <path class="base" d="M0,26 H220"></path>
+            <path id="sp3" pathLength="1" d="M2,30 C20,18 30,38 48,27 C66,16 76,36 94,26 C112,17 122,37 140,28 C158,19 168,35 186,27 C200,21 210,29 218,25"></path>
+          </svg>
+          <div class="mv">?</div>
+          <div class="ml">¿esto está bien o está mal?</div>
+        </div>
+      </div>
+    </div>
+    <p class="bridge rv">Y esto no se arregla<br>trabajando <em>más horas</em>.</p>
+  </div>
+</section>
+
+<!-- INTENTOS -->
+<section class="sec tight">
+  <div class="wrap">
+    <div class="eyebrow rv">Antes de esto</div>
+    <h2 class="rv" style="margin-top:16px;max-width:15ch">Seguro que ya lo has intentado</h2>
+    <div class="strip">
+      <div class="sr rv"><span class="sn">01</span><span class="sh">Contrataste a alguien para tus redes</span><span class="sres">likes, ningún cliente</span></div>
+      <div class="sr rv"><span class="sn">02</span><span class="sh">Compraste un curso</span><span class="sres">lo dejaste en el tema 4</span></div>
+      <div class="sr rv"><span class="sn">03</span><span class="sh">Pagaste anuncios</span><span class="sres">dinero fuera, ninguna respuesta</span></div>
+    </div>
+    <p class="bridge rv">El problema nunca fuiste tú.<br>Faltaba un <em>orden</em>.</p>
+  </div>
+</section>
+
+<!-- GIRO -->
+<section class="sec turn">
+  <div class="wrap">
+    <div class="eyebrow rv" style="display:block">El giro</div>
+    <!-- GERSON: aquí puede ir tu historia en una frase. Ej: "Llevo X años en esto y he visto ___." -->
+    <h2 class="big rv">El problema no era el contenido.<br>Era el <em>orden</em> en que se hace.</h2>
+    <p class="sub rv">Casi todo el mundo empieza por el final. Cuando le das la vuelta, deja de ser suerte.</p>
+    <p class="kick rv">Y antes de venderlo, lo probamos.</p>
+  </div>
+</section>
+
+<!-- PRUEBA -->
+<section class="sec tight">
+  <div class="wrap">
+    <div class="eyebrow rv">La prueba</div>
+    <h2 class="rv" style="margin-top:16px;max-width:18ch">No te lo vendemos sin haberlo probado</h2>
+    <p class="lead rv" style="margin-top:18px">Meses aplicándolo con nuestros clientes antes de abrirlo. Sin inflar nada.</p>
+    <!-- GERSON: cambia los guiones por tus datos reales y borra la línea "rellenar". -->
+    <div class="proof">
+      <div class="pf rv"><div class="v">—</div><div class="l">negocios con el método aplicado</div><div class="hint">rellenar</div></div>
+      <div class="pf rv"><div class="v">—</div><div class="l">meses funcionando sin parar</div><div class="hint">rellenar</div></div>
+      <div class="pf rv"><div class="v">—</div><div class="l">más gente alcanzada de media</div><div class="hint">rellenar</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MÉTODO (resumen) -->
+<section class="sec tight" id="metodo">
+  <div class="wrap">
+    <div class="eyebrow rv">El método</div>
+    <h2 class="rv" style="margin-top:16px;max-width:17ch">Seis meses, tres fases, un orden</h2>
+    <p class="lead rv" style="margin-top:18px">Cada fase se apoya en la anterior. Sin dar palos de ciego.</p>
+    <div class="curve rv" id="curve">
+      <div class="curve-h">
+        <div>
+          <div class="now">Vas por</div>
+          <div class="nowv">Mes <span id="cMes">1</span> · <em id="cFase">Aprender</em></div>
+        </div>
+        <div class="rd">
+          <div class="now">Gente que te ve</div>
+          <div class="v"><span id="cVal">0</span></div>
+        </div>
+      </div>
+      <svg viewBox="0 0 900 300" preserveAspectRatio="none" aria-label="Cómo crece a lo largo de los seis meses">
+        <defs>
+          <linearGradient id="gArea" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#FF3B30" stop-opacity=".35"/>
+            <stop offset="100%" stop-color="#FF3B30" stop-opacity="0"/>
+          </linearGradient>
+          <clipPath id="clipArea"><rect id="clipR" x="0" y="0" width="0" height="300"/></clipPath>
+        </defs>
+        <g stroke="rgba(255,255,255,.07)" stroke-width="1">
+          <line x1="0" y1="70" x2="900" y2="70"/><line x1="0" y1="140" x2="900" y2="140"/>
+          <line x1="0" y1="210" x2="900" y2="210"/><line x1="0" y1="278" x2="900" y2="278"/>
+        </g>
+        <g stroke="rgba(255,255,255,.13)" stroke-width="1" stroke-dasharray="4 6">
+          <line x1="330" y1="20" x2="330" y2="278"/><line x1="610" y1="20" x2="610" y2="278"/>
+        </g>
+        <path id="areaP" clip-path="url(#clipArea)" fill="url(#gArea)"
+          d="M20,272 C70,268 110,276 165,265 C220,254 275,262 330,254 C390,238 415,214 465,197 C515,180 560,163 610,141 C660,119 690,97 740,79 C790,61 840,48 880,38 L880,278 L20,278 Z"/>
+        <path id="lineP" pathLength="1" fill="none" stroke="#FF3B30" stroke-width="3" stroke-linecap="round"
+          d="M20,272 C70,268 110,276 165,265 C220,254 275,262 330,254 C390,238 415,214 465,197 C515,180 560,163 610,141 C660,119 690,97 740,79 C790,61 840,48 880,38"/>
+        <circle id="headG" r="16" fill="#FF3B30" opacity="0"/>
+        <circle id="headP" r="6" fill="#fff" opacity="0"/>
+      </svg>
+      <div class="zlab">
+        <div class="zl" id="z0"><div class="zn">Meses 1 y 2</div><div class="zt">Aprender</div></div>
+        <div class="zl" id="z1"><div class="zn">Meses 3 y 4</div><div class="zt">Construir</div></div>
+        <div class="zl" id="z2"><div class="zn">Meses 5 y 6</div><div class="zt">Crecer</div></div>
+      </div>
+    </div>
+
+    <p class="rv" style="margin-top:32px"><a href="metodo.html" class="link">Ver el método completo, paso a paso →</a></p>
+  </div>
+</section>
+
+<!-- AGENTE -->
+<section class="sec" id="agente">
+  <div class="wrap">
+    <div class="eyebrow rv">La herramienta</div>
+    <h2 class="rv" style="margin-top:16px;max-width:18ch">Todo tu mundo digital, conectado en un sitio</h2>
+    <p class="lead rv" style="margin-top:18px">Se conecta con tus redes, tus campañas y tus mensajes. Todo junto, en un sitio.</p>
+
+    <div class="agent-wrap rv">
+      <div class="orb"><canvas id="orb"></canvas></div>
+      <div>
+        <h3>Qué hace todos los días</h3>
+        <ul class="ag-list">
+          <li>Contesta a quien te escribe, a cualquier hora</li>
+          <li>Publica tus vídeos cuando toca</li>
+          <li>Te enseña por dónde va cada vídeo</li>
+          <li>Te dice qué funciona y qué cambiar</li>
+        </ul>
+        <div class="ag-note">Se configura contigo. No hay dos agentes iguales.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACABADOS -->
+<section class="sec" id="acabados">
+  <div class="wrap">
+    <div class="eyebrow rv">Los vídeos</div>
+    <h2 class="rv" style="margin-top:16px;max-width:19ch">No todos los vídeos tienen que costar lo mismo</h2>
+    <p class="lead rv" style="margin-top:18px">Eliges cuántos y cómo de trabajados. Puedes mezclar.</p>
+    <!-- MUESTRAS: para poner vídeos reales, dentro de cada tarjeta sustituye el
+         elemento de fondo (clase "bg") por una etiqueta video o img al 100%. -->
+    <div class="reels rv">
+      <div>
+        <div class="reel-h"><span class="rl-n">Básico</span><span class="rl-d">Cortes, subtítulos y música · para el día a día</span><span class="rl-p">10 €</span></div>
+        <div class="reel"><div class="reel-track" data-lvl="1"></div></div>
+      </div>
+      <div>
+        <div class="reel-h"><span class="rl-n">Pro</span><span class="rl-d">Tu marca, animaciones y color · para lo importante</span><span class="rl-p">26 €</span></div>
+        <div class="reel rev"><div class="reel-track" data-lvl="2"></div></div>
+      </div>
+      <div>
+        <div class="reel-h"><span class="rl-n">Motion</span><span class="rl-d">Gráficos animados · para lanzamientos</span><span class="rl-p">60 €</span></div>
+        <div class="reel"><div class="reel-track" data-lvl="3"></div></div>
+      </div>
+    </div>
+    <p class="note rv">Pasa el ratón por encima para pararlo.</p>
+  </div>
+</section>
+
+<!-- PLATAFORMA -->
+<section class="sec" id="plataforma">
+  <div class="wrap">
+    <div class="eyebrow rv">Por dentro</div>
+    <h2 class="rv" style="margin-top:16px;max-width:17ch">Entras y sabes cómo va todo</h2>
+    <p class="lead rv" style="margin-top:18px">Toca las pestañas y míralo.</p>
+
+    <div class="app rv" id="app">
+      <div class="app-top"><div class="tl"><i></i><i></i><i></i></div><div class="app-url">app.gerson.es / marta-vidal</div></div>
+      <div class="planbar">
+        <div><div class="pb-l">Tu plan</div><div class="pb-v">12 vídeos Pro</div></div>
+        <div class="pbwrap">
+          <div class="pb-l" style="display:flex;justify-content:space-between"><span>Entregados este mes</span><span>7 de 12</span></div>
+          <div class="pbtrack"><div class="pbfill" id="pbFill"></div></div>
+        </div>
+        <div><div class="pb-l">Vas por</div><div class="pb-v">Mes 3 de 6</div></div>
+      </div>
+      <div class="tabs" id="tabs">
+        <button class="tab on" data-t="pipe">Tus vídeos</button>
+        <button class="tab" data-t="cal">Calendario</button>
+        <button class="tab" data-t="met">Números</button>
+        <button class="tab" data-t="camp">Campañas</button>
+        <button class="tab" data-t="crm">Mensajes</button>
+      </div>
+
+      <div class="panel on" id="pipe">
+        <div class="panel-head"><div><h4>Tus vídeos, uno a uno</h4><p>En qué punto está cada uno.</p></div><span class="chip">2 esperan tu visto bueno</span></div>
+        <div class="board" id="board"></div>
+      </div>
+
+      <div class="panel" id="cal">
+        <div class="panel-head"><div><h4>Marzo · mes 3 de 6</h4><p>Se publica solo.</p></div><span class="chip">14 programadas</span></div>
+        <div class="cal" id="calgrid"></div>
+        <div class="legend"><span><b class="s-ig"></b> Instagram</span><span><b class="s-tk"></b> TikTok</span><span><b class="s-li"></b> LinkedIn</span></div>
+      </div>
+
+      <div class="panel" id="met">
+        <div class="panel-head"><div><h4>Últimas 8 semanas</h4><p>Y qué hacemos con ellos.</p></div></div>
+        <div class="kpis">
+          <div class="kpi"><div class="l">Gente alcanzada</div><div class="v">48.200</div><div class="d">↑ 34% que el mes pasado</div></div>
+          <div class="kpi"><div class="l">Vídeos guardados</div><div class="v">1.106</div><div class="d">↑ 61%</div></div>
+          <div class="kpi"><div class="l">Personas que escriben</div><div class="v">37</div><div class="d">↑ 12 nuevas</div></div>
+          <div class="kpi"><div class="l">Lo que cuesta un cliente</div><div class="v">2,4 €</div><div class="d">↓ 0,9 €</div></div>
+        </div>
+        <div class="chart"><div class="chart-bars" id="bars"></div></div>
+        <div class="read">
+          <div class="h"><span class="led"></span> Lo que dice el agente</div>
+          <p>Los vídeos donde explicas un error se guardan 3 veces más que los de producto, y solo has hecho dos este mes. Los martes funcionan mejor que los jueves. Propongo cinco de esos en abril y mover el jueves al martes.</p>
+          <div class="acts"><button class="btn btn-primary btn-sm">Aplicar al calendario</button><button class="btn btn-ghost btn-sm">Ver el detalle</button></div>
+        </div>
+      </div>
+
+      <div class="panel" id="camp">
+        <div class="panel-head"><div><h4>Campañas en marcha</h4><p>Lo que cuesta traer un cliente.</p></div><span class="chip">Presupuesto: 300 € al mes</span></div>
+        <div class="kpis">
+          <div class="kpi"><div class="l">Gastado</div><div class="v">218 €</div><div class="d">de 300 € este mes</div></div>
+          <div class="kpi"><div class="l">Coste por cliente</div><div class="v">2,4 €</div><div class="d">↓ desde 6,10 €</div></div>
+          <div class="kpi"><div class="l">Personas interesadas</div><div class="v">91</div><div class="d">↑ 44 este mes</div></div>
+          <div class="kpi"><div class="l">Por cada euro</div><div class="v">4,1x</div><div class="d">de vuelta</div></div>
+        </div>
+        <div class="crm">
+          <div class="row hd"><div>Anuncio</div><div class="msg">De dónde sale</div><div>Estado</div><div class="ago">Coste</div></div>
+          <div class="row"><div class="who">Los 3 errores<small>Vídeo · 42s</small></div><div class="msg">Publicación normal · 61.000 visitas</div><div><span class="st st-new">Activo</span></div><div class="ago">1,8 €</div></div>
+          <div class="row"><div class="who">Cómo trabajo<small>Vídeo · 60s</small></div><div class="msg">Publicación normal · 28.000 visitas</div><div><span class="st st-new">Activo</span></div><div class="ago">2,6 €</div></div>
+          <div class="row"><div class="who">Un día conmigo<small>Vídeo · 35s</small></div><div class="msg">Publicación normal · 9.000 visitas</div><div><span class="st st-cli">Parado</span></div><div class="ago">7,4 €</div></div>
+        </div>
+      </div>
+
+      <div class="panel" id="crm">
+        <div class="panel-head"><div><h4>Mensajes</h4><p>Todo en un solo sitio.</p></div><span class="chip">6 sin responder</span></div>
+        <div class="crm">
+          <div class="row hd"><div>Persona</div><div class="msg">Último mensaje</div><div>Estado</div><div class="ago">Hace</div></div>
+          <div class="row"><div class="who">Laura Benítez<small>Instagram</small></div><div class="msg">Hola, vi el vídeo de los 3 errores. ¿Haces sesiones sueltas?</div><div><span class="st st-new">Nuevo</span></div><div class="ago">4 min</div></div>
+          <div class="row"><div class="who">Óscar Puig<small>TikTok</small></div><div class="msg">¿Cuánto cuesta el programa entero?</div><div><span class="st st-new">Nuevo</span></div><div class="ago">22 min</div></div>
+          <div class="row"><div class="who">Nuria Camps<small>Instagram</small></div><div class="msg">Perfecto, me lo miro y te digo algo el lunes</div><div><span class="st st-warm">Hablando</span></div><div class="ago">3 h</div></div>
+          <div class="row"><div class="who">Elena Ruiz<small>Instagram</small></div><div class="msg">Apuntada al grupo del 14. ¡Gracias!</div><div><span class="st st-cli">Cliente</span></div><div class="ago">2 d</div></div>
+        </div>
+        <div style="margin-top:26px">
+          <div class="panel-head" style="margin-bottom:13px"><div><h4>Pruébalo</h4><p>Escribe algo. Te contesta el agente.</p></div></div>
+          <div class="chat">
+            <div class="chat-h"><span class="led"></span> Agente de Marta · contestando solo</div>
+            <div class="msgs" id="msgs"><div class="bub them">Hola 👋 Soy el asistente de Marta. Pregúntame lo que quieras: precios, cómo funciona o cuándo empieza el próximo grupo.</div></div>
+            <div class="chat-f"><input id="chatIn" placeholder="Escribe aquí…" autocomplete="off"><button class="btn btn-primary btn-sm" id="chatGo">Enviar</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARA QUIÉN -->
+<section class="sec tight" id="paraquien">
+  <div class="wrap">
+    <div class="eyebrow rv">Antes de seguir</div>
+    <h2 class="rv" style="margin-top:16px;max-width:16ch">Esto no vale para todo el mundo</h2>
+    <p class="lead rv" style="margin-top:18px">Mejor decírtelo ahora que dentro de dos meses.</p>
+
+    <div class="forwho">
+      <div class="fw yes rv">
+        <h3><span class="ic">✓</span> Esto es para ti si…</h3>
+        <ul>
+          <li>Ya tienes un negocio que funciona</li>
+          <li>Estás dispuesto a salir en cámara</li>
+          <li>Puedes sacar una tarde al mes para grabar</li>
+          <li>Entiendes que esto se construye en meses</li>
+        </ul>
+        <div class="ft">La primera consultoría te sirve aunque luego no contrates nada.</div>
+      </div>
+      <div class="fw no rv">
+        <h3><span class="ic">✕</span> Esto no es para ti si…</h3>
+        <ul>
+          <li>Quieres hacerte viral el mes que viene</li>
+          <li>No piensas salir en cámara</li>
+          <li>Todavía no tienes claro qué vendes</li>
+          <li>Solo quieres vídeos sueltos, sin plan</li>
+        </ul>
+        <div class="ft">Si te ves aquí, te lo diremos en la llamada. No cogemos a todo el mundo.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRECIOS -->
+<section class="sec" id="precios">
+  <div class="wrap">
+    <div class="eyebrow rv">Lo que cuesta</div>
+    <h2 class="rv" style="margin-top:16px;max-width:16ch">Se entiende en una línea</h2>
+    <p class="lead rv" style="margin-top:18px">Una cuota fija más los vídeos que quieras. Nada más.</p>
+
+    <div class="formula rv">
+      <div class="fx"><div class="v">40 €</div><div class="l">la cuota fija</div></div>
+      <div class="fop">+</div>
+      <div class="fx"><div class="v"><span id="fQ">4</span> × <span id="fU">10</span> €</div><div class="l">tus vídeos</div></div>
+      <div class="fop">=</div>
+      <div class="fx res"><div class="v"><span id="fT">80</span> €</div><div class="l">al mes</div></div>
+    </div>
+
+    <div class="launch rv">
+      <span class="tagz">Lanzamiento</span>
+      <div>
+        <h3>Los 10 primeros se llevan la estrategia completa de 6 meses incluida</h3>
+        <p>Abrimos ahora y arrancamos con pocos negocios. La estrategia de seis meses y las campañas <span class="strike">70 €/mes</span> <span class="free">van incluidas</span> en cualquier plan.</p>
+      </div>
+      <div class="left"><div class="n">420 €</div><div class="l">que no pagas</div></div>
+    </div>
+
+    <h3 class="rv" style="margin-top:56px;font-size:clamp(1.3rem,2.4vw,1.7rem)">Elige por dónde empezar</h3>
+    <p class="rv" style="margin-top:10px;font-size:.95rem">Toca uno y verás cómo se monta.</p>
+
+    <div class="plans" id="plans">
+      <button class="plan on" data-q="4" data-u="10">
+        <div class="nm">Empezar</div>
+        <div class="for">Para coger el hábito.</div>
+        <div class="pr">80 €<small>/mes</small></div>
+        <div class="det">4 vídeos al mes · acabado básico</div>
+        <ul><li>1 vídeo por semana</li><li>Todo el sistema incluido</li></ul>
+        <span class="pick">Ver cómo se monta</span>
+      </button>
+      <button class="plan" data-q="8" data-u="26">
+        <span class="badge">El que recomendamos</span>
+        <div class="nm">Ritmo</div>
+        <div class="for">Donde esto empieza a moverse.</div>
+        <div class="pr">248 €<small>/mes</small></div>
+        <div class="det">8 vídeos al mes · acabado pro</div>
+        <ul><li>2 vídeos por semana</li><li>Todo el sistema incluido</li></ul>
+        <span class="pick">Ver cómo se monta</span>
+      </button>
+      <button class="plan" data-q="16" data-u="26">
+        <div class="nm">A tope</div>
+        <div class="for">Para apretar el acelerador.</div>
+        <div class="pr">456 €<small>/mes</small></div>
+        <div class="det">16 vídeos al mes · acabado pro</div>
+        <ul><li>4 vídeos por semana</li><li>Todo el sistema incluido</li></ul>
+        <span class="pick">Ver cómo se monta</span>
+      </button>
+    </div>
+
+    <h3 class="rv" style="margin-top:64px;font-size:clamp(1.3rem,2.4vw,1.7rem)">¿Quieres otra combinación?</h3>
+    <p class="rv" style="margin-top:10px;font-size:.95rem">Móntalo tú.</p>
+
+    <div class="calc rv">
+      <div class="calc-l">
+        <div class="blk">
+          <div class="lbl"><span>¿Cuántos vídeos al mes?</span><b id="qtyLbl">4</b></div>
+          <input type="range" id="qty" min="4" max="24" step="4" value="4">
+          <div class="ticks"><span>4</span><span>8</span><span>12</span><span>16</span><span>20</span><span>24</span></div>
+        </div>
+        <div class="blk">
+          <div class="lbl"><span>¿Cómo de trabajados?</span></div>
+          <div class="segs" id="segs">
+            <button class="seg on" data-p="10"><span class="n">Básico</span><span class="p">10 € cada uno</span></button>
+            <button class="seg" data-p="26"><span class="n">Pro</span><span class="p">26 € cada uno</span></button>
+            <button class="seg" data-p="60"><span class="n">Motion</span><span class="p">60 € cada uno</span></button>
+          </div>
+        </div>
+        <div class="blk">
+          <div class="lbl"><span>Lo que entra siempre, elijas lo que elijas</span></div>
+          <ul class="inc">
+            <li>Consultoría al empezar</li>
+            <li>Tu agente configurado</li>
+            <li>Guiones de lo que vas a grabar</li>
+            <li>Se publica solo</li>
+            <li>Tus números explicados cada mes</li>
+            <li class="hot">Estrategia de 6 meses y campañas · <span class="strike">70 €</span> <span class="free">incluida</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="calc-r">
+        <div style="font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:16px">Te queda en</div>
+        <div class="total"><span id="total">80</span>€<small>al mes</small></div>
+        <div class="brk" id="brk"></div>
+        <a href="#" class="btn btn-primary" data-book>Reservar consultoría gratis</a>
+      </div>
+    </div>
+
+    <div class="trust rv">
+      <span class="tr-i">Pago con tarjeta por <b>Stripe</b></span>
+      <span class="tr-i">Se cobra <b>cada mes</b>, no por adelantado</span>
+      <span class="tr-i">Cancelas tú mismo, <b>sin llamar a nadie</b></span>
+      <span class="tr-i">La consultoría es <b>gratis</b> y sin compromiso</span>
+    </div>
+    <p class="note rv">No se cobra nada hasta después de la consultoría.</p>
+  </div>
+</section>
+
+<!-- QUIÉN -->
+<section class="sec">
+  <div class="wrap">
+    <div class="eyebrow rv">Quién está detrás</div>
+    <h2 class="rv" style="margin-top:16px;max-width:18ch">Detrás de la suscripción hay personas</h2>
+
+    <div class="bio">
+      <!-- FOTO: sustituye el bloque de dentro por una etiqueta img con tu foto. -->
+      <div class="photo rv">
+        <div class="empty"><div><div class="ring">+</div><p>Tu foto aquí</p></div></div>
+        <div class="frame"></div>
+        <div class="name"><div class="n">Gerson</div><div class="r">Consultor de comunicación digital</div></div>
+      </div>
+      <div class="rv">
+        <div class="quote">Lo difícil no es hacer los vídeos. Es saber qué contar, cuándo y con qué dinero.</div>
+        <p style="margin-top:26px;max-width:48ch">Llevo años en digital y por el camino monté una consultoría y un equipo propio de edición. Aquí no se venden seguidores: se vende un plan con un porqué detrás de cada decisión, y gente que lo ejecuta todos los días.</p>
+        <div class="creds">
+          <span class="cred">Consultoría propia</span>
+          <span class="cred">Equipo propio de edición</span>
+          <span class="cred">Estrategia de contenidos</span>
+          <span class="cred">Campañas de pago</span>
+          <span class="cred">Automatización con IA</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="who-stats">
+      <div class="ws rv"><div class="v" data-count="3">0</div><div class="l">Fases hasta que traiga clientes</div></div>
+      <div class="ws rv"><div class="v" data-count="6">0</div><div class="l">Meses planificados desde el primer día</div></div>
+      <div class="ws rv"><div class="v" data-count="3">0</div><div class="l">Formas de trabajar tus vídeos</div></div>
+      <div class="ws rv"><div class="v" data-count="0">0</div><div class="l">Permanencia. Te vas cuando quieras</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec" id="faq">
+  <div class="wrap">
+    <div class="eyebrow rv">Dudas</div>
+    <h2 class="rv" style="margin-top:16px">Lo que más nos preguntan</h2>
+    <div class="faq rv">
+      <div class="q"><button>¿Tengo que grabar yo los vídeos?</button><div class="a"><p>Sí, tu cara es lo que vende. Pero solo grabas: te mandamos qué decir, lo grabas con el móvil y lo subes. A partir de ahí no tocas nada.</p></div></div>
+      <div class="q"><button>¿En qué consiste exactamente el método?</button><div class="a"><p>Está entero en <a href="metodo.html" class="link">la página del método</a>. En la consultoría te lo explicamos ya aplicado a tu negocio.</p></div></div>
+      <div class="q"><button>¿El dinero de la publicidad va incluido?</button><div class="a"><p>No. Ese dinero lo pones tú en tu cuenta y decides cuánto. Lo que va incluido es que las campañas las monte y las vigile alguien que sabe.</p></div></div>
+      <div class="q"><button>¿El agente contesta por mí? ¿Se nota que es un robot?</button><div class="a"><p>Contesta lo de siempre: precios, horarios, enlaces para reservar. Habla con tus palabras y en cuanto se pone seria te la pasa a ti.</p></div></div>
+      <div class="q"><button>¿Puedo irme cuando quiera?</button><div class="a"><p>Sí, mes a mes y sin permanencia. El plan es tuyo y te lo llevas.</p></div></div>
+      <div class="q"><button>¿Y si todavía no tengo redes?</button><div class="a"><p>Mejor: no hay nada que deshacer. Se crean en las dos primeras semanas.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="sec" id="cta">
+  <div class="wrap">
+    <div class="final rv">
+      <div class="eyebrow">Primera consultoría gratis</div>
+      <h2>Te contamos qué haríamos con tu negocio</h2>
+      <p class="lead">Media hora. Qué haríamos, en qué orden y cuánto costaría.</p>
+      <div class="cta-row">
+        <a href="#" class="btn btn-primary" data-book>Reservar mi hora</a>
+        <a href="metodo.html" class="btn btn-ghost">Ver el método completo</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div class="fcol">
+        <div class="logo" style="font-size:1.1rem;margin-bottom:14px"><span class="dot"></span>Gerson</div>
+        <p style="font-size:.9rem;max-width:30ch;line-height:1.5">Estrategia de comunicación y un agente que la ejecuta, para negocios sin departamento de marketing.</p>
+      </div>
+      <div class="fcol">
+        <h5>El método</h5>
+        <ul>
+          <li><a href="metodo.html">Cómo funciona</a></li>
+          <li><a href="metodo.html#fases">Las tres fases</a></li>
+          <li><a href="metodo.html#entregas">Qué recibes</a></li>
+          <li><a href="metodo.html#tuparte">Qué pones tú</a></li>
+        </ul>
+      </div>
+      <div class="fcol">
+        <h5>El servicio</h5>
+        <ul>
+          <li><a href="#agente">El agente</a></li>
+          <li><a href="#plataforma">La plataforma</a></li>
+          <li><a href="#acabados">Los vídeos</a></li>
+          <li><a href="#paraquien">¿Es para mí?</a></li>
+          <li><a href="#precios">Precios</a></li>
+        </ul>
+      </div>
+      <div class="fcol">
+        <h5>Contacto</h5>
+        <ul>
+          <li><a href="#" data-book>Reservar consultoría</a></li>
+          <li><a href="#faq">Dudas frecuentes</a></li>
+          <li><a href="#">Aviso legal</a></li>
+          <li><a href="#">Privacidad</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fbot"><span>© 2026 Gerson</span><span>Hecho en España</span></div>
+  </div>
+</footer>
+
+<!-- AGENTE DE RESERVAS -->
+<button class="bkbtn" id="bkbtn" aria-label="Reservar consultoría">
+  <svg class="o" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="4.5" width="18" height="16" rx="3"/><path d="M8 2.5v4M16 2.5v4M3 9.5h18"/><path d="M9.5 14.5l1.8 1.8 3.4-3.6"/>
+  </svg>
+  <svg class="x" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+</button>
+
+<div class="bkpanel" id="bkpanel" role="dialog" aria-label="Reservar consultoría">
+  <div class="bk-h">
+    <div class="av"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><rect x="3" y="4.5" width="18" height="16" rx="3"/><path d="M8 2.5v4M16 2.5v4M3 9.5h18"/></svg></div>
+    <div>
+      <div class="t">Tu agente</div>
+      <div class="s"><i></i> Reserva tu consultoría gratis</div>
+    </div>
+  </div>
+  <div class="bk-body" id="bkBody"></div>
+  <div class="bk-f">
+    <input id="bkIn" placeholder="Escribe aquí…" autocomplete="off">
+    <button id="bkGo" aria-label="Enviar"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg></button>
+  </div>
+</div>
+
+<script>
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const nav=document.getElementById('nav'),prog=document.getElementById('prog'),
+      aura=document.getElementById('aura'),mesh=document.getElementById('mesh');
+
+/* ---------- motor de scroll ---------- */
+const revealEls=[...document.querySelectorAll('.rv')];
+// escalonado por posición dentro de su grupo
+const seen=new Map();
+revealEls.forEach(el=>{
+  const p=el.parentElement,i=(seen.get(p)||0);seen.set(p,i+1);
+  el.style.transitionDelay=Math.min(i,4)*70+'ms';
+});
+const fx=[];
+function prog01(el,a,b){
+  const r=el.getBoundingClientRect(),vh=innerHeight;
+  const span=r.height+vh*(a-b);
+  return Math.max(0,Math.min(1,(vh*a-r.top)/span));
+}
+let ticking=false;
+function frame(){
+  ticking=false;
+  const vh=innerHeight,y=scrollY,max=document.body.scrollHeight-innerHeight;
+  prog.style.transform='scaleX('+(max>0?y/max:0)+')';
+  nav.classList.toggle('stuck',y>16);
+  if(!RM&&y<1100){aura.style.transform='translateY('+y*.24+'px)';mesh.style.transform='translateY('+y*.1+'px)'}
+  // reveals: entran al subir por debajo, se rebobinan al bajar el scroll
+  for(const el of revealEls){
+    const t=el.getBoundingClientRect().top;
+    el.classList.toggle('in',t<vh-70);
+  }
+  for(const f of fx) f();
+}
+function onScroll(){if(!ticking){ticking=true;requestAnimationFrame(frame)}}
+addEventListener('scroll',onScroll,{passive:true});
+addEventListener('resize',onScroll,{passive:true});
+
+/* ---------- foco que sigue al ratón ---------- */
+document.querySelectorAll('.cell,.tr-c,.fin-c,.pz,.ws,.kpi,.duo-c,.y').forEach(el=>{
+  el.classList.add('spot');
+  el.addEventListener('pointermove',e=>{
+    const r=el.getBoundingClientRect();
+    el.style.setProperty('--mx',(e.clientX-r.left)+'px');
+    el.style.setProperty('--my',(e.clientY-r.top)+'px');
+  });
+});
+
+/* ---------- gráficos del problema ---------- */
+const st1=document.getElementById('st1');
+st1.innerHTML=Array.from({length:23},()=>'<i></i>').join('');
+const tiles1=[...st1.children],n1=document.getElementById('n1');
+fx.push(()=>{
+  const p=prog01(document.getElementById('pc1'),.92,.42);
+  const k=Math.round(p*23);
+  tiles1.forEach((t,i)=>t.classList.toggle('on',i<k));
+  n1.textContent=k;
+});
+const dots2=[...document.getElementById('dt2').children],n2=document.getElementById('n2');
+fx.push(()=>{
+  const p=prog01(document.getElementById('pc2'),.92,.42);
+  n2.textContent=Math.round(p*51);
+  dots2.forEach((d,i)=>{
+    const s=i/dots2.length;
+    d.className=p>s+.28?'gone':(p>s?'cold':'');
+  });
+});
+const sp3=document.getElementById('sp3');
+sp3.style.strokeDasharray=1;
+fx.push(()=>{
+  const p=prog01(document.getElementById('pc3'),.92,.42);
+  sp3.style.strokeDashoffset=1-p;
+});
+
+/* ---------- curva del método ---------- */
+const lineP=document.getElementById('lineP'),clipR=document.getElementById('clipR'),
+      headP=document.getElementById('headP'),headG=document.getElementById('headG'),
+      cMes=document.getElementById('cMes'),cFase=document.getElementById('cFase'),
+      cVal=document.getElementById('cVal'),
+      zl=[document.getElementById('z0'),document.getElementById('z1'),document.getElementById('z2')];
+const FASES=['Aprender','Construir','Crecer'];
+lineP.style.strokeDasharray=1;
+const L=lineP.getTotalLength();
+fx.push(()=>{
+  const p=prog01(document.getElementById('curve'),.88,.34);
+  lineP.style.strokeDashoffset=1-p;
+  clipR.setAttribute('width',900*p);
+  if(p>.008){
+    const pt=lineP.getPointAtLength(L*p);
+    headP.setAttribute('cx',pt.x);headP.setAttribute('cy',pt.y);headP.setAttribute('opacity',1);
+    headG.setAttribute('cx',pt.x);headG.setAttribute('cy',pt.y);headG.setAttribute('opacity',.3);
+  }else{headP.setAttribute('opacity',0);headG.setAttribute('opacity',0)}
+  const mes=Math.max(1,Math.min(6,Math.ceil(p*6)));
+  const fase=Math.min(2,Math.floor((mes-1)/2));
+  cMes.textContent=mes;cFase.textContent=FASES[fase];
+  zl.forEach((z,i)=>z.classList.toggle('on',i===fase));
+  // crece despacio al principio y se dispara al final
+  cVal.textContent=Math.round(Math.pow(p,2.6)*68000).toLocaleString('es-ES');
+});
+
+/* ---------- contadores ---------- */
+function tick(el,end,dur){
+  if(RM||end===0){el.textContent=end;return}
+  let t0=null;
+  requestAnimationFrame(function s(t){
+    if(!t0)t0=t;const p=Math.min((t-t0)/dur,1);
+    el.textContent=Math.round(end*(1-Math.pow(1-p,3)));
+    if(p<1)requestAnimationFrame(s);
+  });
+}
+const cIO=new IntersectionObserver((es,o)=>{es.forEach(e=>{if(e.isIntersecting){o.unobserve(e.target);tick(e.target,+e.target.dataset.count,900)}})},{threshold:.6});
+document.querySelectorAll('[data-count]').forEach(el=>cIO.observe(el));
+
+/* muro */
+const SKILLS=['Estrategia','Leer los números','Meta Business','Saber qué IA usar','Editar vídeo','Escribir guiones','Escribir para vender','Diseño de marca','Contestar cada día','Publicar sin fallar','Embudos de venta','Montar anuncios','Analizar datos','Estar al día'];
+document.getElementById('skills').innerHTML=SKILLS.map((s,i)=>`<span class="sk" style="animation-delay:${.35+i*.06}s">${s}</span>`).join('');
+setTimeout(()=>tick(document.getElementById('skCount'),SKILLS.length,1100),350);
+
+/* tabs */
+document.getElementById('tabs').addEventListener('click',e=>{
+  const b=e.target.closest('.tab');if(!b)return;
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
+  b.classList.add('on');document.getElementById(b.dataset.t).classList.add('on');
+  if(b.dataset.t==='met')drawBars();
+});
+new IntersectionObserver((es,o)=>{es.forEach(e=>{if(e.isIntersecting){o.unobserve(e.target);setTimeout(()=>document.getElementById('pbFill').style.width='58%',280)}})},{threshold:.25}).observe(document.getElementById('app'));
+
+const COLS=[
+ {h:'Idea',cards:[{k:'Los 3 errores al elegir formación',m:'12 mar',p:'p-tk'},{k:'Lo que nadie cuenta del primer año',m:'15 mar',p:'p-ig'}]},
+ {h:'Guion',cards:[{k:'¿Cuánto cuesta de verdad?',m:'10 mar',p:'p-ig'},{k:'Por qué dije que no a un cliente',m:'11 mar',p:'p-li'}]},
+ {h:'Grabado',cards:[{k:'Un día conmigo, sin filtros',m:'8 mar',p:'p-tk'},{k:'La pregunta que nadie hace',m:'9 mar',p:'p-ig'}]},
+ {h:'Editando',cards:[{k:'Cómo trabajo, en 60 segundos',m:'7 mar',p:'p-ig'}]},
+ {h:'Para aprobar',cards:[{k:'Lo que aprendí de mi peor mes',m:'Hoy',p:'p-li'},{k:'3 consejos que ya no doy',m:'Hoy',p:'p-tk'}]}
+];
+document.getElementById('board').innerHTML=COLS.map(c=>`<div><div class="col-h"><span>${c.h}</span><span>${c.cards.length}</span></div>${c.cards.map(x=>`<div class="card"><div class="k">${x.k}</div><div class="m"><span>${x.m}</span><span class="pill ${x.p}">${x.p==='p-ig'?'IG':x.p==='p-tk'?'TikTok':'LinkedIn'}</span></div></div>`).join('')}</div>`).join('');
+
+const DOW=['L','M','X','J','V','S','D'];
+const SLOTS={3:['s-ig'],5:['s-tk'],7:['s-ig','s-li'],10:['s-tk'],12:['s-ig'],14:['s-li'],17:['s-ig','s-tk'],19:['s-ig'],21:['s-tk'],24:['s-ig','s-li'],26:['s-tk'],28:['s-ig'],31:['s-li']};
+let cal=DOW.map(d=>`<div class="dow">${d}</div>`).join('');
+for(let i=0;i<5;i++)cal+=`<div class="day off"><span>${24+i}</span></div>`;
+for(let d=1;d<=31;d++){const s=SLOTS[d]?`<div class="slots">${SLOTS[d].map(c=>`<i class="${c}"></i>`).join('')}</div>`:'';cal+=`<div class="day"><span>${d}</span>${s}</div>`}
+document.getElementById('calgrid').innerHTML=cal;
+
+const DATA=[28,34,31,45,52,49,68,82];
+document.getElementById('bars').innerHTML=DATA.map((v,i)=>`<div class="cb"><u data-h="${v}"></u><small>S${i+1}</small></div>`).join('');
+let drawn=false;
+function drawBars(){if(drawn)return;drawn=true;document.querySelectorAll('#bars u').forEach((u,i)=>setTimeout(()=>u.style.height=(u.dataset.h/82*100)+'%',i*80))}
+
+document.querySelectorAll('.q button').forEach(b=>b.addEventListener('click',()=>{
+  const q=b.parentElement,a=q.querySelector('.a'),open=q.classList.contains('open');
+  document.querySelectorAll('.q').forEach(x=>{x.classList.remove('open');x.querySelector('.a').style.maxHeight=null});
+  if(!open){q.classList.add('open');a.style.maxHeight=a.scrollHeight+'px'}
+}));
+
+/* precios */
+const BASE=40,EXTRA=70,LAUNCH=true;   // LAUNCH=false cuando acabe la promo
+const qty=document.getElementById('qty'),qtyLbl=document.getElementById('qtyLbl'),
+      totalEl=document.getElementById('total'),brk=document.getElementById('brk'),
+      segs=document.getElementById('segs'),plansEl=document.getElementById('plans'),
+      fQ=document.getElementById('fQ'),fU=document.getElementById('fU'),fT=document.getElementById('fT');
+let unit=10,unitName='Básico',shown=80;
+const eur=n=>n.toLocaleString('es-ES');
+
+function rollTo(el,to){
+  const from=+String(el.textContent).replace(/\D/g,'')||0;
+  if(RM||from===to){el.textContent=eur(to);return}
+  let t0=null;
+  requestAnimationFrame(function s(t){
+    if(!t0)t0=t;const p=Math.min((t-t0)/450,1);
+    el.textContent=eur(Math.round(from+(to-from)*(1-Math.pow(1-p,3))));
+    if(p<1)requestAnimationFrame(s);
+  });
+}
+function calc(){
+  const n=+qty.value,videos=n*unit,cargo=LAUNCH?0:EXTRA,total=BASE+videos+cargo;
+  qtyLbl.textContent=n;
+  fQ.textContent=n;fU.textContent=unit;
+  rollTo(totalEl,total);rollTo(fT,total);
+  brk.innerHTML=`<span><i>Cuota fija · el sistema</i><i>${eur(BASE)} €</i></span>
+    <span><i>${n} vídeos · ${unitName}</i><i>${eur(videos)} €</i></span>
+    <span><i>Estrategia 6 meses y campañas</i><i>${LAUNCH?`<span class="strike">${EXTRA} €</span> <span class="free">0 €</span>`:eur(EXTRA)+' €'}</i></span>
+    <span><i>Total al mes</i><i>${eur(total)} €</i></span>`;
+  // marca el plan que coincide
+  [...plansEl.children].forEach(p=>p.classList.toggle('on',+p.dataset.q===n&&+p.dataset.u===unit));
+}
+function setUnit(v){
+  unit=v;
+  [...segs.children].forEach(s=>{const on=+s.dataset.p===v;s.classList.toggle('on',on);if(on)unitName=s.querySelector('.n').textContent});
+}
+qty.addEventListener('input',calc);
+segs.addEventListener('click',e=>{const b=e.target.closest('.seg');if(!b)return;setUnit(+b.dataset.p);calc()});
+plansEl.addEventListener('click',e=>{
+  const b=e.target.closest('.plan');if(!b)return;
+  qty.value=b.dataset.q;setUnit(+b.dataset.u);calc();
+  document.querySelector('.calc').scrollIntoView({behavior:RM?'auto':'smooth',block:'center'});
+});
+calc();
+
+/* ---------- agente de reservas ---------- */
+const bkbtn=document.getElementById('bkbtn'),bkpanel=document.getElementById('bkpanel'),
+      bkBody=document.getElementById('bkBody'),bkIn=document.getElementById('bkIn'),bkGo=document.getElementById('bkGo');
+const book={nombre:'',negocio:'',dia:'',hora:''};
+let step=0,opened=false;
+
+function bkSay(html,who='them'){
+  const d=document.createElement('div');d.className='bub '+who;d.innerHTML=html;
+  bkBody.appendChild(d);bkBody.scrollTop=bkBody.scrollHeight;return d;
+}
+function bkOpts(list){
+  const w=document.createElement('div');w.className='qr';
+  list.forEach(o=>{
+    const b=document.createElement('button');b.textContent=o.t;
+    b.onclick=()=>{w.remove();bkSay(o.t,'us');o.go()};
+    w.appendChild(b);
+  });
+  bkBody.appendChild(w);bkBody.scrollTop=bkBody.scrollHeight;
+}
+function proxDias(){
+  const D=['domingo','lunes','martes','miércoles','jueves','viernes','sábado'],out=[],d=new Date();
+  while(out.length<4){
+    d.setDate(d.getDate()+1);
+    if(d.getDay()>0&&d.getDay()<6) out.push(`${D[d.getDay()]} ${d.getDate()}`);
+  }
+  return out;
+}
+function bkStart(){
+  bkBody.innerHTML='';step=0;
+  bkSay('Hola 👋 Soy el agente de Gerson. Puedo reservarte la primera consultoría, que es gratis y dura media hora.');
+  setTimeout(()=>bkOpts([
+    {t:'Quiero reservar',go:askNombre},
+    {t:'Tengo una duda antes',go:()=>{bkSay('Claro, pregúntame lo que quieras y te contesto. Cuando quieras reservar, dímelo.');step=99}}
+  ]),450);
+}
+function askNombre(){step=1;setTimeout(()=>bkSay('Genial. ¿Cómo te llamas?'),350)}
+function askNegocio(){step=2;setTimeout(()=>bkSay(`Encantado, ${book.nombre}. ¿A qué te dedicas? Con una frase me vale.`),350)}
+function askDia(){
+  step=3;
+  setTimeout(()=>{
+    bkSay('Perfecto. ¿Qué día te viene bien?');
+    setTimeout(()=>bkOpts(proxDias().map(d=>({t:d,go:()=>{book.dia=d;askHora()}}))),350);
+  },350);
+}
+function askHora(){
+  step=4;
+  setTimeout(()=>{
+    bkSay('¿Y a qué hora te va mejor?');
+    setTimeout(()=>bkOpts([
+      {t:'Por la mañana',go:()=>{book.hora='mañana (9:00–13:00)';resumen()}},
+      {t:'Por la tarde',go:()=>{book.hora='tarde (15:00–19:00)';resumen()}}
+    ]),350);
+  },350);
+}
+function resumen(){
+  step=5;
+  setTimeout(()=>{
+    const d=document.createElement('div');d.className='summ';
+    d.innerHTML=`<div class="r"><span>Nombre</span><b>${book.nombre}</b></div>
+      <div class="r"><span>Negocio</span><b>${book.negocio}</b></div>
+      <div class="r"><span>Día</span><b>${book.dia}</b></div>
+      <div class="r"><span>Hora</span><b>${book.hora}</b></div>`;
+    bkBody.appendChild(d);
+    setTimeout(()=>bkOpts([
+      {t:'Confirmar reserva',go:confirmar},
+      {t:'Cambiar el día',go:askDia}
+    ]),350);
+  },350);
+}
+function confirmar(){
+  step=6;
+  // AQUÍ se conecta con el calendario real (Calendly, Cal.com) o con tu backend.
+  setTimeout(()=>{
+    bkSay(`Reservado, ${book.nombre}. Te confirmamos el hueco por email en menos de 24 horas.`);
+    setTimeout(()=>bkSay('No hay que pagar nada ahora. Si después decides seguir, el cobro se hace con tarjeta por Stripe y cancelas cuando quieras.'),700);
+  },350);
+}
+async function bkDuda(txt){
+  const prompt=`Eres el agente de Gerson, un servicio español de estrategia de comunicación digital por suscripción para pequeños negocios.
+Datos: cuota base 40 €/mes (consultoría inicial, plan de 6 meses, plataforma, agente que responde mensajes y publica, métricas y CRM). Los vídeos se pagan aparte según cantidad y acabado: básico 10 €, pro 26 €, motion 60 € por vídeo. Ejemplo: 4 vídeos básicos = 80 €/mes. Oferta de lanzamiento: los 10 primeros clientes se llevan gratis el plan completo de 6 meses y la gestión de campañas (normalmente 70 €/mes). Sin permanencia, pago mensual con Stripe. El dinero de la publicidad lo pone el cliente aparte. El cliente graba los vídeos con el móvil una tarde al mes; el equipo escribe los guiones y edita.
+Alguien pregunta: "${txt}"
+Responde en español, tuteando, 2 frases máximo, claro y sin humo, y termina invitando a reservar la consultoría gratis. Si no sabes algo, dilo y remite a la consultoría. Devuelve SOLO el texto.`;
+  const r=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({model:"claude-sonnet-4-6",max_tokens:1000,messages:[{role:"user",content:prompt}]})});
+  const d=await r.json();
+  const t=d.content.filter(c=>c.type==='text').map(c=>c.text).join('').trim();
+  if(!t)throw new Error('vacío');
+  return t;
+}
+async function bkSend(){
+  const txt=bkIn.value.trim();if(!txt)return;
+  bkSay(txt,'us');bkIn.value='';
+  if(step===1){book.nombre=txt.split(' ')[0];return askNegocio()}
+  if(step===2){book.negocio=txt;return askDia()}
+  if(/reserv|cita|hora|llamada|consultor/i.test(txt)&&step>=99){return askNombre()}
+  const w=bkSay('<span class="thinking"><span class="bars"><i></i><i></i><i></i><i></i></span> escribiendo…</span>');
+  let rep;
+  try{rep=await Promise.race([bkDuda(txt),new Promise((_,rj)=>setTimeout(()=>rj(new Error('t')),14000))])}
+  catch(e){rep='Buena pregunta. Eso lo vemos mejor en la consultoría, que es gratis y dura media hora. ¿Te la reservo?'}
+  w.remove();bkSay(rep);
+  if(step<99){step=99}
+  setTimeout(()=>bkOpts([{t:'Vale, resérvamela',go:askNombre}]),400);
+}
+function bkToggle(force){
+  const open=force!==undefined?force:!bkpanel.classList.contains('open');
+  bkpanel.classList.toggle('open',open);bkbtn.classList.toggle('open',open);
+  if(open&&!opened){opened=true;bkStart()}
+  if(open)setTimeout(()=>bkIn.focus(),300);
+}
+bkbtn.addEventListener('click',()=>bkToggle());
+bkGo.addEventListener('click',bkSend);
+bkIn.addEventListener('keydown',e=>{if(e.key==='Enter')bkSend()});
+document.querySelectorAll('[data-book]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();bkToggle(true)}));
+addEventListener('keydown',e=>{if(e.key==='Escape')bkToggle(false)});
+
+/* carruseles */
+const SAMPLES={
+ 1:['3 errores que cometes','Cómo empecé de cero','Mi rutina de las mañanas','Lo que nadie te cuenta','Respondo tus dudas','Un día conmigo','Antes de contratar a nadie','Mi mayor fallo','Pregúntame esto'],
+ 2:['El error <u>número 1</u>','¿Cuánto <u>cuesta</u>?','Cómo <u>trabajo</u>','3 <u>claves</u>','Antes <u>/</u> después','No hagas <u>esto</u>','Lo que <u>nadie</u> cuenta','Empieza <u>por aquí</u>','La <u>verdad</u> del sector'],
+ 3:['Cómo funciona','Paso a paso','Tu embudo','Los números','El sistema','Resultados reales','La transformación','De 0 a 100']
+};
+const HUE={1:[218,224,230,212],2:[352,4,348,358],3:[350,12,340,2]};
+function tile(lvl,cap,i){
+  const hs=HUE[lvl],h1=hs[i%hs.length],h2=hs[(i+2)%hs.length];
+  const sat=lvl===1?'8%':lvl===2?'26%':'34%';
+  const bg=`background:linear-gradient(${140+i*14}deg,hsl(${h1} ${sat} ${lvl===1?18:16}%),hsl(${h2} ${sat} ${lvl===1?9:8}%))`;
+  const dur=['0:22','0:38','0:45','1:04','0:29','0:51'][i%6];
+  if(lvl===1)return `<div class="vt b1"><div class="bg" style="${bg}"></div><div class="ov"><span class="cap">${cap}</span></div><span class="dur">${dur}</span></div>`;
+  if(lvl===2)return `<div class="vt b2"><div class="bg" style="${bg}"></div><span class="mark">M</span><div class="ov"><span class="bar"></span><span class="cap">${cap}</span></div><span class="dur">${dur}</span></div>`;
+  return `<div class="vt b3"><div class="bg" style="${bg}"></div><span class="sh a"></span><span class="sh b"></span><span class="sh c"></span><span class="kpi">+284%</span><div class="ov"><span class="bar"></span><span class="cap">${cap}</span></div><span class="dur">${dur}</span></div>`;
+}
+document.querySelectorAll('.reel-track').forEach(tr=>{
+  const lvl=+tr.dataset.lvl,one=SAMPLES[lvl].map((c,i)=>tile(lvl,c,i)).join('');
+  tr.innerHTML=one+one;
+});
+
+/* ORBE: el agente conectado a todo el círculo digital */
+(function(){
+  const c=document.getElementById('orb');if(!c)return;
+  const x=c.getContext('2d');
+  const NODES=[
+    {l:'Instagram'},{l:'TikTok'},{l:'Mensajes'},
+    {l:'Campañas'},{l:'Números'},{l:'Web'}
+  ];
+  let W,H,dpr,dust=[],pulses=[],raf=null,live=false,t=0;
+  function size(){
+    dpr=Math.min(devicePixelRatio||1,2);
+    const r=c.getBoundingClientRect();
+    W=Math.max(r.width,240);H=Math.max(r.height,240);
+    c.width=W*dpr;c.height=H*dpr;x.setTransform(dpr,0,0,dpr,0,0);
+    NODES.forEach((n,i)=>{n.a=(i/NODES.length)*Math.PI*2-Math.PI/2});
+  }
+  function build(){
+    dust=[];
+    for(let i=0;i<90;i++)dust.push({a:Math.random()*Math.PI*2,r:W*.1+Math.random()*W*.3,s:(.0009+Math.random()*.0026)*(Math.random()<.4?-1:1),z:Math.random(),p:Math.random()*7});
+    pulses=[];
+  }
+  function draw(ts){
+    t=ts/1000;x.clearRect(0,0,W,H);
+    const cx=W/2,cy=H/2,R=W*.33;
+    // halo
+    const g=x.createRadialGradient(cx,cy,0,cx,cy,W*.34);
+    g.addColorStop(0,'rgba(255,59,48,.26)');g.addColorStop(.55,'rgba(255,59,48,.07)');g.addColorStop(1,'rgba(255,59,48,0)');
+    x.fillStyle=g;x.beginPath();x.arc(cx,cy,W*.34,0,7);x.fill();
+    // ondas de resultado
+    for(let k=0;k<3;k++){
+      const pr=((t*.26+k/3)%1);
+      x.strokeStyle=`rgba(255,59,48,${(1-pr)*.28})`;x.lineWidth=1;
+      x.beginPath();x.arc(cx,cy,R*.35+pr*R*1.5,0,7);x.stroke();
+    }
+    // polvo orbitando
+    dust.forEach(p=>{
+      p.a+=p.s;
+      const wob=Math.sin(t*1.1+p.p)*W*.022;
+      const px=cx+Math.cos(p.a)*(p.r+wob),py=cy+Math.sin(p.a)*(p.r+wob)*.55;
+      x.fillStyle=p.z>.8?`rgba(245,245,247,${.18+p.z*.4})`:`rgba(255,59,48,${.14+p.z*.42})`;
+      x.beginPath();x.arc(px,py,.6+p.z*1.5,0,7);x.fill();
+    });
+    // nodos + conexiones
+    NODES.forEach((n,i)=>{
+      n.a+=.0012;
+      const nx=cx+Math.cos(n.a)*R,ny=cy+Math.sin(n.a)*R*.78;
+      x.strokeStyle='rgba(255,255,255,.13)';x.lineWidth=1;
+      x.beginPath();x.moveTo(cx,cy);x.lineTo(nx,ny);x.stroke();
+      // pulso viajando hacia el centro
+      const ph=((t*.42+i*.17)%1);
+      const qx=nx+(cx-nx)*ph,qy=ny+(cy-ny)*ph;
+      x.fillStyle=`rgba(255,59,48,${.9*(1-Math.abs(ph-.5)*1.4)})`;
+      x.beginPath();x.arc(qx,qy,2.1,0,7);x.fill();
+      // nodo
+      const pulse=1+Math.sin(t*1.6+i)*.12;
+      x.fillStyle='rgba(10,10,12,.95)';x.beginPath();x.arc(nx,ny,11*pulse,0,7);x.fill();
+      x.strokeStyle='rgba(255,59,48,.65)';x.lineWidth=1.3;x.stroke();
+      x.fillStyle='rgba(255,59,48,.9)';x.beginPath();x.arc(nx,ny,3.1,0,7);x.fill();
+      // etiqueta
+      x.font='600 10.5px Archivo,-apple-system,sans-serif';
+      x.fillStyle='rgba(245,245,247,.72)';x.textAlign='center';x.textBaseline='middle';
+      const lo=ny<cy?-22:22;
+      x.fillText(n.l,nx,ny+lo);
+    });
+    // núcleo
+    const core=1+Math.sin(t*2)*.09;
+    x.fillStyle='rgba(255,59,48,.16)';x.beginPath();x.arc(cx,cy,26*core,0,7);x.fill();
+    x.fillStyle='#0A0A0C';x.beginPath();x.arc(cx,cy,19*core,0,7);x.fill();
+    x.strokeStyle='rgba(255,59,48,.85)';x.lineWidth=1.5;x.stroke();
+    x.fillStyle='#FF3B30';x.beginPath();x.arc(cx,cy,5.4*core,0,7);x.fill();
+    x.font='800 9.5px Archivo,-apple-system,sans-serif';
+    x.fillStyle='rgba(245,245,247,.85)';x.textAlign='center';x.textBaseline='middle';
+    x.fillText('AGENTE',cx,cy+34);
+    raf=requestAnimationFrame(draw);
+  }
+  function start(){if(live||RM)return;live=true;raf=requestAnimationFrame(draw)}
+  function stop(){live=false;cancelAnimationFrame(raf)}
+  size();build();
+  if(RM){const cx=W/2,cy=H/2;x.strokeStyle='rgba(255,59,48,.7)';x.beginPath();x.arc(cx,cy,W*.3,0,7);x.stroke()}
+  addEventListener('resize',()=>{size();build()});
+  new IntersectionObserver(e=>e[0].isIntersecting?start():stop(),{threshold:.05}).observe(c);
+})();
+
+/* chat */
+const msgs=document.getElementById('msgs'),chatIn=document.getElementById('chatIn');
+const CANNED=[
+ 'El programa son 8 semanas en grupo pequeño, con una sesión en directo cada martes. ¿Quieres que te pase el temario o prefieres hablarlo con Marta?',
+ 'El próximo grupo empieza el 14 y quedan 4 plazas. Te la puedo guardar sin compromiso durante 48 horas, ¿te la reservo?',
+ 'Buena pregunta. Marta trabaja sobre todo con gente que ya tiene mucho encima y necesita ordenarlo. ¿Cuál es tu caso?',
+ 'Te entiendo, es lo que más nos escriben. ¿Te va bien que te pase el enlace para una llamada de 15 minutos con Marta?'
+];
+let ci=0;
+function bub(t,who){const d=document.createElement('div');d.className='bub '+who;d.textContent=t;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;return d}
+async function agentReply(txt){
+  const prompt=`Eres el asistente automático de Marta Vidal, coach de productividad española, y respondes mensajes directos de Instagram.
+Datos: programa grupal de 8 semanas por 490 €, sesión en directo los martes. Próximo grupo empieza el 14, quedan 4 plazas. Sesiones sueltas 1:1 a 90 €.
+Alguien escribe: "${txt}"
+Responde en español, tuteando, 2 frases máximo, cálida pero directa, y termina con una pregunta o propuesta concreta. Máximo un emoji. Devuelve SOLO el texto.`;
+  const r=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({model:"claude-sonnet-4-6",max_tokens:1000,messages:[{role:"user",content:prompt}]})});
+  const d=await r.json();
+  const t=d.content.filter(c=>c.type==='text').map(c=>c.text).join('').trim();
+  if(!t)throw new Error('vacío');
+  return t;
+}
+async function send(){
+  const txt=chatIn.value.trim();if(!txt)return;
+  bub(txt,'us');chatIn.value='';chatIn.disabled=true;
+  const wait=document.createElement('div');wait.className='bub them';
+  wait.innerHTML='<span class="thinking"><span class="bars"><i></i><i></i><i></i><i></i></span> escribiendo…</span>';
+  msgs.appendChild(wait);msgs.scrollTop=msgs.scrollHeight;
+  let reply;
+  try{reply=await Promise.race([agentReply(txt),new Promise((_,rj)=>setTimeout(()=>rj(new Error('t')),14000))])}
+  catch(e){reply=CANNED[ci++%CANNED.length]}
+  wait.remove();bub(reply,'them');
+  chatIn.disabled=false;chatIn.focus();
+}
+document.getElementById('chatGo').addEventListener('click',send);
+chatIn.addEventListener('keydown',e=>{if(e.key==='Enter')send()});
+
+/* arranque */
+frame();
+addEventListener('load',frame);
+</script>
+</body>
+</html>

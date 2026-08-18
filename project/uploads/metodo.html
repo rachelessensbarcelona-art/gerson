@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>El método · Gerson</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --void:#000;--coal:#0A0A0C;--line:rgba(255,255,255,.10);--line2:rgba(255,255,255,.06);
+  --bone:#F5F5F7;--dim:#C2C2C8;--mute:#86868B;--red:#FF3B30;--blood:#6E0D14;
+  --glass:rgba(255,255,255,.045);--gbrd:rgba(255,255,255,.10);
+  --ui:'Archivo',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+  --wrap:1080px;--pad:clamp(20px,5vw,40px);--sec:clamp(76px,10vw,132px);--r:20px;
+  --e:cubic-bezier(.16,1,.3,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--void);color:var(--bone);font-family:var(--ui);font-size:17px;line-height:1.52;letter-spacing:-.011em;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px;border-radius:6px}
+::selection{background:var(--red);color:#fff}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--pad)}
+.sec{padding:var(--sec) 0;position:relative}
+h1,h2,h3,h4{font-weight:800;line-height:1.0;letter-spacing:-.045em}
+h1{font-size:clamp(2.8rem,7.6vw,5.6rem);letter-spacing:-.055em;line-height:.96}
+h2{font-size:clamp(2.1rem,4.8vw,3.4rem);letter-spacing:-.05em}
+h3{font-size:clamp(1.15rem,2vw,1.5rem);letter-spacing:-.03em}
+p{color:var(--mute)}
+.lead{font-size:clamp(1.06rem,1.7vw,1.28rem);color:var(--dim);max-width:58ch;line-height:1.5}
+.eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--red)}
+em{font-style:normal;color:var(--red)}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:80;backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);background:rgba(0,0,0,.62);border-bottom:1px solid var(--line2)}
+.nav-in{max-width:var(--wrap);margin:0 auto;padding:13px var(--pad);display:flex;align-items:center;gap:26px}
+.logo{font-weight:800;font-size:1.12rem;letter-spacing:.01em;text-transform:uppercase;display:flex;align-items:center;gap:10px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--red)}
+.back{margin-left:auto;font-size:.88rem;color:var(--mute)}
+.back:hover{color:var(--bone)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 24px;border-radius:980px;font-weight:500;font-size:.94rem;border:1px solid transparent;transition:.4s var(--e);cursor:pointer}
+.btn-primary{background:var(--red);color:#fff}
+.btn-primary:hover{background:#FF554B;transform:scale(1.03)}
+.btn-ghost{border-color:var(--gbrd);background:var(--glass);backdrop-filter:blur(20px)}
+.btn-ghost:hover{background:rgba(255,255,255,.09)}
+.btn-sm{padding:9px 18px;font-size:.85rem}
+
+.hero{padding-top:148px;padding-bottom:var(--sec);position:relative;overflow:hidden}
+.aura{position:absolute;inset:0;pointer-events:none;background:radial-gradient(880px 480px at 24% -8%,rgba(255,59,48,.17),transparent 62%),radial-gradient(620px 420px at 86% 6%,rgba(110,13,20,.35),transparent 66%)}
+.hero .wrap{position:relative;z-index:2}
+.hero h1{max-width:14ch;margin:18px 0 24px}
+
+/* índice */
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:34px}
+.toc a{font-size:.87rem;color:var(--dim);border:1px solid var(--gbrd);border-radius:980px;padding:9px 17px;background:var(--glass);backdrop-filter:blur(20px);transition:.35s var(--e)}
+.toc a:hover{background:rgba(255,59,48,.14);border-color:rgba(255,59,48,.45);color:var(--bone)}
+
+/* fase */
+.fase{border-radius:var(--r);background:var(--glass);border:1px solid var(--gbrd);backdrop-filter:blur(28px) saturate(160%);-webkit-backdrop-filter:blur(28px) saturate(160%);overflow:hidden;margin-bottom:16px}
+.fase-h{padding:clamp(26px,3.2vw,40px);border-bottom:1px solid var(--line2);position:relative}
+.fase-h .prog{position:absolute;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--red),rgba(255,59,48,.15))}
+.f1 .prog{width:33%}.f2 .prog{width:66%}.f3 .prog{width:100%}
+.fase-h .when{font-size:.82rem;font-weight:600;color:var(--red);margin-bottom:12px}
+.fase-h h2{font-size:clamp(1.7rem,3.4vw,2.5rem);margin-bottom:14px}
+.fase-h p{font-size:1.02rem;color:var(--dim);max-width:60ch;line-height:1.52}
+.fase-b{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line2)}
+.fb{background:rgba(0,0,0,.28);padding:clamp(24px,3vw,34px)}
+.fb h4{font-size:.86rem;font-weight:600;color:var(--mute);margin-bottom:18px}
+.fb ul{list-style:none;display:grid;gap:13px}
+.fb li{font-size:.96rem;color:var(--dim);display:flex;gap:12px;line-height:1.45}
+.fb li::before{content:'';flex:0 0 6px;height:6px;border-radius:50%;background:var(--red);margin-top:8px}
+.fb.goal{background:rgba(255,59,48,.055)}
+.fb.goal .big{font-size:1.15rem;font-weight:600;color:var(--bone);letter-spacing:-.026em;line-height:1.35}
+.fb.goal p{margin-top:12px;font-size:.95rem;line-height:1.5}
+
+/* entregas */
+.tbl{border-radius:var(--r);overflow:hidden;border:1px solid var(--gbrd);margin-top:44px;background:var(--glass);backdrop-filter:blur(24px)}
+.tr{display:grid;grid-template-columns:1.3fr 2fr .8fr;gap:18px;padding:18px 24px;border-bottom:1px solid var(--line2);align-items:center}
+.tr:last-child{border-bottom:none}
+.tr.hd{background:rgba(255,255,255,.04);font-size:.8rem;color:var(--mute);font-weight:600}
+.tr .a{font-weight:600;font-size:.97rem;letter-spacing:-.02em}
+.tr .b{font-size:.93rem;color:var(--mute);line-height:1.45}
+.tr .c{font-size:.85rem;color:var(--red);font-weight:600;text-align:right}
+
+/* tu parte */
+.yours{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:44px}
+.y{border-radius:var(--r);padding:30px 26px;background:var(--glass);border:1px solid var(--gbrd);backdrop-filter:blur(24px);transition:.5s var(--e)}
+.y:hover{transform:translateY(-4px);background:rgba(255,255,255,.075)}
+.y .n{font-size:2rem;font-weight:700;letter-spacing:-.05em;color:var(--red);margin-bottom:12px}
+.y h3{font-size:1.1rem;margin-bottom:9px}
+.y p{font-size:.93rem;line-height:1.48}
+
+.callout{border-radius:var(--r);padding:clamp(28px,3.6vw,44px);background:linear-gradient(150deg,rgba(255,59,48,.13),rgba(255,255,255,.03));border:1px solid rgba(255,59,48,.3);margin-top:44px}
+.callout h3{margin-bottom:12px;max-width:26ch}
+.callout p{font-size:1rem;color:var(--dim);line-height:1.55;max-width:64ch}
+
+.final{border-radius:var(--r);padding:clamp(38px,5.4vw,68px);background:radial-gradient(660px 320px at 50% 0%,rgba(255,59,48,.18),transparent 68%),rgba(255,255,255,.04);border:1px solid var(--gbrd);backdrop-filter:blur(30px);text-align:center}
+.final h2{max-width:19ch;margin:16px auto}
+.final .lead{margin:0 auto 30px}
+.cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+footer{border-top:1px solid var(--line2);padding:34px 0;margin-top:var(--sec)}
+.fbot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.85rem;color:var(--mute)}
+
+.rv{opacity:0;transform:translateY(26px);filter:blur(8px);transition:opacity 1s var(--e),transform 1s var(--e),filter 1s var(--e)}
+.rv.in{opacity:1;transform:none;filter:none}
+@media(max-width:860px){
+  .fase-b,.yours{grid-template-columns:1fr}
+  .tr{grid-template-columns:1fr;gap:6px}
+  .tr.hd{display:none}
+  .tr .c{text-align:left}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none;filter:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <a href="index.html" class="logo"><span class="dot"></span>Gerson</a>
+    <a href="index.html" class="back">← Volver</a>
+    <a href="index.html#cta" class="btn btn-primary btn-sm">Hablemos</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="aura"></div>
+  <div class="wrap">
+    <div class="eyebrow">El método</div>
+    <h1>Seis meses.<br>Tres fases.<br>Un <em>orden</em>.</h1>
+    <p class="lead">Casi todo el mundo empieza por el final: produce, publica y paga anuncios antes de saber qué le interesa a su gente. Este método le da la vuelta. Cada fase se apoya en lo que aprendimos en la anterior, y por eso deja de depender de la suerte.</p>
+    <div class="toc">
+      <a href="#fases">Las tres fases</a>
+      <a href="#entregas">Qué recibes cada mes</a>
+      <a href="#tuparte">Qué pones tú</a>
+      <a href="#porque">Por qué seis meses</a>
+    </div>
+  </div>
+</header>
+
+<section class="sec" id="fases" style="padding-top:0">
+  <div class="wrap">
+
+    <div class="fase f1 rv">
+      <div class="fase-h">
+        <div class="prog"></div>
+        <div class="when">Fase 1 · Meses 1 y 2</div>
+        <h2>Aprender</h2>
+        <p>Los dos primeros meses no van de gustarle a todo el mundo. Van de averiguar qué le importa de verdad a la gente que te podría comprar. Se prueba, se mide y se va descartando, sin poner dinero en publicidad todavía.</p>
+      </div>
+      <div class="fase-b">
+        <div class="fb">
+          <h4>Qué pasa durante estas semanas</h4>
+          <ul>
+            <li>Consultoría inicial: quién eres, qué vendes y a quién</li>
+            <li>Se define tu mensaje y las líneas de contenido que vamos a explorar</li>
+            <li>Se configura tu agente y se conectan tus canales</li>
+            <li>Empiezas a grabar con guiones preparados</li>
+            <li>Se publica de forma constante y se recogen datos de cada pieza</li>
+          </ul>
+        </div>
+        <div class="fb goal">
+          <h4>A dónde llegamos</h4>
+          <div class="big">Al terminar sabemos qué contar, cómo contarlo y qué días funciona mejor.</div>
+          <p>Es información concreta sobre tu negocio, no consejos generales de internet. Y no ha costado ni un euro de publicidad.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="fase f2 rv">
+      <div class="fase-h">
+        <div class="prog"></div>
+        <div class="when">Fase 2 · Meses 3 y 4</div>
+        <h2>Construir</h2>
+        <p>Con los datos delante se deja de probar. Se refuerza lo que ya demostró que interesa y se sube el nivel de acabado, porque a partir de aquí sí importa cómo se ve. Tu presencia empieza a parecer una marca y no publicaciones sueltas.</p>
+      </div>
+      <div class="fase-b">
+        <div class="fb">
+          <h4>Qué pasa durante estas semanas</h4>
+          <ul>
+            <li>Se seleccionan los temas y formatos que mejor respondieron</li>
+            <li>Las piezas pasan a acabado pro: tus colores, tu letra, animaciones</li>
+            <li>Se ordena tu perfil para que quien llegue entienda qué vendes</li>
+            <li>El agente empieza a filtrar y clasificar a quien te escribe</li>
+            <li>Revisión mensual con los números explicados y decisiones para el mes siguiente</li>
+          </ul>
+        </div>
+        <div class="fb goal">
+          <h4>A dónde llegamos</h4>
+          <div class="big">Al terminar tienes un perfil que crece con contenido que ya sabemos que funciona.</div>
+          <p>Y empiezan a llegar conversaciones de gente que ya sabe lo que haces antes de escribirte.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="fase f3 rv">
+      <div class="fase-h">
+        <div class="prog"></div>
+        <div class="when">Fase 3 · Meses 5 y 6</div>
+        <h2>Crecer</h2>
+        <p>Solo ahora se pone dinero en publicidad, y únicamente detrás de lo que ya ha demostrado que interesa sin pagar. Por eso no se quema presupuesto probando: se invierte para llegar a más gente con algo que ya sabemos que funciona.</p>
+      </div>
+      <div class="fase-b">
+        <div class="fb">
+          <h4>Qué pasa durante estas semanas</h4>
+          <ul>
+            <li>Se montan las campañas sobre las piezas que mejor rindieron</li>
+            <li>Se define el presupuesto contigo y se controla el coste por cliente</li>
+            <li>Se ajusta cada semana: se para lo que no rinde, se amplía lo que sí</li>
+            <li>El agente atiende el aumento de mensajes sin que se pierda ninguno</li>
+            <li>Cierre de los seis meses con un plan para los siguientes</li>
+          </ul>
+        </div>
+        <div class="fb goal">
+          <h4>A dónde llegamos</h4>
+          <div class="big">Al terminar tu comunicación deja de ser un gasto y pasa a ser un canal que trae clientes.</div>
+          <p>Y por primera vez puedes decir cuánto te cuesta conseguir uno.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="sec" id="entregas" style="padding-top:0">
+  <div class="wrap">
+    <div class="eyebrow rv">Qué recibes</div>
+    <h2 class="rv" style="margin-top:16px;max-width:18ch">Todo lo que entra en la suscripción</h2>
+    <div class="tbl rv">
+      <div class="tr hd"><div>Qué</div><div>En qué consiste</div><div>Cuándo</div></div>
+      <div class="tr"><div class="a">Consultoría inicial</div><div class="b">Sesión uno a uno para entender tu negocio y construir el plan a tu medida.</div><div class="c">Semana 1</div></div>
+      <div class="tr"><div class="a">Plan de comunicación</div><div class="b">Tu mensaje, tus líneas de contenido y los canales que tienen sentido para ti.</div><div class="c">Semana 2</div></div>
+      <div class="tr"><div class="a">Calendario</div><div class="b">Qué se publica, qué día, en qué canal y para qué. Cargado ya en la plataforma.</div><div class="c">Semana 2</div></div>
+      <div class="tr"><div class="a">Agente configurado</div><div class="b">Conectado a tus redes, hablando con tus palabras y respondiendo por ti.</div><div class="c">Semana 2</div></div>
+      <div class="tr"><div class="a">Guiones</div><div class="b">Te decimos exactamente qué grabar y cómo empezarlo para que enganche.</div><div class="c">Cada semana</div></div>
+      <div class="tr"><div class="a">Edición</div><div class="b">Nuestro equipo produce cada pieza con el acabado que hayas elegido.</div><div class="c">Cada semana</div></div>
+      <div class="tr"><div class="a">Publicación</div><div class="b">Sale solo en la fecha y hora marcadas. Tú solo apruebas.</div><div class="c">Cada semana</div></div>
+      <div class="tr"><div class="a">Lectura de números</div><div class="b">Qué funcionó, qué no y qué cambiamos. En palabras normales, no en jerga.</div><div class="c">Cada mes</div></div>
+      <div class="tr"><div class="a">Campañas</div><div class="b">Montaje, vigilancia y ajuste de tus anuncios. El presupuesto lo pones tú.</div><div class="c">Desde el mes 5</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="tuparte" style="padding-top:0">
+  <div class="wrap">
+    <div class="eyebrow rv">Qué pones tú</div>
+    <h2 class="rv" style="margin-top:16px;max-width:18ch">Tu parte es pequeña, pero es imprescindible</h2>
+    <p class="lead rv" style="margin-top:18px">Nadie puede poner tu cara ni contar tu historia por ti. El resto lo hacemos nosotros.</p>
+    <div class="yours">
+      <div class="y rv"><div class="n">1h</div><h3>Una consultoría al empezar</h3><p>Una conversación tranquila para que entendamos tu negocio. Sin preparar nada.</p></div>
+      <div class="y rv"><div class="n">1 tarde</div><h3>Grabar, una vez al mes</h3><p>Con el móvil y con los guiones ya escritos. Se graba todo del tirón.</p></div>
+      <div class="y rv"><div class="n">5 min</div><h3>Aprobar, cada semana</h3><p>Entras, miras lo que hemos preparado y le das al botón. Nada más.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="porque" style="padding-top:0">
+  <div class="wrap">
+    <div class="callout rv">
+      <h3>¿Por qué seis meses si puedo irme cuando quiera?</h3>
+      <p>Porque una publicación suelta no construye nada. El contenido funciona por acumulación: cada pieza apoya a la siguiente, y los datos de un mes sirven para decidir el siguiente. Planificar seis meses desde el primer día es lo que permite saber a dónde vamos en lugar de improvisar cada lunes.</p>
+      <p style="margin-top:14px">Eso no significa que te comprometas a seis meses de pago. La suscripción es mensual y sin permanencia, y el plan que construimos es tuyo: si te vas, te lo llevas.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="final rv">
+      <div class="eyebrow">Primera consultoría gratis</div>
+      <h2>Te contamos qué haríamos con tu negocio</h2>
+      <p class="lead">Media hora. Te decimos qué haríamos, en qué orden y cuánto costaría. Después decides tú.</p>
+      <div class="cta-row">
+        <a href="index.html#cta" class="btn btn-primary">Reservar mi hora</a>
+        <a href="index.html#precios" class="btn btn-ghost">Ver precios</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap fbot">
+    <span>© 2026 Gerson</span>
+    <span><a href="index.html">Inicio</a> · <a href="index.html#precios">Precios</a> · <a href="index.html#faq">Dudas</a></span>
+  </div>
+</footer>
+
+<script>
+const io=new IntersectionObserver(es=>{es.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('in'),i*90);io.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -60px'});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
