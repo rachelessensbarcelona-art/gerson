@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gerson · Comunicación digital para tu negocio</title>
+<meta name="description" content="Estrategia de comunicación y un agente que la ejecuta, para negocios sin departamento de marketing. Plan de seis meses, vídeos y campañas, todo en una suscripción mensual sin permanencia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:#000;color:#fff;font-family:'Figtree',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+*{box-sizing:border-box}
+a{color:#D92D20;text-decoration:none}
+a:hover{color:#F0574B}
+::selection{background:#D92D20;color:#fff}
+:focus-visible{outline:2px solid #D92D20;outline-offset:3px}
+@keyframes gmarquee{to{transform:translateX(-50%)}}
+@keyframes gbeat{0%{box-shadow:0 0 0 0 rgba(217,45,32,.55)}70%{box-shadow:0 0 0 10px rgba(217,45,32,0)}100%{box-shadow:0 0 0 0 rgba(217,45,32,0)}}
+@keyframes grise{to{transform:none}}
+@keyframes gspin{to{transform:rotate(360deg)}}
+@keyframes gdraw{to{stroke-dashoffset:0}}
+
+.opt-glow{position:absolute;inset:-1px;border-radius:inherit;pointer-events:none;opacity:0;
+  border:1px solid #D92D20;background:linear-gradient(160deg,rgba(217,45,32,.18),rgba(217,45,32,.04));
+  box-shadow:0 18px 46px -22px rgba(217,45,32,.85);transition:opacity .25s cubic-bezier(.16,1,.3,1)}
+.opt-glow.active{opacity:1}
+</style>
+</head>
+<body>
+<div style="background:#000;color:#fff;font-family:'Figtree',system-ui,sans-serif;font-size:16px;line-height:1.5;overflow-x:hidden">
+
+<canvas data-trail style="position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:70"></canvas>
+<div data-prog style="position:fixed;top:0;left:0;height:2px;width:100%;background:#D92D20;transform:scaleX(0);transform-origin:0 50%;z-index:95"></div>
+
+<header style="position:fixed;top:0;left:0;right:0;z-index:90;backdrop-filter:blur(22px) saturate(170%);-webkit-backdrop-filter:blur(22px) saturate(170%);background:rgba(0,0,0,.62);border-bottom:1px solid rgba(255,255,255,.08)">
+  <div style="max-width:1360px;margin:0 auto;padding:16px clamp(20px,4vw,48px);display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px">
+    <a href="#top" style="color:#fff;font-weight:600;font-size:19px;letter-spacing:-.02em;text-transform:uppercase;display:flex;align-items:baseline;gap:1px" data-hover="color:#fff">GERSON<span style="color:#D92D20">_</span></a>
+    <nav style="display:flex;flex-wrap:wrap;gap:14px 24px;margin-left:auto">
+      <a href="#metodo" style="color:rgba(255,255,255,.62);font-size:12px;letter-spacing:.04em;text-transform:uppercase;font-weight:500;display:flex;gap:6px" data-hover="color:#fff"><span style="color:#D92D20">01 /</span>MÉTODO</a>
+      <a href="#servicio" style="color:rgba(255,255,255,.62);font-size:12px;letter-spacing:.04em;text-transform:uppercase;font-weight:500;display:flex;gap:6px" data-hover="color:#fff"><span style="color:#D92D20">02 /</span>SERVICIO</a>
+      <a href="#precios" style="color:rgba(255,255,255,.62);font-size:12px;letter-spacing:.04em;text-transform:uppercase;font-weight:500;display:flex;gap:6px" data-hover="color:#fff"><span style="color:#D92D20">03 /</span>PRECIOS</a>
+      <a href="#dudas" style="color:rgba(255,255,255,.62);font-size:12px;letter-spacing:.04em;text-transform:uppercase;font-weight:500;display:flex;gap:6px" data-hover="color:#fff"><span style="color:#D92D20">04 /</span>DUDAS</a>
+    </nav>
+    <a href="https://cal.com/gerson" data-book-url target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;height:40px;padding:0 22px;border-radius:999px;background:#D92D20;color:#fff;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;transition:.35s cubic-bezier(.16,1,.3,1)" data-hover="background:#EE4032;color:#fff;transform:scale(1.04)">Reservar</a>
+  </div>
+</header>
+
+<section id="top" style="position:relative;padding:clamp(150px,17vw,210px) 0 clamp(60px,7vw,96px);overflow:hidden">
+  <div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(950px 560px at 18% -12%,rgba(217,45,32,.20),transparent 62%),radial-gradient(760px 520px at 90% 2%,rgba(122,11,16,.42),transparent 66%)"></div>
+  <div style="position:absolute;inset:0;pointer-events:none;opacity:.32;background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:84px 84px;-webkit-mask-image:radial-gradient(760px 480px at 40% 0%,#000,transparent 74%);mask-image:radial-gradient(760px 480px at 40% 0%,#000,transparent 74%)"></div>
+  <div style="position:relative;z-index:2;max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:clamp(28px,4vw,44px)">
+      <span style="width:8px;height:8px;border-radius:50%;background:#D92D20;animation:gbeat 2.6s infinite"></span>
+      <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:#D92D20">Desde 80 € al mes</span>
+      <span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(255,255,255,.16),transparent)"></span>
+      <span style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.42)">Plazas limitadas</span>
+    </div>
+
+    <h1 style="font-size:clamp(40px,7.4vw,104px);line-height:.98;letter-spacing:-.042em;font-weight:500;margin:0;max-width:17ch">
+      <span style="display:block;overflow:hidden;padding-bottom:.03em"><span style="display:block;transform:translateY(108%);animation:grise 1s cubic-bezier(.16,1,.3,1) .05s forwards">Todos sabemos</span></span>
+      <span style="display:block;overflow:hidden;padding-bottom:.03em"><span style="display:block;transform:translateY(108%);animation:grise 1s cubic-bezier(.16,1,.3,1) .15s forwards">que hay que subir contenido.</span></span>
+      <span style="display:block;overflow:hidden;padding-bottom:.03em"><span style="display:block;transform:translateY(108%);animation:grise 1s cubic-bezier(.16,1,.3,1) .25s forwards">Y casi todos <span style="color:#D92D20">nos quedamos ahí</span>.</span></span>
+    </h1>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:clamp(24px,4vw,64px);align-items:end;margin-top:clamp(36px,5vw,64px)">
+      <div style="display:grid;gap:22px">
+        <p style="margin:0;font-size:clamp(17px,1.6vw,21px);line-height:1.5;color:rgba(255,255,255,.66);max-width:40ch">Nadie te ha explicado qué grabar, cuándo subirlo, ni cómo saber si funciona.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px">
+          <div style="border:1px solid rgba(255,255,255,.10);border-radius:14px;padding:18px;background:rgba(255,255,255,.03)">
+            <div style="display:flex;align-items:flex-end;gap:4px;height:38px;margin-bottom:16px">
+              <span style="flex:1;height:34%;border-radius:2px;background:#D92D20"></span><span style="flex:1;height:52%;border-radius:2px;background:#D92D20"></span><span style="flex:1;height:44%;border-radius:2px;background:rgba(255,255,255,.16)"></span><span style="flex:1;height:70%;border-radius:2px;background:rgba(255,255,255,.16)"></span><span style="flex:1;height:60%;border-radius:2px;background:rgba(255,255,255,.16)"></span><span style="flex:1;height:100%;border-radius:2px;background:rgba(255,255,255,.16)"></span>
+            </div>
+            <div style="font-size:14px;font-weight:500;letter-spacing:-.02em">Un plan</div>
+            <div style="font-size:12px;color:rgba(255,255,255,.42);margin-top:3px">6 meses cerrados</div>
+          </div>
+          <div style="border:1px solid rgba(255,255,255,.10);border-radius:14px;padding:18px;background:rgba(255,255,255,.03)">
+            <div style="display:flex;gap:5px;height:38px;margin-bottom:16px">
+              <span style="width:22px;border-radius:4px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.05)"></span><span style="width:22px;border-radius:4px;border:1px solid rgba(217,45,32,.55);background:rgba(217,45,32,.18)"></span><span style="width:22px;border-radius:4px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.05)"></span>
+            </div>
+            <div style="font-size:14px;font-weight:500;letter-spacing:-.02em">Los vídeos</div>
+            <div style="font-size:12px;color:rgba(255,255,255,.42);margin-top:3px">hechos por el equipo</div>
+          </div>
+          <div style="border:1px solid rgba(255,255,255,.10);border-radius:14px;padding:18px;background:rgba(255,255,255,.03)">
+            <svg viewBox="0 0 100 38" preserveAspectRatio="none" style="width:100%;height:38px;display:block;margin-bottom:16px" aria-hidden="true">
+              <path d="M2,32 C18,28 26,20 42,18 C58,16 68,10 98,4" fill="none" stroke="#D92D20" stroke-width="2.4" stroke-linecap="round"></path>
+              <path d="M2,36 H98" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="1" stroke-dasharray="3 4"></path>
+            </svg>
+            <div style="font-size:14px;font-weight:500;letter-spacing:-.02em">Una pantalla</div>
+            <div style="font-size:12px;color:rgba(255,255,255,.42);margin-top:3px">para ver si va bien</div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-start">
+        <a href="https://cal.com/gerson" data-book-url target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;height:52px;padding:0 30px;border-radius:999px;background:#D92D20;color:#fff;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;transition:.35s cubic-bezier(.16,1,.3,1)" data-hover="background:#EE4032;color:#fff;transform:scale(1.04)">Reservar consultoría gratis</a>
+        <a href="#metodo" style="display:inline-flex;align-items:center;justify-content:center;height:52px;padding:0 28px;border-radius:999px;border:1px solid rgba(255,255,255,.20);color:#fff;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;background:rgba(255,255,255,.04);transition:.35s cubic-bezier(.16,1,.3,1)" data-hover="background:rgba(255,255,255,.10);color:#fff">Ver el método</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div style="border-top:1px solid rgba(255,255,255,.09);border-bottom:1px solid rgba(255,255,255,.09);padding:22px 0;overflow:hidden;background:rgba(255,255,255,.015)">
+  <div style="display:flex;width:max-content;animation:gmarquee 34s linear infinite">
+    <div style="display:flex;align-items:center;gap:44px;padding-right:44px">
+      <span style="font-size:clamp(15px,1.5vw,19px);font-weight:500;letter-spacing:-.02em;color:rgba(255,255,255,.80);white-space:nowrap">Plan de 6 meses</span><span style="color:#D92D20">✳</span>
+      <span style="font-size:clamp(15px,1.5vw,19px);font-weight:500;letter-spacing:-.02em;color:rgba(255,255,255,.80);white-space:nowrap">Equipo propio de edición</span><span style="color:#D92D20">✳</span>
+      <span style="font-size:clamp(15px,1.5vw,19px);font-weight:500;letter-spacing:-.02em;color:rgba(255,255,255,.80);white-space:nowrap">Responde tus mensajes</span><span style="color:#D92D20">✳</span>
+      <span style="font-size:clamp(15px,1.5vw,19px);font-weight:500;letter-spacing:-.02em;color:rgba(255,255,255,.80);white-space:nowrap">Publica solo</span><span style="color:#D92D20">✳</span>
+      <span style="font-size:clamp(15px,1.5vw,19px);font-weight:500;letter-spacing:-.02em;color:rgba(255,255,255,.80);white-space:nowrap">Sin permanencia</span><span style="color:#D92D20">✳</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:44px;padding-right:44px" aria-hidden="true">
+      <span style="font-size:clamp(15px,1.5vw,19px);font-weight:500;letter-spacing:-.02em;color:rgba(255,255,255,.80);white-space:nowrap">Plan de 6 meses</span><span style="color:#D92D20">✳</span>
+      <span style="font-size:clamp(15px,1.5vw,19px);font-weight:500;letter-spacing:-.02em;color:rgba(255,255,255,.80);white-space:nowrap">Equipo propio de edición</span><span style="color:#D92D20">✳</span>
+      <span style="font-size:clamp(15px,1.5vw,19px);font-weight:500;letter-spacing:-.02em;color:rgba(255,255,255,.80);white-space:nowrap">Responde tus mensajes</span><span style="color:#D92D20">✳</span>
+      <span style="font-size:clamp(15px,1.5vw,19px);font-weight:500;letter-spacing:-.02em;color:rgba(255,255,255,.80);white-space:nowrap">Publica solo</span><span style="color:#D92D20">✳</span>
+      <span style="font-size:clamp(15px,1.5vw,19px);font-weight:500;letter-spacing:-.02em;color:rgba(255,255,255,.80);white-space:nowrap">Sin permanencia</span><span style="color:#D92D20">✳</span>
+    </div>
+  </div>
+</div>
+
+<section style="padding:clamp(72px,9vw,128px) 0 0">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <div data-rv style="position:relative;overflow:hidden;border:1px solid rgba(217,45,32,.28);border-radius:20px;padding:clamp(28px,4vw,52px);background:linear-gradient(150deg,rgba(217,45,32,.13),rgba(255,255,255,.02))">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(24px,4vw,56px);align-items:center">
+        <div>
+          <h2 style="margin:0 0 14px;font-size:clamp(26px,3vw,40px);line-height:1.08;letter-spacing:-.028em;font-weight:500;max-width:16ch">El motor y la gasolina</h2>
+          <p style="margin:0;font-size:clamp(16px,1.4vw,18px);line-height:1.55;color:rgba(255,255,255,.66);max-width:44ch">Un vídeo bonito no sirve si nadie reacciona. Hacen falta las dos cosas.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px">
+          <div style="border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:22px;background:rgba(0,0,0,.4)">
+            <div style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#D92D20;margin-bottom:10px">El motor</div>
+            <div style="font-size:19px;font-weight:500;letter-spacing:-.022em;margin-bottom:8px">El agente</div>
+            <p style="margin:0;font-size:14px;line-height:1.45;color:rgba(255,255,255,.56)">Todo tu mundo digital en una pantalla.</p>
+          </div>
+          <div style="border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:22px;background:rgba(0,0,0,.4)">
+            <div style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#D92D20;margin-bottom:10px">La gasolina</div>
+            <div style="font-size:19px;font-weight:500;letter-spacing:-.022em;margin-bottom:8px">Plan y vídeos</div>
+            <p style="margin:0;font-size:14px;line-height:1.45;color:rgba(255,255,255,.56)">Seis meses planificados y el contenido hecho.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:clamp(72px,9vw,128px) 0 0">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <div data-rv style="border-top:1px solid rgba(255,255,255,.14);padding-top:22px;margin-bottom:clamp(36px,4.5vw,64px)">
+      <div style="display:flex;justify-content:space-between;gap:20px;margin-bottom:28px">
+        <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:rgba(255,255,255,.46)"><span style="color:#D92D20">01 /</span> Lo que pasa de verdad</span>
+        <span style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3)">El problema</span>
+      </div>
+      <h2 style="margin:0;font-size:clamp(32px,4.6vw,60px);line-height:1.05;letter-spacing:-.03em;font-weight:500;max-width:17ch">No es que no quieras. Es que no da la vida.</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px">
+      <div data-rv style="position:relative;border:1px solid rgba(255,255,255,.10);border-radius:18px;padding:clamp(26px,2.6vw,36px);background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.012));transition:.5s cubic-bezier(.16,1,.3,1)" data-hover="background:rgba(255,255,255,.075);transform:translateY(-4px);border-color:rgba(217,45,32,.35)">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#D92D20;margin-bottom:26px">El tiempo</div>
+        <h3 style="margin:0 0 12px;font-size:clamp(19px,1.8vw,24px);line-height:1.15;letter-spacing:-.022em;font-weight:500">Grabas y ahí se queda</h3>
+        <p style="margin:0;font-size:15px;line-height:1.55;color:rgba(255,255,255,.56)">Editar lleva más rato que grabar. Siempre hay algo más urgente.</p>
+        <div style="margin-top:24px;padding-top:20px;border-top:1px solid rgba(255,255,255,.08)">
+          <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:14px">
+            <i style="width:13px;height:20px;border-radius:3px;background:#D92D20"></i><i style="width:13px;height:20px;border-radius:3px;background:#D92D20"></i><i style="width:13px;height:20px;border-radius:3px;background:#D92D20"></i><i style="width:13px;height:20px;border-radius:3px;background:#D92D20"></i><i style="width:13px;height:20px;border-radius:3px;background:#D92D20"></i><i style="width:13px;height:20px;border-radius:3px;background:#D92D20"></i><i style="width:13px;height:20px;border-radius:3px;background:#D92D20"></i><i style="width:13px;height:20px;border-radius:3px;background:rgba(255,255,255,.09)"></i><i style="width:13px;height:20px;border-radius:3px;background:rgba(255,255,255,.09)"></i><i style="width:13px;height:20px;border-radius:3px;background:rgba(255,255,255,.09)"></i><i style="width:13px;height:20px;border-radius:3px;background:rgba(255,255,255,.09)"></i><i style="width:13px;height:20px;border-radius:3px;background:rgba(255,255,255,.09)"></i>
+          </div>
+          <div style="font-size:12px;color:rgba(255,255,255,.42)">grabados · sin publicar</div>
+        </div>
+      </div>
+      <div data-rv style="position:relative;border:1px solid rgba(255,255,255,.10);border-radius:18px;padding:clamp(26px,2.6vw,36px);background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.012));transition:.5s cubic-bezier(.16,1,.3,1)" data-hover="background:rgba(255,255,255,.075);transform:translateY(-4px);border-color:rgba(217,45,32,.35)">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#D92D20;margin-bottom:26px">Los mensajes</div>
+        <h3 style="margin:0 0 12px;font-size:clamp(19px,1.8vw,24px);line-height:1.15;letter-spacing:-.022em;font-weight:500">Contestas tarde y se van</h3>
+        <p style="margin:0;font-size:15px;line-height:1.55;color:rgba(255,255,255,.56)">Te escriben de noche. Lo ves dos días después. Ya han comprado a otro.</p>
+        <div style="margin-top:24px;padding-top:20px;border-top:1px solid rgba(255,255,255,.08)">
+          <div style="display:flex;gap:7px;margin-bottom:14px">
+            <i style="flex:1;height:9px;border-radius:999px;background:#D92D20"></i><i style="flex:1;height:9px;border-radius:999px;background:rgba(217,45,32,.5)"></i><i style="flex:1;height:9px;border-radius:999px;background:rgba(217,45,32,.25)"></i><i style="flex:1;height:9px;border-radius:999px;background:rgba(255,255,255,.09)"></i><i style="flex:1;height:9px;border-radius:999px;background:rgba(255,255,255,.05)"></i>
+          </div>
+          <div style="font-size:12px;color:rgba(255,255,255,.42)">se enfría · se pierde</div>
+        </div>
+      </div>
+      <div data-rv style="position:relative;border:1px solid rgba(255,255,255,.10);border-radius:18px;padding:clamp(26px,2.6vw,36px);background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.012));transition:.5s cubic-bezier(.16,1,.3,1)" data-hover="background:rgba(255,255,255,.075);transform:translateY(-4px);border-color:rgba(217,45,32,.35)">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#D92D20;margin-bottom:26px">Las dudas</div>
+        <h3 style="margin:0 0 12px;font-size:clamp(19px,1.8vw,24px);line-height:1.15;letter-spacing:-.022em;font-weight:500">No sabes si sirve de algo</h3>
+        <p style="margin:0;font-size:15px;line-height:1.55;color:rgba(255,255,255,.56)">300 visitas. ¿Eso es bueno o malo? Nadie te lo explica.</p>
+        <div style="margin-top:24px;padding-top:20px;border-top:1px solid rgba(255,255,255,.08)">
+          <svg viewBox="0 0 220 46" preserveAspectRatio="none" style="width:100%;height:46px;display:block;margin-bottom:14px" aria-hidden="true">
+            <path d="M0,24 H220" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="1" stroke-dasharray="3 4"></path>
+            <path d="M2,30 C20,18 30,38 48,27 C66,16 76,36 94,26 C112,17 122,37 140,28 C158,19 168,35 186,27 C200,21 210,29 218,25" fill="none" stroke="#D92D20" stroke-width="2.2" stroke-linecap="round"></path>
+          </svg>
+          <div style="font-size:12px;color:rgba(255,255,255,.42)">¿está bien o está mal?</div>
+        </div>
+      </div>
+    </div>
+    <p data-rv style="max-width:24ch;margin:clamp(48px,6vw,80px) auto 0;text-align:center;font-size:clamp(24px,3.4vw,44px);font-weight:600;letter-spacing:-.04em;line-height:1.14">Y esto no se arregla<br>trabajando <span style="color:#D92D20">más horas</span>.</p>
+  </div>
+</section>
+
+<section style="padding:clamp(72px,9vw,128px) 0 0">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <div data-rv style="border-top:1px solid rgba(255,255,255,.14);padding-top:22px;margin-bottom:clamp(36px,4.5vw,64px)">
+      <div style="display:flex;justify-content:space-between;gap:20px;margin-bottom:28px">
+        <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:rgba(255,255,255,.46)"><span style="color:#D92D20">02 /</span> Antes de esto</span>
+        <span style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3)">Lo que ya probaste</span>
+      </div>
+      <h2 style="margin:0;font-size:clamp(32px,4.6vw,60px);line-height:1.05;letter-spacing:-.03em;font-weight:500;max-width:15ch">Seguro que ya lo has intentado</h2>
+    </div>
+    <div style="border:1px solid rgba(255,255,255,.10);border-radius:18px;overflow:hidden;background:rgba(255,255,255,.025)">
+      <div data-rv data-strike style="display:flex;flex-wrap:wrap;gap:clamp(16px,3vw,32px);align-items:center;padding:clamp(22px,2.6vw,32px) clamp(22px,3vw,36px);border-bottom:1px solid rgba(255,255,255,.07);transition:background .4s" data-hover="background:rgba(255,255,255,.04)">
+        <span style="font-size:12px;font-weight:700;color:rgba(255,255,255,.34);letter-spacing:.08em">01</span>
+        <span data-strike-t style="position:relative;display:inline-block;flex:1 1 240px;font-size:clamp(18px,2.1vw,28px);font-weight:500;letter-spacing:-.025em">Contrataste a alguien para tus redes<span data-strike-l style="position:absolute;left:-2px;top:53%;height:2px;width:0;border-radius:2px;background:#D92D20;box-shadow:0 0 14px rgba(217,45,32,.9);transition:width .9s cubic-bezier(.16,1,.3,1) .35s"></span></span>
+        <span style="font-size:14px;font-weight:600;color:#D92D20;text-align:right;white-space:nowrap">likes, ningún cliente</span>
+      </div>
+      <div data-rv data-strike style="display:flex;flex-wrap:wrap;gap:clamp(16px,3vw,32px);align-items:center;padding:clamp(22px,2.6vw,32px) clamp(22px,3vw,36px);border-bottom:1px solid rgba(255,255,255,.07);transition:background .4s" data-hover="background:rgba(255,255,255,.04)">
+        <span style="font-size:12px;font-weight:700;color:rgba(255,255,255,.34);letter-spacing:.08em">02</span>
+        <span data-strike-t style="position:relative;display:inline-block;flex:1 1 240px;font-size:clamp(18px,2.1vw,28px);font-weight:500;letter-spacing:-.025em">Compraste un curso<span data-strike-l style="position:absolute;left:-2px;top:53%;height:2px;width:0;border-radius:2px;background:#D92D20;box-shadow:0 0 14px rgba(217,45,32,.9);transition:width .9s cubic-bezier(.16,1,.3,1) .35s"></span></span>
+        <span style="font-size:14px;font-weight:600;color:#D92D20;text-align:right;white-space:nowrap">lo dejaste en el tema 4</span>
+      </div>
+      <div data-rv data-strike style="display:flex;flex-wrap:wrap;gap:clamp(16px,3vw,32px);align-items:center;padding:clamp(22px,2.6vw,32px) clamp(22px,3vw,36px);transition:background .4s" data-hover="background:rgba(255,255,255,.04)">
+        <span style="font-size:12px;font-weight:700;color:rgba(255,255,255,.34);letter-spacing:.08em">03</span>
+        <span data-strike-t style="position:relative;display:inline-block;flex:1 1 240px;font-size:clamp(18px,2.1vw,28px);font-weight:500;letter-spacing:-.025em">Pagaste anuncios<span data-strike-l style="position:absolute;left:-2px;top:53%;height:2px;width:0;border-radius:2px;background:#D92D20;box-shadow:0 0 14px rgba(217,45,32,.9);transition:width .9s cubic-bezier(.16,1,.3,1) .35s"></span></span>
+        <span style="font-size:14px;font-weight:600;color:#D92D20;text-align:right;white-space:nowrap">dinero fuera, ninguna respuesta</span>
+      </div>
+    </div>
+    <p data-rv style="max-width:24ch;margin:clamp(48px,6vw,80px) auto 0;text-align:center;font-size:clamp(24px,3.4vw,44px);font-weight:600;letter-spacing:-.04em;line-height:1.14">El problema nunca fuiste tú.<br>Faltaba un <span style="color:#D92D20">orden</span>.</p>
+  </div>
+</section>
+
+<section style="position:relative;overflow:hidden;margin-top:clamp(72px,9vw,128px);border-top:1px solid rgba(255,255,255,.09);border-bottom:1px solid rgba(255,255,255,.09);background:linear-gradient(180deg,#000,#0C0304 48%,#000);padding:clamp(80px,10vw,150px) 0">
+  <div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(820px 400px at 50% 50%,rgba(217,45,32,.18),transparent 68%)"></div>
+  <div style="position:relative;z-index:2;max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px);text-align:center">
+    <div data-rv style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:#D92D20">El giro</div>
+    <h2 data-rv style="margin:26px auto 0;font-size:clamp(28px,5vw,64px);font-weight:500;letter-spacing:-.03em;line-height:1.06;max-width:18ch">El problema no era el contenido.<br>Era el <span style="color:#D92D20">orden</span> en que se hace.</h2>
+    <p data-rv style="max-width:52ch;margin:30px auto 0;font-size:clamp(16px,1.5vw,19px);color:rgba(255,255,255,.66);line-height:1.55">Casi todo el mundo empieza por el final. Cuando le das la vuelta, deja de ser suerte.</p>
+    <p data-rv style="margin:30px 0 0;font-size:16px;font-weight:600;color:#fff">Y antes de venderlo, lo probamos.</p>
+  </div>
+</section>
+
+<section id="metodo" style="padding:clamp(72px,9vw,128px) 0 0;scroll-margin-top:80px">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <div data-rv style="border-top:1px solid rgba(255,255,255,.14);padding-top:22px;margin-bottom:clamp(36px,4.5vw,64px)">
+      <div style="display:flex;justify-content:space-between;gap:20px;margin-bottom:28px">
+        <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:rgba(255,255,255,.46)"><span style="color:#D92D20">03 /</span> El método</span>
+        <span style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3)">Seis meses</span>
+      </div>
+      <h2 style="margin:0;font-size:clamp(32px,4.6vw,60px);line-height:1.05;letter-spacing:-.03em;font-weight:500;max-width:17ch">Seis meses, tres fases, un orden</h2>
+      <p style="margin:24px 0 0;font-size:clamp(16px,1.5vw,19px);line-height:1.55;color:rgba(255,255,255,.64);max-width:60ch">Casi todo el mundo empieza por el final: produce, publica y paga anuncios antes de saber qué le interesa a su gente. Este método le da la vuelta. Cada fase se apoya en lo que aprendimos en la anterior, y por eso deja de depender de la suerte.</p>
+    </div>
+
+    <div data-rv style="border:1px solid rgba(255,255,255,.10);border-radius:20px;background:rgba(255,255,255,.028);padding:clamp(22px,3vw,36px);margin-bottom:14px;overflow:hidden">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;margin-bottom:20px">
+        <span style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.42);font-weight:500">Gente que te ve</span>
+        <span style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.42);font-weight:500">Mes 1 → Mes 6</span>
+      </div>
+      <svg viewBox="0 0 900 300" preserveAspectRatio="none" style="width:100%;height:clamp(180px,24vw,300px);display:block" aria-label="Crecimiento a lo largo de los seis meses">
+        <defs>
+          <linearGradient id="gArea" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#D92D20" stop-opacity=".34"></stop>
+            <stop offset="100%" stop-color="#D92D20" stop-opacity="0"></stop>
+          </linearGradient>
+        </defs>
+        <g stroke="rgba(255,255,255,.07)" stroke-width="1">
+          <line x1="0" y1="70" x2="900" y2="70"></line><line x1="0" y1="140" x2="900" y2="140"></line><line x1="0" y1="210" x2="900" y2="210"></line><line x1="0" y1="278" x2="900" y2="278"></line>
+        </g>
+        <g stroke="rgba(255,255,255,.14)" stroke-width="1" stroke-dasharray="4 6">
+          <line x1="330" y1="20" x2="330" y2="278"></line><line x1="610" y1="20" x2="610" y2="278"></line>
+        </g>
+        <path fill="url(#gArea)" d="M20,272 C70,268 110,276 165,265 C220,254 275,262 330,254 C390,238 415,214 465,197 C515,180 560,163 610,141 C660,119 690,97 740,79 C790,61 840,48 880,38 L880,278 L20,278 Z"></path>
+        <path data-draw pathLength="1" style="stroke-dasharray:1;stroke-dashoffset:1" fill="none" stroke="#D92D20" stroke-width="3" stroke-linecap="round" d="M20,272 C70,268 110,276 165,265 C220,254 275,262 330,254 C390,238 415,214 465,197 C515,180 560,163 610,141 C660,119 690,97 740,79 C790,61 840,48 880,38"></path>
+      </svg>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,160px),1fr));gap:10px;margin-top:18px">
+        <div style="border-radius:12px;padding:14px 16px;background:rgba(217,45,32,.10);border:1px solid rgba(217,45,32,.35)"><div style="font-size:12px;color:rgba(255,255,255,.45)">Meses 1 y 2</div><div style="font-weight:500;font-size:16px;letter-spacing:-.02em;margin-top:3px;color:#D92D20">Aprender</div></div>
+        <div style="border-radius:12px;padding:14px 16px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08)"><div style="font-size:12px;color:rgba(255,255,255,.45)">Meses 3 y 4</div><div style="font-weight:500;font-size:16px;letter-spacing:-.02em;margin-top:3px">Construir</div></div>
+        <div style="border-radius:12px;padding:14px 16px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08)"><div style="font-size:12px;color:rgba(255,255,255,.45)">Meses 5 y 6</div><div style="font-weight:500;font-size:16px;letter-spacing:-.02em;margin-top:3px">Crecer</div></div>
+      </div>
+    </div>
+
+    <div data-rv style="border:1px solid rgba(255,255,255,.10);border-radius:20px;overflow:hidden;background:rgba(255,255,255,.028);margin-bottom:14px">
+      <div style="position:relative;padding:clamp(28px,3.4vw,44px)">
+        <div style="position:absolute;top:0;left:0;height:3px;width:33%;background:linear-gradient(90deg,#D92D20,rgba(217,45,32,.15))"></div>
+        <div style="font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#D92D20;margin-bottom:14px">Fase 1 · Meses 1 y 2</div>
+        <h3 style="margin:0 0 16px;font-size:clamp(28px,3.6vw,48px);line-height:1.05;letter-spacing:-.03em;font-weight:500">Aprender</h3>
+        <p style="margin:0;font-size:clamp(15px,1.4vw,17px);color:rgba(255,255,255,.64);max-width:64ch;line-height:1.6">Los dos primeros meses no van de gustarle a todo el mundo. Van de averiguar qué le importa de verdad a la gente que te podría comprar. Se prueba, se mide y se va descartando, sin poner dinero en publicidad todavía.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:1px;background:rgba(255,255,255,.08);border-top:1px solid rgba(255,255,255,.08)">
+        <div style="background:#050505;padding:clamp(26px,3vw,40px)">
+          <h4 style="margin:0 0 20px;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.42)">Qué pasa durante estas semanas</h4>
+          <ul style="list-style:none;display:grid;gap:14px;margin:0;padding:0">
+            <li style="display:flex;gap:13px;font-size:15px;line-height:1.5;color:rgba(255,255,255,.72)"><span style="flex:0 0 6px;height:6px;border-radius:50%;background:#D92D20;margin-top:8px"></span>Consultoría inicial: quién eres, qué vendes y a quién</li>
+            <li style="display:flex;gap:13px;font-size:15px;line-height:1.5;color:rgba(255,255,255,.72)"><span style="flex:0 0 6px;height:6px;border-radius:50%;background:#D92D20;margin-top:8px"></span>Se define tu mensaje y las líneas de contenido que vamos a explorar</li>
+            <li style="display:flex;gap:13px;font-size:15px;line-height:1.5;color:rgba(255,255,255,.72)"><span style="flex:0 0 6px;height:6px;border-radius:50%;background:#D92D20;margin-top:8px"></span>Se configura tu agente y se conectan tus canales</li>
+            <li style="display:flex;gap:13px;font-size:15px;line-height:1.5;color:rgba(255,255,255,.72)"><span style="flex:0 0 6px;height:6px;border-radius:50%;background:#D92D20;margin-top:8px"></span>Empiezas a grabar con guiones preparados</li>
+            <li style="display:flex;gap:13px;font-size:15px;line-height:1.5;color:rgba(255,255,255,.72)"><span style="flex:0 0 6px;height:6px;border-radius:50%;background:#D92D20;margin-top:8px"></span>Se publica de forma constante y se recogen datos de cada pieza</li>
+          </ul>
+        </div>
+        <div style="background:rgba(217,45,32,.06);padding:clamp(26px,3vw,40px)">
+          <h4 style="margin:0 0 20px;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.42)">A dónde llegamos</h4>
+          <div style="font-size:clamp(17px,1.7vw,21px);font-weight:600;color:#fff;letter-spacing:-.028em;line-height:1.35">Al terminar sabemos qué contar, cómo contarlo y qué días funciona mejor.</div>
+          <p style="margin:14px 0 0;font-size:15px;line-height:1.55;color:rgba(255,255,255,.56)">Es información concreta sobre tu negocio, no consejos generales de internet. Y no ha costado ni un euro de publicidad.</p>
+        </div>
+      </div>
+    </div>
+
+    <div data-rv style="border:1px solid rgba(255,255,255,.10);border-radius:20px;overflow:hidden;background:rgba(255,255,255,.028);margin-bottom:14px">
+      <div style="position:relative;padding:clamp(28px,3.4vw,44px)">
+        <div style="position:absolute;top:0;left:0;height:3px;width:66%;background:linear-gradient(90deg,#D92D20,rgba(217,45,32,.15))"></div>
+        <div style="font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#D92D20;margin-bottom:14px">Fase 2 · Meses 3 y 4</div>
+        <h3 style="margin:0 0 16px;font-size:clamp(28px,3.6vw,48px);line-height:1.05;letter-spacing:-.03em;font-weight:500">Construir</h3>
+        <p style="margin:0;font-size:clamp(15px,1.4vw,17px);color:rgba(255,255,255,.64);max-width:64ch;line-height:1.6">Con los datos delante se deja de probar. Se refuerza lo que ya demostró que interesa y se sube el nivel de acabado, porque a partir de aquí sí importa cómo se ve. Tu presencia empieza a parecer una marca y no publicaciones sueltas.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:1px;background:rgba(255,255,255,.08);border-top:1px solid rgba(255,255,255,.08)">
+        <div style="background:#050505;padding:clamp(26px,3vw,40px)">
+          <h4 style="margin:0 0 20px;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.42)">Qué pasa durante estas semanas</h4>
+          <ul style="list-style:none;display:grid;gap:14px;margin:0;padding:0">
+            <li style="display:flex;gap:13px;font-size:15px;line-height:1.5;color:rgba(255,255,255,.72)"><span style="flex:0 0 6px;height:6px;border-radius:50%;background:#D92D20;margin-top:8px"></span>Se seleccionan los temas y formatos que mejor respondieron</li>
+            <li style="display:flex;gap:13px;font-size:15px;line-height:1.5;color:rgba(255,255,255,.72)"><span style="flex:0 0 6px;height:6px;border-radius:50%;background:#D92D20;margin-top:8px"></span>Las piezas pasan a acabado pro: tus colores, tu letra, animaciones</li>
+            <li style="display:flex;gap:13px;font-size:15px;line-height:1.5;color:rgba(255,255,255,.72)"><span style="flex:0 0 6px;height:6px;border-radius:50%;background:#D92D20;margin-top:8px"></span>Se ordena tu perfil para que quien llegue entienda qué vendes</li>
+            <li style="display:flex;gap:13px;font-size:15px;line-height:1.5;color:rgba(255,255,255,.72)"><span style="flex:0 0 6px;height:6px;border-radius:50%;background:#D92D20;margin-top:8px"></span>El agente empieza a filtrar y clasificar a quien te escribe</li>
+            <li style="display:flex;gap:13px;font-size:15px;line-height:1.5;color:rgba(255,255,255,.72)"><span style="flex:0 0 6px;height:6px;border-radius:50%;background:#D92D20;margin-top:8px"></span>Revisión mensual con los números explicados y decisiones para el mes siguiente</li>
+          </ul>
+        </div>
+        <div style="background:rgba(217,45,32,.06);padding:clamp(26px,3vw,40px)">
+          <h4 style="margin:0 0 20px;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.42)">A dónde llegamos</h4>
+          <div style="font-size:clamp(17px,1.7vw,21px);font-weight:600;color:#fff;letter-spacing:-.028em;line-height:1.35">Al terminar tienes un perfil que crece con contenido que ya sabemos que funciona.</div>
+          <p style="margin:14px 0 0;font-size:15px;line-height:1.55;color:rgba(255,255,255,.56)">Y empiezan a llegar conversaciones de gente que ya sabe lo que haces antes de escribirte.</p>
+        </div>
+      </div>
+    </div>
+
+    <div data-rv style="border:1px solid rgba(255,255,255,.10);border-radius:20px;overflow:hidden;background:rgba(255,255,255,.028)">
+      <div style="position:relative;padding:clamp(28px,3.4vw,44px)">
+        <div style="position:absolute;top:0;left:0;height:3px;width:100%;background:linear-gradient(90deg,#D92D20,rgba(217,45,32,.15))"></div>
+        <div style="font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#D92D20;margin-bottom:14px">Fase 3 · Meses 5 y 6</div>
+        <h3 style="margin:0 0 16px;font-size:clamp(28px,3.6vw,48px);line-height:1.05;letter-spacing:-.03em;font-weight:500">Crecer</h3>
+        <p style="margin:0;font-size:clamp(15px,1.4vw,17px);color:rgba(255,255,255,.64);max-width:64ch;line-height:1.6">Solo ahora se pone dinero en publicidad, y únicamente detrás de lo que ya ha demostrado que interesa sin pagar. Por eso no se quema presupuesto probando: se invierte para llegar a más gente con algo que ya sabemos que funciona.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:1px;background:rgba(255,255,255,.08);border-top:1px solid rgba(255,255,255,.08)">
+        <div style="background:#050505;padding:clamp(26px,3vw,40px)">
+          <h4 style="margin:0 0 20px;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.42)">Qué pasa durante estas semanas</h4>
+          <ul style="list-style:none;display:grid;gap:14px;margin:0;padding:0">
+            <li style="display:flex;gap:13px;font-size:15px;line-height:1.5;color:rgba(255,255,255,.72)"><span style="flex:0 0 6px;height:6px;border-radius:50%;background:#D92D20;margin-top:8px"></span>Se montan las campañas sobre las piezas que mejor rindieron</li>
+            <li style="display:flex;gap:13px;font-size:15px;line-height:1.5;color:rgba(255,255,255,.72)"><span style="flex:0 0 6px;height:6px;border-radius:50%;background:#D92D20;margin-top:8px"></span>Se define el presupuesto contigo y se controla el coste por cliente</li>
+            <li style="display:flex;gap:13px;font-size:15px;line-height:1.5;color:rgba(255,255,255,.72)"><span style="flex:0 0 6px;height:6px;border-radius:50%;background:#D92D20;margin-top:8px"></span>Se ajusta cada semana: se para lo que no rinde, se amplía lo que sí</li>
+            <li style="display:flex;gap:13px;font-size:15px;line-height:1.5;color:rgba(255,255,255,.72)"><span style="flex:0 0 6px;height:6px;border-radius:50%;background:#D92D20;margin-top:8px"></span>El agente atiende el aumento de mensajes sin que se pierda ninguno</li>
+            <li style="display:flex;gap:13px;font-size:15px;line-height:1.5;color:rgba(255,255,255,.72)"><span style="flex:0 0 6px;height:6px;border-radius:50%;background:#D92D20;margin-top:8px"></span>Cierre de los seis meses con un plan para los siguientes</li>
+          </ul>
+        </div>
+        <div style="background:rgba(217,45,32,.06);padding:clamp(26px,3vw,40px)">
+          <h4 style="margin:0 0 20px;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.42)">A dónde llegamos</h4>
+          <div style="font-size:clamp(17px,1.7vw,21px);font-weight:600;color:#fff;letter-spacing:-.028em;line-height:1.35">Al terminar tu comunicación deja de ser un gasto y pasa a ser un canal que trae clientes.</div>
+          <p style="margin:14px 0 0;font-size:15px;line-height:1.55;color:rgba(255,255,255,.56)">Y por primera vez puedes decir cuánto te cuesta conseguir uno.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="servicio" style="padding:clamp(72px,9vw,128px) 0 0;scroll-margin-top:80px">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <div data-rv style="border-top:1px solid rgba(255,255,255,.14);padding-top:22px;margin-bottom:clamp(36px,4.5vw,64px)">
+      <div style="display:flex;justify-content:space-between;gap:20px;margin-bottom:28px">
+        <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:rgba(255,255,255,.46)"><span style="color:#D92D20">04 /</span> Qué recibes</span>
+        <span style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3)">La suscripción</span>
+      </div>
+      <h2 style="margin:0;font-size:clamp(32px,4.6vw,60px);line-height:1.05;letter-spacing:-.03em;font-weight:500;max-width:18ch">Todo lo que entra en la suscripción</h2>
+    </div>
+    <div data-rv style="border:1px solid rgba(255,255,255,.10);border-radius:18px;overflow:hidden;background:rgba(255,255,255,.025)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:20px;padding:16px clamp(20px,2.4vw,30px);background:rgba(255,255,255,.045);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.42);font-weight:600"><div>Qué</div><div>En qué consiste</div><div style="text-align:right">Cuándo</div></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:20px;padding:20px clamp(20px,2.4vw,30px);border-top:1px solid rgba(255,255,255,.07);align-items:center;transition:background .35s" data-hover="background:rgba(255,255,255,.035)"><div style="font-weight:600;font-size:16px;letter-spacing:-.02em">Consultoría inicial</div><div style="font-size:15px;color:rgba(255,255,255,.56);line-height:1.5">Sesión uno a uno para entender tu negocio y construir el plan a tu medida.</div><div style="font-size:13px;color:#D92D20;font-weight:600;text-align:right">Semana 1</div></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:20px;padding:20px clamp(20px,2.4vw,30px);border-top:1px solid rgba(255,255,255,.07);align-items:center;transition:background .35s" data-hover="background:rgba(255,255,255,.035)"><div style="font-weight:600;font-size:16px;letter-spacing:-.02em">Plan de comunicación</div><div style="font-size:15px;color:rgba(255,255,255,.56);line-height:1.5">Tu mensaje, tus líneas de contenido y los canales que tienen sentido para ti.</div><div style="font-size:13px;color:#D92D20;font-weight:600;text-align:right">Semana 2</div></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:20px;padding:20px clamp(20px,2.4vw,30px);border-top:1px solid rgba(255,255,255,.07);align-items:center;transition:background .35s" data-hover="background:rgba(255,255,255,.035)"><div style="font-weight:600;font-size:16px;letter-spacing:-.02em">Calendario</div><div style="font-size:15px;color:rgba(255,255,255,.56);line-height:1.5">Qué se publica, qué día, en qué canal y para qué. Cargado ya en la plataforma.</div><div style="font-size:13px;color:#D92D20;font-weight:600;text-align:right">Semana 2</div></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:20px;padding:20px clamp(20px,2.4vw,30px);border-top:1px solid rgba(255,255,255,.07);align-items:center;transition:background .35s" data-hover="background:rgba(255,255,255,.035)"><div style="font-weight:600;font-size:16px;letter-spacing:-.02em">Agente configurado</div><div style="font-size:15px;color:rgba(255,255,255,.56);line-height:1.5">Conectado a tus redes, hablando con tus palabras y respondiendo por ti.</div><div style="font-size:13px;color:#D92D20;font-weight:600;text-align:right">Semana 2</div></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:20px;padding:20px clamp(20px,2.4vw,30px);border-top:1px solid rgba(255,255,255,.07);align-items:center;transition:background .35s" data-hover="background:rgba(255,255,255,.035)"><div style="font-weight:600;font-size:16px;letter-spacing:-.02em">Guiones</div><div style="font-size:15px;color:rgba(255,255,255,.56);line-height:1.5">Te decimos exactamente qué grabar y cómo empezarlo para que enganche.</div><div style="font-size:13px;color:#D92D20;font-weight:600;text-align:right">Cada semana</div></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:20px;padding:20px clamp(20px,2.4vw,30px);border-top:1px solid rgba(255,255,255,.07);align-items:center;transition:background .35s" data-hover="background:rgba(255,255,255,.035)"><div style="font-weight:600;font-size:16px;letter-spacing:-.02em">Edición</div><div style="font-size:15px;color:rgba(255,255,255,.56);line-height:1.5">Nuestro equipo produce cada pieza con el acabado que hayas elegido.</div><div style="font-size:13px;color:#D92D20;font-weight:600;text-align:right">Cada semana</div></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:20px;padding:20px clamp(20px,2.4vw,30px);border-top:1px solid rgba(255,255,255,.07);align-items:center;transition:background .35s" data-hover="background:rgba(255,255,255,.035)"><div style="font-weight:600;font-size:16px;letter-spacing:-.02em">Publicación</div><div style="font-size:15px;color:rgba(255,255,255,.56);line-height:1.5">Sale solo en la fecha y hora marcadas. Tú solo apruebas.</div><div style="font-size:13px;color:#D92D20;font-weight:600;text-align:right">Cada semana</div></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:20px;padding:20px clamp(20px,2.4vw,30px);border-top:1px solid rgba(255,255,255,.07);align-items:center;transition:background .35s" data-hover="background:rgba(255,255,255,.035)"><div style="font-weight:600;font-size:16px;letter-spacing:-.02em">Lectura de números</div><div style="font-size:15px;color:rgba(255,255,255,.56);line-height:1.5">Qué funcionó, qué no y qué cambiamos. En palabras normales, no en jerga.</div><div style="font-size:13px;color:#D92D20;font-weight:600;text-align:right">Cada mes</div></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:20px;padding:20px clamp(20px,2.4vw,30px);border-top:1px solid rgba(255,255,255,.07);align-items:center;transition:background .35s" data-hover="background:rgba(255,255,255,.035)"><div style="font-weight:600;font-size:16px;letter-spacing:-.02em">Campañas</div><div style="font-size:15px;color:rgba(255,255,255,.56);line-height:1.5">Montaje, vigilancia y ajuste de tus anuncios. El presupuesto lo pones tú.</div><div style="font-size:13px;color:#D92D20;font-weight:600;text-align:right">Desde el mes 5</div></div>
+    </div>
+
+    <div data-rv style="margin-top:clamp(56px,7vw,96px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:clamp(28px,4vw,64px);align-items:center;border:1px solid rgba(255,255,255,.10);border-radius:20px;padding:clamp(28px,3.6vw,52px);background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.012))">
+      <div>
+        <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:#D92D20;margin-bottom:18px">La herramienta</div>
+        <h3 style="margin:0 0 18px;font-size:clamp(26px,3.2vw,42px);line-height:1.08;letter-spacing:-.028em;font-weight:500;max-width:18ch">Todo tu mundo digital, conectado en un sitio</h3>
+        <p style="margin:0 0 26px;font-size:clamp(15px,1.4vw,17px);line-height:1.6;color:rgba(255,255,255,.64);max-width:48ch">Se conecta con tus redes, tus campañas y tus mensajes. Todo junto, en un sitio.</p>
+        <ul style="list-style:none;display:grid;gap:14px;margin:0;padding:0">
+          <li style="display:flex;gap:13px;font-size:16px;line-height:1.45;color:rgba(255,255,255,.74)"><span style="flex:0 0 7px;height:7px;border-radius:50%;background:#D92D20;margin-top:8px"></span>Contesta a quien te escribe, a cualquier hora</li>
+          <li style="display:flex;gap:13px;font-size:16px;line-height:1.45;color:rgba(255,255,255,.74)"><span style="flex:0 0 7px;height:7px;border-radius:50%;background:#D92D20;margin-top:8px"></span>Publica tus vídeos cuando toca</li>
+          <li style="display:flex;gap:13px;font-size:16px;line-height:1.45;color:rgba(255,255,255,.74)"><span style="flex:0 0 7px;height:7px;border-radius:50%;background:#D92D20;margin-top:8px"></span>Te enseña por dónde va cada vídeo</li>
+          <li style="display:flex;gap:13px;font-size:16px;line-height:1.45;color:rgba(255,255,255,.74)"><span style="flex:0 0 7px;height:7px;border-radius:50%;background:#D92D20;margin-top:8px"></span>Te dice qué funciona y qué cambiar</li>
+        </ul>
+        <div style="margin-top:24px;padding-top:20px;border-top:1px solid rgba(255,255,255,.08);font-size:15px;color:rgba(255,255,255,.5)">Se configura contigo. No hay dos agentes iguales.</div>
+      </div>
+      <div style="position:relative;aspect-ratio:1;max-width:420px;width:100%;margin:0 auto;display:grid;place-items:center">
+        <div style="position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 50% 50%,rgba(217,45,32,.28),transparent 62%)"></div>
+        <div style="position:absolute;inset:6%;border-radius:50%;border:1px solid rgba(217,45,32,.35);animation:gspin 22s linear infinite"></div>
+        <div style="position:absolute;inset:20%;border-radius:50%;border:1px dashed rgba(255,255,255,.18);animation:gspin 30s linear infinite reverse"></div>
+        <div style="position:absolute;inset:34%;border-radius:50%;border:1px solid rgba(255,255,255,.10)"></div>
+        <div style="position:relative;width:34%;aspect-ratio:1;border-radius:50%;background:linear-gradient(160deg,#D92D20,#4E0904);box-shadow:0 24px 60px -20px rgba(217,45,32,.8);display:grid;place-items:center;font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:#fff">Agente</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:clamp(72px,9vw,128px) 0 0">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <div data-rv style="border-top:1px solid rgba(255,255,255,.14);padding-top:22px;margin-bottom:clamp(36px,4.5vw,64px)">
+      <div style="display:flex;justify-content:space-between;gap:20px;margin-bottom:28px">
+        <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:rgba(255,255,255,.46)"><span style="color:#D92D20">05 /</span> Los vídeos</span>
+        <span style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3)">Tres acabados</span>
+      </div>
+      <h2 style="margin:0;font-size:clamp(32px,4.6vw,60px);line-height:1.05;letter-spacing:-.03em;font-weight:500;max-width:19ch">No todos los vídeos tienen que costar lo mismo</h2>
+      <p style="margin:24px 0 0;font-size:clamp(16px,1.5vw,19px);line-height:1.55;color:rgba(255,255,255,.64);max-width:56ch">Eliges cuántos y cómo de trabajados. Puedes mezclar.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px">
+      <div data-rv style="border:1px solid rgba(255,255,255,.10);border-radius:18px;padding:clamp(26px,2.8vw,38px);background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.012));transition:.5s cubic-bezier(.16,1,.3,1)" data-hover="transform:translateY(-5px);background:rgba(255,255,255,.075)">
+        <div style="display:flex;gap:8px;margin-bottom:24px">
+          <div style="flex:1;aspect-ratio:9/16;border-radius:8px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.05);display:flex;align-items:flex-end;padding:8px"><span style="display:block;width:70%;height:5px;border-radius:2px;background:rgba(255,255,255,.35)"></span></div>
+          <div style="flex:1;aspect-ratio:9/16;border-radius:8px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.05);display:flex;align-items:flex-end;padding:8px"><span style="display:block;width:50%;height:5px;border-radius:2px;background:rgba(255,255,255,.35)"></span></div>
+          <div style="flex:1;aspect-ratio:9/16;border-radius:8px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.05);display:flex;align-items:flex-end;padding:8px"><span style="display:block;width:62%;height:5px;border-radius:2px;background:rgba(255,255,255,.35)"></span></div>
+        </div>
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+          <div style="font-size:clamp(22px,2.2vw,28px);font-weight:500;letter-spacing:-.025em">Básico</div>
+          <div style="font-size:clamp(20px,2vw,26px);font-weight:500;letter-spacing:-.03em;color:#D92D20">10 €</div>
+        </div>
+        <p style="margin:14px 0 0;font-size:15px;line-height:1.55;color:rgba(255,255,255,.56)">Cortes, subtítulos y música · para el día a día</p>
+      </div>
+      <div data-rv style="border:1px solid rgba(217,45,32,.32);border-radius:18px;padding:clamp(26px,2.8vw,38px);background:linear-gradient(160deg,rgba(217,45,32,.12),rgba(255,255,255,.02));transition:.5s cubic-bezier(.16,1,.3,1)" data-hover="transform:translateY(-5px);border-color:rgba(217,45,32,.55)">
+        <div style="display:flex;gap:8px;margin-bottom:24px">
+          <div style="position:relative;flex:1;aspect-ratio:9/16;border-radius:8px;border:1px solid rgba(217,45,32,.45);background:linear-gradient(180deg,rgba(217,45,32,.22),rgba(217,45,32,.05));display:flex;align-items:flex-end;padding:8px"><span style="position:absolute;top:7px;left:7px;width:12px;height:12px;border-radius:4px;background:#D92D20"></span><span style="display:block;width:78%;height:5px;border-radius:2px;background:#D92D20"></span></div>
+          <div style="position:relative;flex:1;aspect-ratio:9/16;border-radius:8px;border:1px solid rgba(217,45,32,.45);background:linear-gradient(180deg,rgba(217,45,32,.22),rgba(217,45,32,.05));display:flex;align-items:flex-end;padding:8px"><span style="display:block;width:56%;height:5px;border-radius:2px;background:#D92D20"></span></div>
+          <div style="position:relative;flex:1;aspect-ratio:9/16;border-radius:8px;border:1px solid rgba(217,45,32,.45);background:linear-gradient(180deg,rgba(217,45,32,.22),rgba(217,45,32,.05));display:flex;align-items:flex-end;padding:8px"><span style="display:block;width:68%;height:5px;border-radius:2px;background:#D92D20"></span></div>
+        </div>
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+          <div style="font-size:clamp(22px,2.2vw,28px);font-weight:500;letter-spacing:-.025em">Pro</div>
+          <div style="font-size:clamp(20px,2vw,26px);font-weight:500;letter-spacing:-.03em;color:#D92D20">26 €</div>
+        </div>
+        <p style="margin:14px 0 0;font-size:15px;line-height:1.55;color:rgba(255,255,255,.62)">Tu marca, animaciones y color · para lo importante</p>
+      </div>
+      <div data-rv style="border:1px solid rgba(255,255,255,.10);border-radius:18px;padding:clamp(26px,2.8vw,38px);background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.012));transition:.5s cubic-bezier(.16,1,.3,1)" data-hover="transform:translateY(-5px);background:rgba(255,255,255,.075)">
+        <div style="display:flex;gap:8px;margin-bottom:24px">
+          <div style="position:relative;overflow:hidden;flex:1;aspect-ratio:9/16;border-radius:8px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.05)"><span style="position:absolute;top:18%;left:-14%;width:52%;aspect-ratio:1;border-radius:50%;border:1px solid rgba(217,45,32,.7);animation:gspin 9s linear infinite"></span><span style="position:absolute;bottom:9px;left:8px;right:8px;height:5px;border-radius:2px;background:linear-gradient(90deg,#D92D20,transparent)"></span></div>
+          <div style="position:relative;overflow:hidden;flex:1;aspect-ratio:9/16;border-radius:8px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.05)"><span style="position:absolute;top:14%;right:10%;width:30%;aspect-ratio:1;border-radius:50%;background:rgba(217,45,32,.4)"></span><span style="position:absolute;bottom:9px;left:8px;width:60%;height:5px;border-radius:2px;background:#D92D20"></span></div>
+          <div style="position:relative;overflow:hidden;flex:1;aspect-ratio:9/16;border-radius:8px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.05)"><span style="position:absolute;top:30%;left:22%;width:46%;aspect-ratio:1;border-radius:7px;border:1px dashed rgba(255,255,255,.4);animation:gspin 15s linear infinite reverse"></span><span style="position:absolute;bottom:9px;left:8px;width:72%;height:5px;border-radius:2px;background:linear-gradient(90deg,#D92D20,transparent)"></span></div>
+        </div>
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+          <div style="font-size:clamp(22px,2.2vw,28px);font-weight:500;letter-spacing:-.025em">Motion</div>
+          <div style="font-size:clamp(20px,2vw,26px);font-weight:500;letter-spacing:-.03em;color:#D92D20">60 €</div>
+        </div>
+        <p style="margin:14px 0 0;font-size:15px;line-height:1.55;color:rgba(255,255,255,.56)">Gráficos animados · para lanzamientos</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:clamp(72px,9vw,128px) 0 0">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <div data-rv style="border-top:1px solid rgba(255,255,255,.14);padding-top:22px;margin-bottom:clamp(36px,4.5vw,64px)">
+      <div style="display:flex;justify-content:space-between;gap:20px;margin-bottom:28px">
+        <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:rgba(255,255,255,.46)"><span style="color:#D92D20">06 /</span> Antes de seguir</span>
+        <span style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3)">¿Es para ti?</span>
+      </div>
+      <h2 style="margin:0;font-size:clamp(32px,4.6vw,60px);line-height:1.05;letter-spacing:-.03em;font-weight:500;max-width:16ch">Esto no vale para todo el mundo</h2>
+      <p style="margin:24px 0 0;font-size:clamp(16px,1.5vw,19px);line-height:1.55;color:rgba(255,255,255,.64);max-width:56ch">Mejor decírtelo ahora que dentro de dos meses.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px">
+      <div data-rv style="border:1px solid rgba(217,45,32,.3);border-radius:18px;padding:clamp(28px,3.2vw,44px);background:linear-gradient(160deg,rgba(217,45,32,.12),rgba(255,255,255,.02))">
+        <h3 style="margin:0 0 24px;display:flex;align-items:center;gap:12px;font-size:clamp(19px,1.9vw,24px);font-weight:500;letter-spacing:-.022em"><span style="width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:#D92D20;color:#fff;font-size:14px;font-weight:700;flex:0 0 auto">✓</span>Esto es para ti si…</h3>
+        <ul style="list-style:none;display:grid;gap:16px;margin:0;padding:0">
+          <li style="display:flex;gap:12px;font-size:16px;line-height:1.45;color:rgba(255,255,255,.74)"><span style="color:#D92D20;font-weight:700">✓</span>Ya tienes un negocio que funciona</li>
+          <li style="display:flex;gap:12px;font-size:16px;line-height:1.45;color:rgba(255,255,255,.74)"><span style="color:#D92D20;font-weight:700">✓</span>Estás dispuesto a salir en cámara</li>
+          <li style="display:flex;gap:12px;font-size:16px;line-height:1.45;color:rgba(255,255,255,.74)"><span style="color:#D92D20;font-weight:700">✓</span>Puedes sacar una tarde al mes para grabar</li>
+          <li style="display:flex;gap:12px;font-size:16px;line-height:1.45;color:rgba(255,255,255,.74)"><span style="color:#D92D20;font-weight:700">✓</span>Entiendes que esto se construye en meses</li>
+        </ul>
+        <div style="margin-top:26px;padding-top:20px;border-top:1px solid rgba(255,255,255,.08);font-size:15px;color:rgba(255,255,255,.5);line-height:1.5">La primera consultoría te sirve aunque luego no contrates nada.</div>
+      </div>
+      <div data-rv style="border:1px solid rgba(255,255,255,.10);border-radius:18px;padding:clamp(28px,3.2vw,44px);background:rgba(255,255,255,.03)">
+        <h3 style="margin:0 0 24px;display:flex;align-items:center;gap:12px;font-size:clamp(19px,1.9vw,24px);font-weight:500;letter-spacing:-.022em"><span style="width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.12);color:rgba(255,255,255,.5);font-size:14px;font-weight:700;flex:0 0 auto">✕</span>Esto no es para ti si…</h3>
+        <ul style="list-style:none;display:grid;gap:16px;margin:0;padding:0">
+          <li style="display:flex;gap:12px;font-size:16px;line-height:1.45;color:rgba(255,255,255,.6)"><span style="color:rgba(255,255,255,.4);font-weight:700">✕</span>Quieres hacerte viral el mes que viene</li>
+          <li style="display:flex;gap:12px;font-size:16px;line-height:1.45;color:rgba(255,255,255,.6)"><span style="color:rgba(255,255,255,.4);font-weight:700">✕</span>No piensas salir en cámara</li>
+          <li style="display:flex;gap:12px;font-size:16px;line-height:1.45;color:rgba(255,255,255,.6)"><span style="color:rgba(255,255,255,.4);font-weight:700">✕</span>Todavía no tienes claro qué vendes</li>
+          <li style="display:flex;gap:12px;font-size:16px;line-height:1.45;color:rgba(255,255,255,.6)"><span style="color:rgba(255,255,255,.4);font-weight:700">✕</span>Solo quieres vídeos sueltos, sin plan</li>
+        </ul>
+        <div style="margin-top:26px;padding-top:20px;border-top:1px solid rgba(255,255,255,.08);font-size:15px;color:rgba(255,255,255,.5);line-height:1.5">Si te ves aquí, te lo diremos en la llamada. No cogemos a todo el mundo.</div>
+      </div>
+    </div>
+
+    <div data-rv style="margin-top:clamp(56px,7vw,96px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px">
+      <div style="border:1px solid rgba(255,255,255,.10);border-radius:18px;padding:clamp(26px,2.8vw,36px);background:rgba(255,255,255,.03);transition:.5s cubic-bezier(.16,1,.3,1)" data-hover="transform:translateY(-4px);background:rgba(255,255,255,.07)">
+        <div style="font-size:clamp(30px,3.4vw,44px);font-weight:500;letter-spacing:-.036em;color:#D92D20;margin-bottom:14px">1h</div>
+        <h3 style="margin:0 0 10px;font-size:19px;font-weight:500;letter-spacing:-.022em">Una consultoría al empezar</h3>
+        <p style="margin:0;font-size:15px;line-height:1.5;color:rgba(255,255,255,.56)">Una conversación tranquila para que entendamos tu negocio. Sin preparar nada.</p>
+      </div>
+      <div style="border:1px solid rgba(255,255,255,.10);border-radius:18px;padding:clamp(26px,2.8vw,36px);background:rgba(255,255,255,.03);transition:.5s cubic-bezier(.16,1,.3,1)" data-hover="transform:translateY(-4px);background:rgba(255,255,255,.07)">
+        <div style="font-size:clamp(30px,3.4vw,44px);font-weight:500;letter-spacing:-.036em;color:#D92D20;margin-bottom:14px">1 tarde</div>
+        <h3 style="margin:0 0 10px;font-size:19px;font-weight:500;letter-spacing:-.022em">Grabar, una vez al mes</h3>
+        <p style="margin:0;font-size:15px;line-height:1.5;color:rgba(255,255,255,.56)">Con el móvil y con los guiones ya escritos. Se graba todo del tirón.</p>
+      </div>
+      <div style="border:1px solid rgba(255,255,255,.10);border-radius:18px;padding:clamp(26px,2.8vw,36px);background:rgba(255,255,255,.03);transition:.5s cubic-bezier(.16,1,.3,1)" data-hover="transform:translateY(-4px);background:rgba(255,255,255,.07)">
+        <div style="font-size:clamp(30px,3.4vw,44px);font-weight:500;letter-spacing:-.036em;color:#D92D20;margin-bottom:14px">5 min</div>
+        <h3 style="margin:0 0 10px;font-size:19px;font-weight:500;letter-spacing:-.022em">Aprobar, cada semana</h3>
+        <p style="margin:0;font-size:15px;line-height:1.5;color:rgba(255,255,255,.56)">Entras, miras lo que hemos preparado y le das al botón. Nada más.</p>
+      </div>
+    </div>
+
+    <div data-rv style="margin-top:14px;border:1px solid rgba(217,45,32,.3);border-radius:18px;padding:clamp(28px,3.6vw,48px);background:linear-gradient(150deg,rgba(217,45,32,.12),rgba(255,255,255,.02))">
+      <h3 style="margin:0 0 14px;font-size:clamp(21px,2.3vw,30px);font-weight:500;letter-spacing:-.025em;max-width:26ch">¿Por qué seis meses si puedo irme cuando quiera?</h3>
+      <p style="margin:0;font-size:clamp(15px,1.4vw,17px);color:rgba(255,255,255,.66);line-height:1.6;max-width:66ch">Porque una publicación suelta no construye nada. El contenido funciona por acumulación: cada pieza apoya a la siguiente, y los datos de un mes sirven para decidir el siguiente. Planificar seis meses desde el primer día es lo que permite saber a dónde vamos en lugar de improvisar cada lunes.</p>
+      <p style="margin:16px 0 0;font-size:clamp(15px,1.4vw,17px);color:rgba(255,255,255,.66);line-height:1.6;max-width:66ch">Eso no significa que te comprometas a seis meses de pago. La suscripción es mensual y sin permanencia, y el plan que construimos es tuyo: si te vas, te lo llevas.</p>
+    </div>
+  </div>
+</section>
+
+<section id="precios" style="padding:clamp(72px,9vw,128px) 0 0;scroll-margin-top:80px">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <div data-rv style="border-top:1px solid rgba(255,255,255,.14);padding-top:22px;margin-bottom:clamp(36px,4.5vw,64px)">
+      <div style="display:flex;justify-content:space-between;gap:20px;margin-bottom:28px">
+        <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:rgba(255,255,255,.46)"><span style="color:#D92D20">07 /</span> Lo que cuesta</span>
+        <span style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3)">Precios</span>
+      </div>
+      <h2 style="margin:0;font-size:clamp(32px,4.6vw,60px);line-height:1.05;letter-spacing:-.03em;font-weight:500;max-width:16ch">Se entiende en una línea</h2>
+      <p style="margin:24px 0 0;font-size:clamp(16px,1.5vw,19px);line-height:1.55;color:rgba(255,255,255,.64);max-width:56ch">Una cuota fija más los vídeos que quieras. Nada más.</p>
+    </div>
+
+    <div data-rv style="display:flex;align-items:center;justify-content:center;gap:clamp(14px,3vw,40px);flex-wrap:wrap;padding:clamp(26px,3.4vw,44px);border:1px solid rgba(255,255,255,.10);border-radius:18px;background:rgba(255,255,255,.03)">
+      <div style="text-align:center;min-width:100px">
+        <div style="font-size:clamp(26px,3.4vw,44px);font-weight:500;letter-spacing:-.04em;line-height:1">40 €</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.5);margin-top:10px">la cuota fija</div>
+      </div>
+      <div style="font-size:clamp(20px,2.4vw,32px);font-weight:700;color:#D92D20;opacity:.7">+</div>
+      <div style="text-align:center;min-width:130px">
+        <div style="font-size:clamp(26px,3.4vw,44px);font-weight:500;letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums"><span data-out="qty">4</span> × <span data-out="unit">10</span> €</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.5);margin-top:10px">tus vídeos</div>
+      </div>
+      <div style="font-size:clamp(20px,2.4vw,32px);font-weight:700;color:#D92D20;opacity:.7">=</div>
+      <div style="text-align:center;min-width:110px">
+        <div style="font-size:clamp(26px,3.4vw,44px);font-weight:500;letter-spacing:-.04em;line-height:1;color:#D92D20;font-variant-numeric:tabular-nums"><span data-out="total">80</span> €</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.5);margin-top:10px">al mes</div>
+      </div>
+    </div>
+
+        <div data-rv style="margin-top:14px;border:1px solid rgba(217,45,32,.4);border-radius:18px;padding:clamp(26px,3vw,40px);background:linear-gradient(140deg,rgba(217,45,32,.17),rgba(255,255,255,.02));display:flex;flex-wrap:wrap;gap:28px;align-items:center">
+      <span style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:#D92D20;color:#fff;padding:7px 14px;border-radius:999px;white-space:nowrap">Lanzamiento</span>
+      <div style="flex:1 1 340px">
+        <h3 style="flex:1 1 320px;margin:0 0 9px;font-size:clamp(17px,1.9vw,24px);font-weight:500;letter-spacing:-.022em;line-height:1.2">Los 10 primeros se llevan la estrategia completa de 6 meses incluida</h3>
+        <p style="margin:0;font-size:15px;color:rgba(255,255,255,.66);line-height:1.5;max-width:64ch">Abrimos ahora y arrancamos con pocos negocios. La estrategia de seis meses y las campañas <span style="text-decoration:line-through;opacity:.55">70 €/mes</span> <span style="color:#D92D20;font-weight:600">van incluidas</span> en cualquier plan.</p>
+      </div>
+      <div style="text-align:right;white-space:nowrap">
+        <div style="font-size:clamp(24px,2.8vw,36px);font-weight:500;letter-spacing:-.036em;color:#D92D20;line-height:1">420 €</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.5);margin-top:6px">que no pagas</div>
+      </div>
+    </div>
+    
+    <h3 data-rv style="margin:clamp(56px,7vw,88px) 0 10px;font-size:clamp(21px,2.3vw,30px);font-weight:500;letter-spacing:-.025em">Elige por dónde empezar</h3>
+    <p data-rv style="margin:0 0 28px;font-size:15px;color:rgba(255,255,255,.5)">Toca uno y verás cómo se monta.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px">
+      <button type="button" data-plan-btn="4,10" style="position:relative;text-align:left;cursor:pointer;border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:32px 30px;background:rgba(255,255,255,.03);color:#fff;font:inherit;transition:.45s cubic-bezier(.16,1,.3,1)" data-hover="transform:translateY(-5px);border-color:rgba(217,45,32,.45)">
+        <span class="opt-glow"></span>
+        <span style="position:relative;display:block">
+          <span style="display:block;font-size:clamp(21px,2.2vw,28px);font-weight:500;letter-spacing:-.032em">Empezar</span>
+          <span style="display:block;font-size:14px;color:rgba(255,255,255,.5);margin-top:8px;min-height:40px;line-height:1.4">Para coger el hábito.</span>
+          <span style="display:block;font-size:clamp(30px,3.6vw,44px);font-weight:500;letter-spacing:-.04em;margin:18px 0 2px;line-height:1">80 €<small style="font-size:13px;font-weight:500;color:rgba(255,255,255,.5)">/mes</small></span>
+          <span style="display:block;font-size:13px;color:#D92D20;font-weight:600">4 vídeos al mes · acabado básico</span>
+          <span style="display:grid;gap:9px;margin:20px 0">
+            <span style="display:flex;gap:10px;font-size:14px;color:rgba(255,255,255,.66);line-height:1.4"><span style="color:#D92D20;font-weight:700">✓</span>1 vídeo por semana</span>
+            <span style="display:flex;gap:10px;font-size:14px;color:rgba(255,255,255,.66);line-height:1.4"><span style="color:#D92D20;font-weight:700">✓</span>Todo el sistema incluido</span>
+          </span>
+          <span style="display:block;text-align:center;padding:13px;border-radius:999px;border:1px solid rgba(255,255,255,.14);font-size:13px;font-weight:600;background:rgba(255,255,255,.04)">Ver cómo se monta</span>
+        </span>
+      </button>
+      <button type="button" data-plan-btn="8,26" style="position:relative;text-align:left;cursor:pointer;border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:32px 30px;background:rgba(255,255,255,.03);color:#fff;font:inherit;transition:.45s cubic-bezier(.16,1,.3,1)" data-hover="transform:translateY(-5px);border-color:rgba(217,45,32,.45)">
+        <span class="opt-glow"></span>
+        <span style="position:absolute;top:-11px;left:28px;z-index:2;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:#D92D20;color:#fff;padding:6px 13px;border-radius:999px">El que recomendamos</span>
+        <span style="position:relative;display:block">
+          <span style="display:block;font-size:clamp(21px,2.2vw,28px);font-weight:500;letter-spacing:-.032em">Ritmo</span>
+          <span style="display:block;font-size:14px;color:rgba(255,255,255,.5);margin-top:8px;min-height:40px;line-height:1.4">Donde esto empieza a moverse.</span>
+          <span style="display:block;font-size:clamp(30px,3.6vw,44px);font-weight:500;letter-spacing:-.04em;margin:18px 0 2px;line-height:1">248 €<small style="font-size:13px;font-weight:500;color:rgba(255,255,255,.5)">/mes</small></span>
+          <span style="display:block;font-size:13px;color:#D92D20;font-weight:600">8 vídeos al mes · acabado pro</span>
+          <span style="display:grid;gap:9px;margin:20px 0">
+            <span style="display:flex;gap:10px;font-size:14px;color:rgba(255,255,255,.66);line-height:1.4"><span style="color:#D92D20;font-weight:700">✓</span>2 vídeos por semana</span>
+            <span style="display:flex;gap:10px;font-size:14px;color:rgba(255,255,255,.66);line-height:1.4"><span style="color:#D92D20;font-weight:700">✓</span>Todo el sistema incluido</span>
+          </span>
+          <span style="display:block;text-align:center;padding:13px;border-radius:999px;border:1px solid rgba(255,255,255,.14);font-size:13px;font-weight:600;background:rgba(255,255,255,.04)">Ver cómo se monta</span>
+        </span>
+      </button>
+      <button type="button" data-plan-btn="16,26" style="position:relative;text-align:left;cursor:pointer;border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:32px 30px;background:rgba(255,255,255,.03);color:#fff;font:inherit;transition:.45s cubic-bezier(.16,1,.3,1)" data-hover="transform:translateY(-5px);border-color:rgba(217,45,32,.45)">
+        <span class="opt-glow"></span>
+        <span style="position:relative;display:block">
+          <span style="display:block;font-size:clamp(21px,2.2vw,28px);font-weight:500;letter-spacing:-.032em">A tope</span>
+          <span style="display:block;font-size:14px;color:rgba(255,255,255,.5);margin-top:8px;min-height:40px;line-height:1.4">Para apretar el acelerador.</span>
+          <span style="display:block;font-size:clamp(30px,3.6vw,44px);font-weight:500;letter-spacing:-.04em;margin:18px 0 2px;line-height:1">456 €<small style="font-size:13px;font-weight:500;color:rgba(255,255,255,.5)">/mes</small></span>
+          <span style="display:block;font-size:13px;color:#D92D20;font-weight:600">16 vídeos al mes · acabado pro</span>
+          <span style="display:grid;gap:9px;margin:20px 0">
+            <span style="display:flex;gap:10px;font-size:14px;color:rgba(255,255,255,.66);line-height:1.4"><span style="color:#D92D20;font-weight:700">✓</span>4 vídeos por semana</span>
+            <span style="display:flex;gap:10px;font-size:14px;color:rgba(255,255,255,.66);line-height:1.4"><span style="color:#D92D20;font-weight:700">✓</span>Todo el sistema incluido</span>
+          </span>
+          <span style="display:block;text-align:center;padding:13px;border-radius:999px;border:1px solid rgba(255,255,255,.14);font-size:13px;font-weight:600;background:rgba(255,255,255,.04)">Ver cómo se monta</span>
+        </span>
+      </button>
+    </div>
+
+    <h3 data-rv style="margin:clamp(56px,7vw,88px) 0 10px;font-size:clamp(21px,2.3vw,30px);font-weight:500;letter-spacing:-.025em">¿Quieres otra combinación?</h3>
+    <p data-rv style="margin:0 0 28px;font-size:15px;color:rgba(255,255,255,.5)">Móntalo tú.</p>
+
+    <div data-rv style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:12px">
+      <div style="border:1px solid rgba(255,255,255,.10);border-radius:18px;padding:clamp(26px,3vw,40px);background:rgba(255,255,255,.03);display:grid;gap:32px;align-content:start">
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:16px">
+            <span style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.46);font-weight:600">¿Cuántos vídeos al mes?</span>
+            <b style="font-size:22px;font-weight:500;letter-spacing:-.03em;color:#D92D20;font-variant-numeric:tabular-nums" data-out="qty">4</b>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <button type="button" data-qty-btn="4" style="position:relative;cursor:pointer;border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:11px 22px;background:rgba(255,255,255,.04);color:#fff;font:inherit;font-size:14px;font-weight:600;transition:.3s cubic-bezier(.16,1,.3,1)" data-hover="border-color:rgba(217,45,32,.5)"><span class="opt-glow"></span><span style="position:relative">4</span></button>
+            <button type="button" data-qty-btn="8" style="position:relative;cursor:pointer;border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:11px 22px;background:rgba(255,255,255,.04);color:#fff;font:inherit;font-size:14px;font-weight:600;transition:.3s cubic-bezier(.16,1,.3,1)" data-hover="border-color:rgba(217,45,32,.5)"><span class="opt-glow"></span><span style="position:relative">8</span></button>
+            <button type="button" data-qty-btn="12" style="position:relative;cursor:pointer;border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:11px 22px;background:rgba(255,255,255,.04);color:#fff;font:inherit;font-size:14px;font-weight:600;transition:.3s cubic-bezier(.16,1,.3,1)" data-hover="border-color:rgba(217,45,32,.5)"><span class="opt-glow"></span><span style="position:relative">12</span></button>
+            <button type="button" data-qty-btn="16" style="position:relative;cursor:pointer;border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:11px 22px;background:rgba(255,255,255,.04);color:#fff;font:inherit;font-size:14px;font-weight:600;transition:.3s cubic-bezier(.16,1,.3,1)" data-hover="border-color:rgba(217,45,32,.5)"><span class="opt-glow"></span><span style="position:relative">16</span></button>
+            <button type="button" data-qty-btn="20" style="position:relative;cursor:pointer;border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:11px 22px;background:rgba(255,255,255,.04);color:#fff;font:inherit;font-size:14px;font-weight:600;transition:.3s cubic-bezier(.16,1,.3,1)" data-hover="border-color:rgba(217,45,32,.5)"><span class="opt-glow"></span><span style="position:relative">20</span></button>
+            <button type="button" data-qty-btn="24" style="position:relative;cursor:pointer;border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:11px 22px;background:rgba(255,255,255,.04);color:#fff;font:inherit;font-size:14px;font-weight:600;transition:.3s cubic-bezier(.16,1,.3,1)" data-hover="border-color:rgba(217,45,32,.5)"><span class="opt-glow"></span><span style="position:relative">24</span></button>
+          </div>
+        </div>
+
+        <div>
+          <div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.46);font-weight:600;margin-bottom:16px">¿Cómo de trabajados?</div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,110px),1fr));gap:8px">
+            <button type="button" data-unit-btn="10" style="position:relative;cursor:pointer;border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:18px 16px;background:rgba(255,255,255,.04);color:#fff;font:inherit;text-align:left;transition:.3s cubic-bezier(.16,1,.3,1)" data-hover="border-color:rgba(217,45,32,.5)"><span class="opt-glow"></span><span style="position:relative;display:block"><span style="display:block;font-size:16px;font-weight:500;letter-spacing:-.02em">Básico</span><span style="display:block;font-size:13px;color:rgba(255,255,255,.5);margin-top:5px">10 € cada uno</span></span></button>
+            <button type="button" data-unit-btn="26" style="position:relative;cursor:pointer;border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:18px 16px;background:rgba(255,255,255,.04);color:#fff;font:inherit;text-align:left;transition:.3s cubic-bezier(.16,1,.3,1)" data-hover="border-color:rgba(217,45,32,.5)"><span class="opt-glow"></span><span style="position:relative;display:block"><span style="display:block;font-size:16px;font-weight:500;letter-spacing:-.02em">Pro</span><span style="display:block;font-size:13px;color:rgba(255,255,255,.5);margin-top:5px">26 € cada uno</span></span></button>
+            <button type="button" data-unit-btn="60" style="position:relative;cursor:pointer;border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:18px 16px;background:rgba(255,255,255,.04);color:#fff;font:inherit;text-align:left;transition:.3s cubic-bezier(.16,1,.3,1)" data-hover="border-color:rgba(217,45,32,.5)"><span class="opt-glow"></span><span style="position:relative;display:block"><span style="display:block;font-size:16px;font-weight:500;letter-spacing:-.02em">Motion</span><span style="display:block;font-size:13px;color:rgba(255,255,255,.5);margin-top:5px">60 € cada uno</span></span></button>
+          </div>
+        </div>
+
+        <div>
+          <div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.46);font-weight:600;margin-bottom:16px">Lo que entra siempre, elijas lo que elijas</div>
+          <ul style="list-style:none;display:grid;gap:11px;margin:0;padding:0">
+            <li style="display:flex;gap:11px;font-size:15px;color:rgba(255,255,255,.66);line-height:1.45"><span style="color:#D92D20;font-weight:700">✓</span>Consultoría al empezar</li>
+            <li style="display:flex;gap:11px;font-size:15px;color:rgba(255,255,255,.66);line-height:1.45"><span style="color:#D92D20;font-weight:700">✓</span>Tu agente configurado</li>
+            <li style="display:flex;gap:11px;font-size:15px;color:rgba(255,255,255,.66);line-height:1.45"><span style="color:#D92D20;font-weight:700">✓</span>Guiones de lo que vas a grabar</li>
+            <li style="display:flex;gap:11px;font-size:15px;color:rgba(255,255,255,.66);line-height:1.45"><span style="color:#D92D20;font-weight:700">✓</span>Se publica solo</li>
+            <li style="display:flex;gap:11px;font-size:15px;color:rgba(255,255,255,.66);line-height:1.45"><span style="color:#D92D20;font-weight:700">✓</span>Tus números explicados cada mes</li>
+            <li style="display:flex;gap:11px;font-size:15px;color:#fff;font-weight:600;line-height:1.45"><span style="color:#D92D20;font-weight:700">★</span><span>Estrategia de 6 meses y campañas · <span style="text-decoration:line-through;opacity:.55;font-weight:400;white-space:nowrap">70 €</span> <span style="color:#D92D20">incluida</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="border:1px solid rgba(217,45,32,.32);border-radius:18px;padding:clamp(26px,3vw,40px);background:linear-gradient(160deg,rgba(217,45,32,.14),rgba(255,255,255,.02));display:flex;flex-direction:column;align-content:start">
+        <div style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:18px">Te queda en</div>
+        <div style="font-size:clamp(48px,6vw,76px);font-weight:700;letter-spacing:-.06em;line-height:1;font-variant-numeric:tabular-nums"><span data-out="total">80</span>€<small style="display:block;font-size:14px;font-weight:500;color:rgba(255,255,255,.55);letter-spacing:0;margin-top:10px">al mes</small></div>
+        <div style="margin:26px 0;padding:20px 0;border-top:1px solid rgba(255,255,255,.12);border-bottom:1px solid rgba(255,255,255,.12);display:grid;gap:11px">
+          <div style="display:flex;justify-content:space-between;gap:14px;font-size:14px;color:rgba(255,255,255,.6)"><span>Cuota fija</span><b style="color:#fff;font-weight:600">40 €</b></div>
+          <div style="display:flex;justify-content:space-between;gap:14px;font-size:14px;color:rgba(255,255,255,.6)"><span><span data-out="qty">4</span> vídeos × <span data-out="unit">10</span> €</span><b style="color:#fff;font-weight:600"><span data-out="videosCost">40</span> €</b></div>
+          <div style="display:flex;justify-content:space-between;gap:14px;font-size:14px;color:rgba(255,255,255,.6)"><span>Estrategia de 6 meses</span><b style="color:#D92D20;font-weight:600">incluida</b></div>
+        </div>
+        <a href="https://cal.com/gerson" data-book-url target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;height:52px;padding:0 24px;border-radius:999px;background:#D92D20;color:#fff;font-size:13px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;text-align:center;margin-top:auto;transition:.35s cubic-bezier(.16,1,.3,1)" data-hover="background:#EE4032;color:#fff;transform:scale(1.03)">Reservar consultoría gratis</a>
+      </div>
+    </div>
+
+    <div data-rv style="display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;justify-content:center">
+      <span style="display:inline-block;font-size:14px;color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.10);border-radius:999px;padding:10px 18px;background:rgba(255,255,255,.03)">Pago con tarjeta por <b style="color:#fff;font-weight:600">Stripe</b></span>
+      <span style="display:inline-block;font-size:14px;color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.10);border-radius:999px;padding:10px 18px;background:rgba(255,255,255,.03)">Se cobra <b style="color:#fff;font-weight:600">cada mes</b>, no por adelantado</span>
+      <span style="display:inline-block;font-size:14px;color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.10);border-radius:999px;padding:10px 18px;background:rgba(255,255,255,.03)">Cancelas tú mismo, <b style="color:#fff;font-weight:600">sin llamar a nadie</b></span>
+      <span style="display:inline-block;font-size:14px;color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.10);border-radius:999px;padding:10px 18px;background:rgba(255,255,255,.03)">La consultoría es <b style="color:#fff;font-weight:600">gratis</b> y sin compromiso</span>
+    </div>
+    <p data-rv style="margin:18px 0 0;text-align:center;font-size:14px;color:rgba(255,255,255,.42)">No se cobra nada hasta después de la consultoría.</p>
+  </div>
+</section>
+
+<section style="padding:clamp(72px,9vw,128px) 0 0">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <div data-rv style="border-top:1px solid rgba(255,255,255,.14);padding-top:22px;margin-bottom:clamp(36px,4.5vw,64px)">
+      <div style="display:flex;justify-content:space-between;gap:20px;margin-bottom:28px">
+        <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:rgba(255,255,255,.46)"><span style="color:#D92D20">08 /</span> Quién está detrás</span>
+        <span style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3)">Gerson</span>
+      </div>
+      <h2 style="margin:0;font-size:clamp(32px,4.6vw,60px);line-height:1.05;letter-spacing:-.03em;font-weight:500;max-width:18ch">Detrás de la suscripción hay personas</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(24px,4vw,56px);align-items:center">
+      <div data-rv style="position:relative;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.12);aspect-ratio:4/5;background:#0A0A0A">
+        <img src="assets/gerson.webp" alt="Gerson, consultor de comunicación digital" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+        <div style="position:absolute;left:0;right:0;bottom:0;padding:26px;background:linear-gradient(0deg,rgba(0,0,0,.85),transparent);pointer-events:none">
+          <div style="font-size:clamp(20px,2vw,26px);font-weight:500;letter-spacing:-.03em">Gerson</div>
+          <div style="font-size:13px;color:rgba(255,255,255,.6);margin-top:4px">Consultor de comunicación digital</div>
+        </div>
+      </div>
+      <div data-rv>
+        <div style="font-size:clamp(21px,2.4vw,32px);font-weight:500;letter-spacing:-.025em;line-height:1.28;border-left:2px solid #D92D20;padding-left:24px">Lo difícil no es hacer los vídeos. Es saber qué contar, cuándo y con qué dinero.</div>
+        <p style="margin:28px 0 0;max-width:50ch;font-size:clamp(15px,1.4vw,17px);line-height:1.6;color:rgba(255,255,255,.64)">Llevo años en digital y por el camino monté una consultoría y un equipo propio de edición. Aquí no se venden seguidores: se vende un plan con un porqué detrás de cada decisión, y gente que lo ejecuta todos los días.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:28px">
+          <span style="font-size:13px;color:rgba(255,255,255,.66);border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:9px 16px;background:rgba(255,255,255,.03)">Consultoría propia</span>
+          <span style="font-size:13px;color:rgba(255,255,255,.66);border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:9px 16px;background:rgba(255,255,255,.03)">Equipo propio de edición</span>
+          <span style="font-size:13px;color:rgba(255,255,255,.66);border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:9px 16px;background:rgba(255,255,255,.03)">Estrategia de contenidos</span>
+          <span style="font-size:13px;color:rgba(255,255,255,.66);border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:9px 16px;background:rgba(255,255,255,.03)">Campañas de pago</span>
+          <span style="font-size:13px;color:rgba(255,255,255,.66);border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:9px 16px;background:rgba(255,255,255,.03)">Automatización con IA</span>
+        </div>
+      </div>
+    </div>
+    <div data-rv style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:12px;margin-top:clamp(40px,5vw,64px)">
+      <div style="border-top:1px solid rgba(255,255,255,.14);padding-top:22px"><div style="font-size:clamp(36px,4.4vw,60px);font-weight:500;letter-spacing:-.04em;color:#D92D20;line-height:1">3</div><div style="font-size:14px;color:rgba(255,255,255,.5);margin-top:12px;line-height:1.4">Fases hasta que traiga clientes</div></div>
+      <div style="border-top:1px solid rgba(255,255,255,.14);padding-top:22px"><div style="font-size:clamp(36px,4.4vw,60px);font-weight:500;letter-spacing:-.04em;color:#D92D20;line-height:1">6</div><div style="font-size:14px;color:rgba(255,255,255,.5);margin-top:12px;line-height:1.4">Meses planificados desde el primer día</div></div>
+      <div style="border-top:1px solid rgba(255,255,255,.14);padding-top:22px"><div style="font-size:clamp(36px,4.4vw,60px);font-weight:500;letter-spacing:-.04em;color:#D92D20;line-height:1">3</div><div style="font-size:14px;color:rgba(255,255,255,.5);margin-top:12px;line-height:1.4">Formas de trabajar tus vídeos</div></div>
+      <div style="border-top:1px solid rgba(255,255,255,.14);padding-top:22px"><div style="font-size:clamp(36px,4.4vw,60px);font-weight:500;letter-spacing:-.04em;color:#D92D20;line-height:1">0</div><div style="font-size:14px;color:rgba(255,255,255,.5);margin-top:12px;line-height:1.4">Permanencia. Te vas cuando quieras</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="dudas" style="padding:clamp(72px,9vw,128px) 0 0;scroll-margin-top:80px">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <div data-rv style="border-top:1px solid rgba(255,255,255,.14);padding-top:22px;margin-bottom:clamp(36px,4.5vw,64px)">
+      <div style="display:flex;justify-content:space-between;gap:20px;margin-bottom:28px">
+        <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:rgba(255,255,255,.46)"><span style="color:#D92D20">09 /</span> Dudas</span>
+        <span style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3)">Preguntas</span>
+      </div>
+      <h2 style="margin:0;font-size:clamp(32px,4.6vw,60px);line-height:1.05;letter-spacing:-.03em;font-weight:500">Lo que más nos preguntan</h2>
+    </div>
+    <div data-rv style="border-top:1px solid rgba(255,255,255,.10)">
+      <div data-faq style="border-bottom:1px solid rgba(255,255,255,.10)">
+        <button type="button" data-faq-btn style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;text-align:left;background:none;border:none;color:#fff;font:inherit;cursor:pointer;padding:26px 0;font-size:clamp(17px,1.7vw,21px);font-weight:600;letter-spacing:-.028em">¿Tengo que grabar yo los vídeos?<span data-faq-ic style="flex:0 0 auto;width:26px;height:26px;border-radius:50%;border:1px solid rgba(255,255,255,.2);display:grid;place-items:center;color:#D92D20;font-size:17px;transition:transform .4s cubic-bezier(.16,1,.3,1)">+</span></button>
+        <div data-faq-panel style="max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.16,1,.3,1)"><p style="margin:0;padding:0 0 26px;max-width:70ch;font-size:16px;line-height:1.6;color:rgba(255,255,255,.6)">Sí, tu cara es lo que vende. Pero solo grabas: te mandamos qué decir, lo grabas con el móvil y lo subes. A partir de ahí no tocas nada.</p></div>
+      </div>
+      <div data-faq style="border-bottom:1px solid rgba(255,255,255,.10)">
+        <button type="button" data-faq-btn style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;text-align:left;background:none;border:none;color:#fff;font:inherit;cursor:pointer;padding:26px 0;font-size:clamp(17px,1.7vw,21px);font-weight:600;letter-spacing:-.028em">¿En qué consiste exactamente el método?<span data-faq-ic style="flex:0 0 auto;width:26px;height:26px;border-radius:50%;border:1px solid rgba(255,255,255,.2);display:grid;place-items:center;color:#D92D20;font-size:17px;transition:transform .4s cubic-bezier(.16,1,.3,1)">+</span></button>
+        <div data-faq-panel style="max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.16,1,.3,1)"><p style="margin:0;padding:0 0 26px;max-width:70ch;font-size:16px;line-height:1.6;color:rgba(255,255,255,.6)">Está entero en <a href="#metodo" style="color:#D92D20;font-weight:500">la sección del método</a>. En la consultoría te lo explicamos ya aplicado a tu negocio.</p></div>
+      </div>
+      <div data-faq style="border-bottom:1px solid rgba(255,255,255,.10)">
+        <button type="button" data-faq-btn style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;text-align:left;background:none;border:none;color:#fff;font:inherit;cursor:pointer;padding:26px 0;font-size:clamp(17px,1.7vw,21px);font-weight:600;letter-spacing:-.028em">¿El dinero de la publicidad va incluido?<span data-faq-ic style="flex:0 0 auto;width:26px;height:26px;border-radius:50%;border:1px solid rgba(255,255,255,.2);display:grid;place-items:center;color:#D92D20;font-size:17px;transition:transform .4s cubic-bezier(.16,1,.3,1)">+</span></button>
+        <div data-faq-panel style="max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.16,1,.3,1)"><p style="margin:0;padding:0 0 26px;max-width:70ch;font-size:16px;line-height:1.6;color:rgba(255,255,255,.6)">No. Ese dinero lo pones tú en tu cuenta y decides cuánto. Lo que va incluido es que las campañas las monte y las vigile alguien que sabe.</p></div>
+      </div>
+      <div data-faq style="border-bottom:1px solid rgba(255,255,255,.10)">
+        <button type="button" data-faq-btn style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;text-align:left;background:none;border:none;color:#fff;font:inherit;cursor:pointer;padding:26px 0;font-size:clamp(17px,1.7vw,21px);font-weight:600;letter-spacing:-.028em">¿El agente contesta por mí? ¿Se nota que es un robot?<span data-faq-ic style="flex:0 0 auto;width:26px;height:26px;border-radius:50%;border:1px solid rgba(255,255,255,.2);display:grid;place-items:center;color:#D92D20;font-size:17px;transition:transform .4s cubic-bezier(.16,1,.3,1)">+</span></button>
+        <div data-faq-panel style="max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.16,1,.3,1)"><p style="margin:0;padding:0 0 26px;max-width:70ch;font-size:16px;line-height:1.6;color:rgba(255,255,255,.6)">Contesta lo de siempre: precios, horarios, enlaces para reservar. Habla con tus palabras y en cuanto se pone seria te la pasa a ti.</p></div>
+      </div>
+      <div data-faq style="border-bottom:1px solid rgba(255,255,255,.10)">
+        <button type="button" data-faq-btn style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;text-align:left;background:none;border:none;color:#fff;font:inherit;cursor:pointer;padding:26px 0;font-size:clamp(17px,1.7vw,21px);font-weight:600;letter-spacing:-.028em">¿Puedo irme cuando quiera?<span data-faq-ic style="flex:0 0 auto;width:26px;height:26px;border-radius:50%;border:1px solid rgba(255,255,255,.2);display:grid;place-items:center;color:#D92D20;font-size:17px;transition:transform .4s cubic-bezier(.16,1,.3,1)">+</span></button>
+        <div data-faq-panel style="max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.16,1,.3,1)"><p style="margin:0;padding:0 0 26px;max-width:70ch;font-size:16px;line-height:1.6;color:rgba(255,255,255,.6)">Sí, mes a mes y sin permanencia. El plan es tuyo y te lo llevas.</p></div>
+      </div>
+      <div data-faq style="border-bottom:1px solid rgba(255,255,255,.10)">
+        <button type="button" data-faq-btn style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;text-align:left;background:none;border:none;color:#fff;font:inherit;cursor:pointer;padding:26px 0;font-size:clamp(17px,1.7vw,21px);font-weight:600;letter-spacing:-.028em">¿Y si todavía no tengo redes?<span data-faq-ic style="flex:0 0 auto;width:26px;height:26px;border-radius:50%;border:1px solid rgba(255,255,255,.2);display:grid;place-items:center;color:#D92D20;font-size:17px;transition:transform .4s cubic-bezier(.16,1,.3,1)">+</span></button>
+        <div data-faq-panel style="max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.16,1,.3,1)"><p style="margin:0;padding:0 0 26px;max-width:70ch;font-size:16px;line-height:1.6;color:rgba(255,255,255,.6)">Mejor: no hay nada que deshacer. Se crean en las dos primeras semanas.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:clamp(72px,9vw,128px) 0 clamp(60px,7vw,100px)">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <div data-rv style="position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.12);border-radius:24px;padding:clamp(44px,6vw,92px) clamp(24px,4vw,64px);text-align:center;background:radial-gradient(720px 340px at 50% 0%,rgba(217,45,32,.22),transparent 68%),rgba(255,255,255,.03)">
+      <div style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:#D92D20">Primera consultoría gratis</div>
+      <h2 style="margin:22px auto;font-size:clamp(30px,4.6vw,60px);line-height:1.04;letter-spacing:-.035em;font-weight:500;max-width:19ch">Te contamos qué haríamos con tu negocio</h2>
+      <p style="margin:0 auto 34px;font-size:clamp(16px,1.5vw,19px);line-height:1.55;color:rgba(255,255,255,.64);max-width:52ch">Media hora. Qué haríamos, en qué orden y cuánto costaría.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <a href="https://cal.com/gerson" data-book-url target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;height:54px;padding:0 32px;border-radius:999px;background:#D92D20;color:#fff;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;transition:.35s cubic-bezier(.16,1,.3,1)" data-hover="background:#EE4032;color:#fff;transform:scale(1.04)">Reservar mi hora</a>
+        <a href="#metodo" style="display:inline-flex;align-items:center;justify-content:center;height:54px;padding:0 30px;border-radius:999px;border:1px solid rgba(255,255,255,.2);color:#fff;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;background:rgba(255,255,255,.04);transition:.35s cubic-bezier(.16,1,.3,1)" data-hover="background:rgba(255,255,255,.1);color:#fff">Ver el método completo</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer style="border-top:1px solid rgba(255,255,255,.09);padding:clamp(48px,6vw,80px) 0 40px">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:clamp(24px,4vw,56px)">
+      <div>
+        <div style="font-weight:600;font-size:20px;letter-spacing:-.02em;text-transform:uppercase;margin-bottom:16px">Gerson<span style="color:#D92D20">_</span></div>
+        <p style="margin:0;font-size:15px;max-width:32ch;line-height:1.55;color:rgba(255,255,255,.5)">Estrategia de comunicación y un agente que la ejecuta, para negocios sin departamento de marketing.</p>
+      </div>
+      <div>
+        <h5 style="margin:0 0 18px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);font-weight:600">El método</h5>
+        <ul style="list-style:none;margin:0;padding:0;display:grid;gap:11px">
+          <li><a href="#metodo" style="font-size:15px;color:rgba(255,255,255,.66)" data-hover="color:#D92D20">Cómo funciona</a></li>
+          <li><a href="#metodo" style="font-size:15px;color:rgba(255,255,255,.66)" data-hover="color:#D92D20">Las tres fases</a></li>
+          <li><a href="#servicio" style="font-size:15px;color:rgba(255,255,255,.66)" data-hover="color:#D92D20">Qué recibes</a></li>
+          <li><a href="#servicio" style="font-size:15px;color:rgba(255,255,255,.66)" data-hover="color:#D92D20">Qué pones tú</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 style="margin:0 0 18px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);font-weight:600">El servicio</h5>
+        <ul style="list-style:none;margin:0;padding:0;display:grid;gap:11px">
+          <li><a href="#servicio" style="font-size:15px;color:rgba(255,255,255,.66)" data-hover="color:#D92D20">El agente</a></li>
+          <li><a href="#servicio" style="font-size:15px;color:rgba(255,255,255,.66)" data-hover="color:#D92D20">Los vídeos</a></li>
+          <li><a href="#precios" style="font-size:15px;color:rgba(255,255,255,.66)" data-hover="color:#D92D20">¿Es para mí?</a></li>
+          <li><a href="#precios" style="font-size:15px;color:rgba(255,255,255,.66)" data-hover="color:#D92D20">Precios</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 style="margin:0 0 18px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);font-weight:600">Contacto</h5>
+        <ul style="list-style:none;margin:0;padding:0;display:grid;gap:11px">
+          <li><a href="https://cal.com/gerson" data-book-url target="_blank" rel="noopener" style="font-size:15px;color:rgba(255,255,255,.66)" data-hover="color:#D92D20">Reservar consultoría</a></li>
+          <li><a href="#dudas" style="font-size:15px;color:rgba(255,255,255,.66)" data-hover="color:#D92D20">Dudas frecuentes</a></li>
+          <li><a href="#" style="font-size:15px;color:rgba(255,255,255,.66)" data-hover="color:#D92D20">Aviso legal</a></li>
+          <li><a href="#" style="font-size:15px;color:rgba(255,255,255,.66)" data-hover="color:#D92D20">Privacidad</a></li>
+        </ul>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:clamp(40px,5vw,64px);padding-top:26px;border-top:1px solid rgba(255,255,255,.08);font-size:13px;color:rgba(255,255,255,.4)">
+      <span>© 2026 Gerson</span>
+      <span>Hecho en España</span>
+    </div>
+  </div>
+</footer>
+
+</div>
+
+<script src="assets/cursor-trail.js"></script>
+<script src="assets/site.js"></script>
+</body>
+</html>

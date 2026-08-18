@@ -1,25 +1,39 @@
-# CODING AGENTS: READ THIS FIRST
+# Gerson — web premium
 
-This is a **handoff bundle** from Claude Design (claude.ai/design).
+Sitio de una sola página para la consultoría de comunicación digital de Gerson.
+HTML/CSS/JS estático, sin build ni dependencias — se puede servir tal cual
+(por ejemplo con GitHub Pages apuntando a `main` / raíz).
 
-A user mocked up designs in HTML/CSS/JS using an AI design tool, then exported this bundle so a coding agent can implement the designs for real.
+## Estructura
 
-## What you should do — IMPORTANT
+- `index.html` — la web completa (una sola página).
+- `assets/`
+  - `site.js` — lógica de la página: enlaces de reserva, estados `hover`,
+    calculadora de precios, revelado al hacer scroll, acordeón de dudas y
+    barra de progreso.
+  - `cursor-trail.js` — estela del cursor (se desactiva sola en móvil / sin
+    ratón o con "reducir movimiento" activado).
+  - `gerson.webp` — foto de Gerson usada en la sección "Quién está detrás".
+- `design/` — bundle original exportado desde Claude Design (transcripciones
+  de chat, prototipo `.dc.html`, capturas). Se conserva como referencia del
+  diseño; no hace falta para servir el sitio.
 
-**Read the chat transcripts first.** There are 1 chat transcript(s) in `chats/`. The transcripts show the full back-and-forth between the user and the design assistant — they tell you **what the user actually wants** and **where they landed** after iterating. Don't skip them. The final HTML files are the output, but the chat is where the intent lives.
+## Antes de publicar
 
-**Read `project/Gerson.dc.html` in full.** The user had this file open when they triggered the handoff, so it's almost certainly the primary design they want built. Read it top to bottom — don't skim. Then **follow its imports**: open every file it pulls in (shared components, CSS, scripts) so you understand how the pieces fit together before you start implementing.
+- **Enlace de reserva**: cambia `BOOK_URL` al principio de `assets/site.js`
+  (ahora mismo apunta a `https://cal.com/gerson`, un valor de ejemplo).
+- **Aviso legal / Privacidad**: los enlaces del footer están vacíos (`href="#"`)
+  a falta de esas páginas.
+- **Franja de lanzamiento**: la sección "Los 10 primeros se llevan la
+  estrategia..." está siempre visible; bórrala en `index.html` (bloque con la
+  etiqueta "Lanzamiento") cuando ya no aplique.
 
-**If anything is ambiguous, ask the user to confirm before you start implementing.** It's much cheaper to clarify scope up front than to build the wrong thing.
+## Desarrollo local
 
-## About the design files
+No requiere instalación. Para verlo:
 
-The design medium is **HTML/CSS/JS** — these are prototypes, not production code. Your job is to **recreate them pixel-perfectly** in whatever technology makes sense for the target codebase (React, Vue, native, whatever fits). Match the visual output; don't copy the prototype's internal structure unless it happens to fit.
+```
+python3 -m http.server 8000
+```
 
-**Don't render these files in a browser or take screenshots unless the user asks you to.** Everything you need — dimensions, colors, layout rules — is spelled out in the source. Read the HTML and CSS directly; a screenshot won't tell you anything they don't.
-
-## Bundle contents
-
-- `README.md` — this file
-- `chats/` — conversation transcripts (read these!)
-- `project/` — the `Web Gerson Premium` project files (HTML prototypes, assets, components)
+y abrir `http://localhost:8000`.
