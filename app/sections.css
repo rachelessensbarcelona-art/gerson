@@ -27,7 +27,10 @@ html {
   max-width: 1180px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  /* stretch, no flex-start: con flex-start los bloques que miden "100% del
+     padre" (el slider) se quedaban en 0 de ancho y su contenido recortado.
+     Cada bloque ya limita su propio ancho con max-width. */
+  align-items: stretch;
   gap: clamp(18px, 2.6vh, 34px);
 }
 
@@ -116,8 +119,10 @@ html {
 /* El titular de portada es largo (tres líneas), así que baja de tamaño
    respecto al resto para que quepa el botón sin recortar. */
 .slide--hero .big {
-  font-size: clamp(32px, 5.5vw, 78px);
-  max-width: 21ch;
+  font-size: clamp(30px, 4.8vw, 66px);
+  /* Ancho generoso a propósito: así el titular cae en tres líneas y deja
+     sitio al resumen y al botón sin recortarlos. */
+  max-width: 32ch;
 }
 .hero__glow {
   position: absolute;
@@ -874,4 +879,287 @@ html {
 .slide--me .punch {
   max-width: 34ch;
   margin-top: 10px;
+}
+
+/* ───────────────────────────────────────────────────────────────────────────
+   Página /estrategia — el detalle completo.
+
+   Aquí NO hay pantallas encajadas: es un documento para leer del tirón, así
+   que se anula el scroll-snap que rige en la portada.
+   ─────────────────────────────────────────────────────────────────────────── */
+
+.doc {
+  position: relative;
+  min-height: 100svh;
+  padding: clamp(40px, 7vh, 90px) 0 clamp(60px, 10vh, 120px);
+  overflow: hidden;
+}
+/* La portada pone scroll-snap en <html>; aquí sobra. */
+html:has(.doc) {
+  scroll-snap-type: none;
+}
+.doc__glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(900px 460px at 20% -8%, rgba(217, 45, 32, 0.18), transparent 64%);
+}
+.doc__shell {
+  position: relative;
+  z-index: 2;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 var(--pad);
+}
+
+.doc__back {
+  display: inline-block;
+  font-size: 14px;
+  color: var(--ink-46);
+  margin-bottom: clamp(28px, 5vh, 56px);
+}
+.doc__back:hover {
+  color: var(--red);
+}
+
+.doc__head {
+  margin-bottom: clamp(40px, 7vh, 80px);
+}
+.doc__kicker {
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--red);
+  margin-bottom: 18px;
+}
+.doc__title {
+  font-size: clamp(38px, 6.4vw, 84px);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-weight: 500;
+  white-space: pre-line;
+  margin-bottom: 24px;
+}
+.doc__lead {
+  font-size: clamp(17px, 1.8vw, 22px);
+  line-height: 1.5;
+  color: var(--ink-72);
+  max-width: 56ch;
+}
+
+.doc__idea {
+  border-left: 2px solid var(--red);
+  padding-left: 24px;
+  margin-bottom: clamp(44px, 7vh, 80px);
+}
+.doc__idea-title {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--red);
+  margin-bottom: 12px;
+}
+.doc__idea-body {
+  font-size: clamp(16px, 1.6vw, 20px);
+  line-height: 1.6;
+  color: var(--ink-72);
+  max-width: 62ch;
+}
+
+.doc__phase {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.028);
+  padding: clamp(26px, 4vh, 44px);
+  margin-bottom: 14px;
+  overflow: hidden;
+  position: relative;
+}
+.doc__phase-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+}
+.doc__phase-bar span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--red), rgba(217, 45, 32, 0.15));
+}
+.doc__phase-tag {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 12px;
+}
+.doc__phase-name {
+  font-size: clamp(30px, 4vw, 52px);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  font-weight: 500;
+  margin-bottom: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 16px;
+}
+.doc__phase-name small {
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--ink-42);
+  font-style: italic;
+  letter-spacing: 0;
+}
+.doc__phase-desc {
+  font-size: clamp(15px, 1.5vw, 18px);
+  line-height: 1.6;
+  color: var(--ink-64);
+  max-width: 64ch;
+  margin-bottom: 28px;
+}
+.doc__phase-split {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: clamp(20px, 3vw, 40px);
+  padding-top: 26px;
+  border-top: 1px solid var(--line);
+}
+.doc__micro {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-42);
+  margin-bottom: 18px;
+}
+.doc__steps {
+  display: grid;
+  gap: 13px;
+}
+.doc__steps li {
+  display: flex;
+  gap: 12px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ink-72);
+}
+.doc__dot {
+  flex: 0 0 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--red);
+  margin-top: 8px;
+}
+.doc__outcome-big {
+  font-size: clamp(17px, 1.7vw, 21px);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.35;
+  margin-bottom: 12px;
+}
+.doc__outcome-sub {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink-56);
+}
+
+.doc__h2 {
+  font-size: clamp(28px, 4vw, 52px);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  font-weight: 500;
+  margin-bottom: 26px;
+}
+.doc__table-wrap {
+  margin-top: clamp(48px, 8vh, 90px);
+}
+.doc__table {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.025);
+}
+.doc__tr {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
+  gap: 16px;
+  padding: 18px clamp(18px, 2.4vw, 28px);
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  align-items: center;
+}
+.doc__tr--head {
+  border-top: 0;
+  background: rgba(255, 255, 255, 0.045);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-42);
+  font-weight: 600;
+}
+.doc__tr--head .right {
+  text-align: right;
+}
+.doc__what {
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: -0.02em;
+}
+.doc__desc {
+  font-size: 15px;
+  color: var(--ink-56);
+  line-height: 1.5;
+}
+.doc__when {
+  font-size: 13px;
+  color: var(--red);
+  font-weight: 600;
+  text-align: right;
+}
+
+.doc__cta {
+  margin-top: clamp(56px, 9vh, 100px);
+  padding: clamp(32px, 5vh, 56px);
+  border: 1px solid var(--red-line);
+  border-radius: 24px;
+  background: linear-gradient(160deg, var(--red-wash), rgba(255, 255, 255, 0.02));
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Validar · Ahorrar · Probar — las tres cosas que consigue la estrategia */
+.wins {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.wins li {
+  border-left: 2px solid var(--red);
+  padding-left: 16px;
+}
+.wins__word {
+  display: block;
+  font-size: clamp(19px, 2vw, 26px);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: var(--red);
+  margin-bottom: 4px;
+}
+.wins__text {
+  display: block;
+  font-size: clamp(14px, 1.3vw, 16px);
+  line-height: 1.4;
+  color: var(--ink-56);
+}
+@media (max-width: 720px) {
+  .wins {
+    grid-template-columns: 1fr;
+  }
 }

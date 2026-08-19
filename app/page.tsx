@@ -34,10 +34,16 @@ export default function Home() {
       <SlideDots ids={IDS} />
 
       {/* ───────── 1 · Portada ───────── */}
-      <Slide id="inicio" className="slide--hero">
-        <div className="hero__glow" />
-        <Particles />
-
+      <Slide
+        id="inicio"
+        className="slide--hero"
+        bg={
+          <>
+            <div className="hero__glow" />
+            <Particles />
+          </>
+        }
+      >
         <motion.h1 variants={stagger} className="big">
           <In variants={riseBig} as="span">
             <span className="big__line">{s1.line1}</span>
@@ -140,6 +146,16 @@ export default function Home() {
         <In variants={rise} className="lead">
           {s3.lead}
         </In>
+
+        {/* Las tres cosas que consigue la estrategia, de un vistazo */}
+        <motion.ul variants={stagger} className="wins">
+          {s3.wins.map((w) => (
+            <motion.li key={w.word} variants={rise}>
+              <span className="wins__word">{w.word}</span>
+              <span className="wins__text">{w.text}</span>
+            </motion.li>
+          ))}
+        </motion.ul>
 
         <motion.div variants={stagger} className="versus">
           <motion.div variants={rise} className="versus__col versus__col--wrong">
@@ -279,8 +295,7 @@ export default function Home() {
       </Slide>
 
       {/* ───────── 8 · Empezar ───────── */}
-      <Slide id="empezar" tag={s8.tag} className="slide--end">
-        <div className="end__glow" />
+      <Slide id="empezar" tag={s8.tag} className="slide--end" bg={<div className="end__glow" />}>
         <In variants={riseBig} as="h2" className="big">
           {s8.title}
         </In>

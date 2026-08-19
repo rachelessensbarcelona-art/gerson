@@ -67,11 +67,15 @@ export function Slide({
   id,
   className = '',
   tag,
+  bg,
 }: {
   children: ReactNode;
   id: string;
   className?: string;
   tag?: string;
+  /** Fondos (resplandores, partículas). Van FUERA de .slide__inner, que está
+      limitado a 1180px — si se meten dentro, se cortan a ese ancho. */
+  bg?: ReactNode;
 }) {
   const reduce = useReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
@@ -84,6 +88,7 @@ export function Slide({
 
   return (
     <section id={id} className={`slide ${className}`.trim()}>
+      {bg}
       <motion.div
         ref={ref}
         className="slide__inner"

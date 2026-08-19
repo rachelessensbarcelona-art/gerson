@@ -34,8 +34,8 @@ export const slideNames = [
 // ─── 1 · Portada ────────────────────────────────────────────────────────────
 
 export const s1 = {
-  line1: 'Hoy todos sabemos que hay que estar en digital.',
-  line2: 'Casi nadie lo hace bien.',
+  line1: 'Tu negocio tiene que estar en redes.',
+  line2: 'Nadie te ha explicado cómo.',
   /** Presenta el slider: por qué hacerlo bien no es tan fácil. */
   before: 'Porque hacerlo bien significa controlar de todo esto:',
   /** Van rotando en la portada, uno detrás de otro. */
@@ -75,7 +75,13 @@ export const s3 = {
   tag: 'Cómo lo hago',
   line1: 'Primero probamos.',
   line2: 'Después gastamos.',
-  lead: 'Suena de cajón, pero casi nadie lo hace así. Y justo ahí es donde se va el dinero de la mayoría.',
+  lead: 'De tanto ver lo mismo, acabé dando con una estrategia que le da la vuelta al orden: primero comprobamos si tu idea funciona de verdad, y solo entonces se pone dinero encima. Así pruebas sin arriesgar y te ahorras lo que cuesta averiguarlo por las malas.',
+  /** Las tres cosas que consigue la estrategia, en una palabra cada una. */
+  wins: [
+    { word: 'Validar', text: 'Saber si tu idea aguanta antes de apostar por ella' },
+    { word: 'Ahorrar', text: 'No quemar presupuesto en anuncios que aún no tocaban' },
+    { word: 'Probar', text: 'Ver qué funciona con datos, no con corazonadas' },
+  ],
   wrong: {
     label: 'Lo que suele pasar',
     items: [
@@ -190,6 +196,7 @@ export const s8 = {
 
 export const footer = {
   links: [
+    { label: 'La estrategia completa', href: '/estrategia' },
     { label: 'Portafolio', href: config.portfolioUrl, external: true },
     { label: 'Reservar', href: config.bookUrl, external: true },
     { label: 'Aviso legal', href: '#' },
@@ -197,4 +204,81 @@ export const footer = {
   ],
   copyright: '© 2026 Gerson',
   place: 'Hecho en España',
+};
+
+// ─── Página aparte: la estrategia completa ──────────────────────────────────
+// Vive en /estrategia y se enlaza desde el pie. Aquí va el detalle que en la
+// portada sobraría: las tres fases semana a semana y todo lo que entra.
+
+export const strategy = {
+  back: 'Volver',
+  kicker: 'La estrategia completa',
+  title: 'Seis meses,\npaso a paso.',
+  lead: 'Esto es lo que pasa desde el día que empezamos hasta el mes seis. Sin humo: qué hago yo, qué haces tú y qué tienes al final de cada fase.',
+  idea: {
+    title: 'La idea de fondo',
+    body: 'Casi todo el mundo empieza produciendo y pagando anuncios antes de saber qué le interesa a su gente. Aquí se hace al revés: primero averiguamos qué funciona sin gastar, y solo entonces se pone dinero detrás. Eso es lo que te ahorra tiempo y presupuesto.',
+  },
+  phases: [
+    {
+      tag: 'Fase 1 · Meses 1 y 2',
+      name: 'Probar',
+      motto: 'Escuchar antes de hablar',
+      desc: 'Los dos primeros meses no van de gustarle a todo el mundo. Van de averiguar qué le importa de verdad a quien te podría comprar. Se prueba, se mide y se descarta. Sin gastar un euro en publicidad.',
+      steps: [
+        'Consultoría inicial: quién eres, qué vendes y a quién',
+        'Definimos tu mensaje y las líneas de contenido a explorar',
+        'Montamos tu ayudante y conectamos tus canales',
+        'Empiezas a grabar, con los guiones ya escritos',
+        'Se publica constante y se recogen datos de cada pieza',
+      ],
+      outcome: 'Al terminar sabemos qué contar, cómo contarlo y qué días funciona mejor.',
+      outcomeSub: 'Información concreta sobre tu negocio, no consejos genéricos de internet.',
+    },
+    {
+      tag: 'Fase 2 · Meses 3 y 4',
+      name: 'Construir',
+      motto: 'Ahora sí, en bonito',
+      desc: 'Con los datos delante se deja de probar. Se refuerza lo que ya demostró que interesa y se sube el nivel de acabado, porque a partir de aquí sí importa cómo se ve.',
+      steps: [
+        'Elegimos los temas y formatos que mejor respondieron',
+        'Las piezas pasan a acabado pro: tus colores, tu letra, animaciones',
+        'Ordenamos tu perfil para que quien llegue entienda qué vendes',
+        'El ayudante empieza a filtrar y clasificar a quien te escribe',
+        'Revisión mensual con los números explicados y decisiones para el mes siguiente',
+      ],
+      outcome: 'Al terminar tienes un perfil que crece con contenido que ya sabemos que funciona.',
+      outcomeSub: 'Y empiezan a llegar conversaciones de gente que ya sabe lo que haces antes de escribirte.',
+    },
+    {
+      tag: 'Fase 3 · Meses 5 y 6',
+      name: 'Crecer',
+      motto: 'Gasolina a lo que ya arde',
+      desc: 'Solo ahora se pone dinero en publicidad, y únicamente detrás de lo que ya demostró que interesa sin pagar. Por eso no se quema presupuesto probando.',
+      steps: [
+        'Montamos las campañas sobre las piezas que mejor rindieron',
+        'Definimos el presupuesto contigo y vigilamos el coste por cliente',
+        'Se ajusta cada semana: se para lo que no rinde, se amplía lo que sí',
+        'El ayudante absorbe el aumento de mensajes sin que se pierda ninguno',
+        'Cierre de los seis meses con un plan para los siguientes',
+      ],
+      outcome: 'Al terminar tu comunicación deja de ser un gasto y pasa a ser un canal que trae clientes.',
+      outcomeSub: 'Y por primera vez puedes decir cuánto te cuesta conseguir uno.',
+    },
+  ],
+  includesTitle: 'Todo lo que entra',
+  includesHead: ['Qué', 'En qué consiste', 'Cuándo'],
+  includes: [
+    ['Consultoría inicial', 'Nos sentamos a entender tu negocio y construimos el plan a tu medida.', 'Semana 1'],
+    ['Plan de comunicación', 'Tu mensaje, tus líneas de contenido y los canales que tienen sentido para ti.', 'Semana 2'],
+    ['Calendario', 'Qué se publica, qué día, en qué canal y para qué. Ya cargado, no un PDF que se pierde.', 'Semana 2'],
+    ['Tu ayudante montado', 'Skills de Claude configurados con tu forma de hablar y conectados a tus canales.', 'Semana 2'],
+    ['Guiones', 'Te digo exactamente qué grabar y cómo empezarlo para que enganche.', 'Cada semana'],
+    ['Publicación', 'Sale solo, en la fecha y hora marcadas. Tú solo apruebas.', 'Cada semana'],
+    ['Lectura de números', 'Qué funcionó, qué no y qué cambiamos. En cristiano, no en jerga.', 'Cada mes'],
+    ['Campañas', 'Montaje, vigilancia y ajuste de tus anuncios. El presupuesto lo pones tú.', 'Desde el mes 5'],
+  ],
+  ctaTitle: '¿Lo vemos con lo tuyo?',
+  ctaLead: 'Media hora, gratis. Te digo qué haría con tu negocio y cuánto costaría.',
+  cta: 'Reservar mi media hora',
 };
