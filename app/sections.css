@@ -299,6 +299,63 @@
   line-height: 1.14;
 }
 
+
+/* ─── Los seis oficios ─────────────────────────────────────────────────── */
+
+.crafts {
+  display: grid;
+  /* Fija a 3 columnas: con auto-fit salían 5 arriba y 1 huérfana debajo. */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.crafts > * {
+  height: 100%;
+}
+@media (max-width: 900px) {
+  .crafts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 560px) {
+  .crafts {
+    grid-template-columns: 1fr;
+  }
+}
+.craft {
+  height: 100%;
+  padding: clamp(24px, 2.4vw, 32px);
+}
+/* El número queda grande y traslúcido: ordena la lectura sin robar
+   protagonismo al nombre del oficio. */
+.craft__num {
+  font-size: clamp(30px, 3vw, 40px);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.12);
+  margin-bottom: 18px;
+  transition: color 0.45s var(--ease);
+}
+.craft:hover .craft__num {
+  color: rgba(217, 45, 32, 0.7);
+}
+.craft__name {
+  font-size: clamp(18px, 1.7vw, 22px);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  margin-bottom: 10px;
+}
+.craft__desc {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink-56);
+}
+
+.tried-title {
+  margin-bottom: 20px;
+  font-size: clamp(18px, 1.9vw, 24px);
+}
+
 /* ─── Lo que ya probaste ───────────────────────────────────────────────── */
 
 .tried {
@@ -329,14 +386,16 @@
   letter-spacing: 0.08em;
 }
 .tried__text {
-  position: relative;
-  display: inline-block;
   flex: 1 1 240px;
   font-size: clamp(18px, 2.1vw, 28px);
   font-weight: 500;
   letter-spacing: -0.025em;
 }
 /* La tachadura crece cuando la fila se revela. */
+.tried__label {
+  position: relative;
+  display: inline-block;
+}
 .tried__strike {
   position: absolute;
   left: -2px;
@@ -1641,4 +1700,24 @@
 }
 .footer__legal a:hover {
   color: var(--red);
+}
+
+/* ─── Historia de Gerson ───────────────────────────────────────────────── */
+
+.about__lead {
+  font-size: clamp(17px, 1.7vw, 21px);
+  line-height: 1.55;
+  color: var(--ink-72);
+  max-width: 52ch;
+}
+.about__lead + .about__bio {
+  margin-top: 20px;
+}
+.about__quote {
+  margin-top: 28px;
+}
+.punch--sm {
+  max-width: 34ch;
+  font-size: clamp(20px, 2.4vw, 32px);
+  margin-top: clamp(40px, 5vw, 64px);
 }

@@ -10,6 +10,8 @@
 export const config = {
   /** Enlace de reserva. Cámbialo por tu Calendly / Cal.com real. */
   bookUrl: 'https://cal.com/gerson',
+  /** Enlace al portafolio. Ponlo cuando lo tengas publicado. */
+  portfolioUrl: '#',
   /** Cuota fija mensual (la estrategia). */
   basePrice: 40,
   /** Pon a false para ocultar la franja de lanzamiento. */
@@ -21,13 +23,12 @@ export const config = {
 export const hero = {
   badge: 'Desde 80 € al mes',
   aside: 'Plazas limitadas',
-  // Cada línea entra con su propia animación.
   headline: [
-    { text: 'Empezar en digital es fácil.' },
-    { text: 'Lo difícil es que' },
-    { text: 'sirva para algo.', accent: true },
+    { text: 'Sabes que tienes que estar en digital.' },
+    { text: 'Lo que nadie te dijo es que' },
+    { text: 'eso son seis oficios.', accent: true },
   ],
-  sub: 'Te monto la estrategia de seis meses, te digo qué grabar cada semana y te dejo un agente de IA que contesta como tú. Tú solo tienes que aparecer.',
+  sub: 'Marketing, publicidad, inteligencia artificial, ventas, campañas y edición de vídeo. O los dominas todos, o lo que publicas no acaba de servir para nada.',
   cards: [
     { kind: 'bars', title: 'El plan', sub: '6 meses, cerrados' },
     { kind: 'scripts', title: 'Los guiones', sub: 'qué grabar cada semana' },
@@ -38,86 +39,87 @@ export const hero = {
 };
 
 export const marquee = [
+  'Primero validar, después gastar',
   'Estrategia de 6 meses',
   'Guiones cada semana',
   'Tu agente con Skills de Claude',
   'Vídeos si te hacen falta',
   'Sin permanencia',
-  'Sin jerga rara',
 ];
 
-// ─── 01 · El problema ───────────────────────────────────────────────────────
+// ─── 01 · Los seis oficios ──────────────────────────────────────────────────
 
-export const problem = {
+export const wall = {
   num: '01',
-  kicker: 'Lo que pasa de verdad',
+  kicker: 'Lo que hay detrás',
   aside: 'El problema',
-  title: 'No es que no valgas para esto.\nEs que nadie te dio el mapa.',
-  cards: [
-    {
-      tag: 'El arranque',
-      title: 'El folio en blanco',
-      text: 'Abres la cámara. Te quedas mirando. La cierras. Mañana lo hago.',
-      graphic: 'blank',
-      caption: 'grabados · sin publicar',
-    },
-    {
-      tag: 'La constancia',
-      title: 'La ley del jueves',
-      text: 'El lunes con todo. El miércoles regular. El jueves ya ni te acuerdas.',
-      graphic: 'decay',
-      caption: 'se enfría · se pierde',
-    },
-    {
-      tag: 'Los datos',
-      title: 'Los números mudos',
-      text: '437 visitas. ¿Eso es bueno? ¿Malo? ¿Normal? Nadie te lo explica.',
-      graphic: 'flat',
-      caption: '¿está bien o está mal?',
-    },
+  title: 'Publicar es solo la punta',
+  intro:
+    'Estar en redes lo tiene claro todo el mundo. El problema llega después: para que eso traiga clientes de verdad hay que saber de seis cosas a la vez, y ninguna se aprende en un fin de semana.',
+  // Los seis oficios. El número lo pinta el componente.
+  crafts: [
+    { name: 'Marketing', desc: 'Saber a quién le hablas y qué le mueve a comprar.' },
+    { name: 'Publicidad', desc: 'Dónde poner el dinero y, sobre todo, cuándo no ponerlo.' },
+    { name: 'Inteligencia artificial', desc: 'Qué herramienta, para qué y cómo configurarla para tu negocio.' },
+    { name: 'Ventas', desc: 'Convertir una conversación suelta en un cliente que paga.' },
+    { name: 'Campañas', desc: 'Montarlas, medirlas y corregirlas cada semana sin quemar presupuesto.' },
+    { name: 'Edición de vídeo', desc: 'Que lo que subes se vea y se oiga como algo serio.' },
   ],
-  punch: ['Y no, esto no se arregla', 'publicando más'],
-};
-
-// ─── 02 · Lo que ya probaste ────────────────────────────────────────────────
-
-export const tried = {
-  num: '02',
-  kicker: 'Antes de esto',
-  aside: 'Lo que ya probaste',
-  title: 'Seguro que algo de esto te suena',
-  rows: [
+  triedTitle: 'Y seguro que ya lo has intentado por tu cuenta',
+  tried: [
     { n: '01', text: 'Te tragaste veinte reels de «cómo crecer en redes»', result: 'y cada uno decía lo contrario' },
     { n: '02', text: 'Compraste el curso', result: 'vas por el módulo 3' },
     { n: '03', text: 'Publicaste un mes entero seguido', result: 'y luego, la vida' },
   ],
-  punch: ['No te faltó constancia.', 'Te faltó saber hacia dónde'],
+  punch: ['Seis oficios.', 'Y un negocio que atender'],
 };
 
-// ─── El giro ────────────────────────────────────────────────────────────────
+// ─── 02 · Hola, soy Gerson ──────────────────────────────────────────────────
 
-export const turn = {
-  kicker: 'El giro',
-  title: 'El contenido no es el producto.\nEl producto es saber qué contar.',
-  accent: 'saber qué contar',
-  sub: 'Casi todo el mundo empieza grabando. Se empieza escuchando: qué le interesa de verdad a la gente que te puede comprar. Lo demás sale mucho más fácil.',
-  note: 'Y antes de venderte nada, te lo enseño aplicado a tu negocio.',
+export const gerson = {
+  num: '02',
+  kicker: 'Quién te lo cuenta',
+  aside: 'Gerson',
+  title: 'Hola, soy Gerson',
+  name: 'Gerson',
+  role: 'Consultor de comunicación digital',
+  // Cada párrafo es un bloque. El primero se ve más grande.
+  story: [
+    'Llevo años aprendiendo y trabajando con equipos digitales. Por el camino monté mi propia consultoría y un equipo de edición, y me he pasado media vida viendo el mismo error repetirse: negocios buenos gastando dinero en publicidad antes de saber qué quería oír su gente.',
+    'De ahí salió esto. Entre la consultoría y yo dimos con una estrategia que primero valida tu idea de negocio y solo después gasta. Así no se te va lo primero, el tiempo, ni lo segundo, el dinero en campañas que todavía no tocaban.',
+  ],
+  // La frase que resume su forma de trabajar.
+  quote: 'Primero se valida. Después se gasta. Casi todo el mundo lo hace al revés.',
+  tags: [
+    'Consultoría propia',
+    'Equipo propio de edición',
+    'Estrategia de contenidos',
+    'Campañas de pago',
+    'Agentes con Skills de Claude',
+  ],
+  closing: 'Lo que hago es meterme esos seis oficios en la mochila para que tú no tengas que aprendértelos.',
+  stats: [
+    { value: 6, suffix: '', label: 'Oficios que dejas de tener que aprender' },
+    { value: 3, suffix: '', label: 'Fases hasta que traiga clientes' },
+    { value: 6, suffix: '', label: 'Meses planificados desde el primer día' },
+    { value: 0, suffix: '', label: 'Permanencia. Te vas cuando quieras' },
+  ],
 };
 
 // ─── 03 · El método ─────────────────────────────────────────────────────────
 
 export const method = {
   num: '03',
-  kicker: 'El método',
+  kicker: 'La estrategia',
   aside: 'Seis meses',
-  title: 'Seis meses. Tres fases.\nUn orden que sí tiene sentido.',
+  title: 'Primero validar.\nDespués gastar.',
   intro:
-    'Cada fase se apoya en lo que aprendimos en la anterior. Por eso esto deja de depender de la suerte y empieza a parecerse a un plan.',
+    'Casi todo el mundo empieza por el final: produce, publica y paga anuncios antes de saber qué le interesa a su gente. Aquí se hace al revés. Dos meses averiguando qué funciona, dos construyendo sobre lo que ya demostró que interesa y dos poniendo dinero solo detrás de eso.',
   chart: {
     left: 'Gente que te ve',
     right: 'Mes 1 → Mes 6',
     legend: [
-      { months: 'Meses 1 y 2', name: 'Aprender' },
+      { months: 'Meses 1 y 2', name: 'Validar' },
       { months: 'Meses 3 y 4', name: 'Construir' },
       { months: 'Meses 5 y 6', name: 'Crecer' },
     ],
@@ -125,7 +127,7 @@ export const method = {
   phases: [
     {
       tag: 'Fase 1 · Meses 1 y 2',
-      name: 'Aprender',
+      name: 'Validar',
       motto: 'Escuchar antes de hablar',
       progress: 33,
       desc: 'Los dos primeros meses no van de gustarle a todo el mundo. Van de averiguar qué le importa de verdad a quien te podría comprar. Se prueba, se mide y se descarta. Y sin gastar un euro en publicidad.',
@@ -280,7 +282,7 @@ export const fit = {
   why: {
     title: '¿Por qué seis meses si puedo irme cuando quiera?',
     body: [
-      'Porque una publicación suelta no construye nada. El contenido funciona por acumulación: cada pieza apoya a la siguiente, y los datos de un mes deciden el siguiente. Planificar seis meses desde el primer día es lo que permite saber a dónde vamos en vez de improvisar cada lunes.',
+      'Porque validar lleva su tiempo. Los dos primeros meses son para averiguar qué funciona en tu caso, y esa información es justo la que hace que los cuatro siguientes no sean a ciegas. Cada pieza apoya a la siguiente y los datos de un mes deciden el siguiente.',
       'Eso no significa que te comprometas a seis meses de pago. La suscripción es mensual y sin permanencia, y el plan que construimos es tuyo: si te vas, te lo llevas.',
     ],
   },
@@ -298,7 +300,7 @@ export const pricing = {
   launch: {
     badge: 'Lanzamiento',
     title: 'Los 10 primeros se llevan la estrategia completa de 6 meses incluida',
-    body: 'Abro ahora y arranco con pocos negocios para poder currármelo. La estrategia de seis meses y las campañas van incluidas en cualquier plan.',
+    body: 'Abro ahora y arranco con pocos negocios para poder currármelo. La estrategia de seis meses y las campañas ',
     struck: '70 €/mes',
     included: 'van incluidas',
     amount: '420 €',
@@ -341,30 +343,10 @@ export const pricing = {
   footnote: 'No se cobra nada hasta después de la consultoría.',
 };
 
-// ─── 09 · Quién ─────────────────────────────────────────────────────────────
-
-export const about = {
-  num: '09',
-  kicker: 'Quién está detrás',
-  aside: 'Gerson',
-  title: 'Detrás de la suscripción hay una persona',
-  name: 'Gerson',
-  role: 'Consultor de comunicación digital',
-  quote: 'Lo difícil no es hacer los vídeos. Es saber qué contar, cuándo y con qué dinero.',
-  bio: 'Llevo años en digital y por el camino monté una consultoría y un equipo propio de edición. Aquí no se venden seguidores: se vende un plan con un porqué detrás de cada decisión, y alguien que lo ejecuta todos los días.',
-  tags: ['Consultoría propia', 'Equipo propio de edición', 'Estrategia de contenidos', 'Campañas de pago', 'Agentes con Skills de Claude'],
-  stats: [
-    { value: 3, suffix: '', label: 'Fases hasta que traiga clientes' },
-    { value: 6, suffix: '', label: 'Meses planificados desde el primer día' },
-    { value: 3, suffix: '', label: 'Formas de trabajar tus vídeos' },
-    { value: 0, suffix: '', label: 'Permanencia. Te vas cuando quieras' },
-  ],
-};
-
-// ─── 10 · Dudas ─────────────────────────────────────────────────────────────
+// ─── 09 · Dudas ─────────────────────────────────────────────────────────────
 
 export const faq = {
-  num: '10',
+  num: '09',
   kicker: 'Dudas',
   aside: 'Preguntas',
   title: 'Lo que más me preguntan',
@@ -376,6 +358,10 @@ export const faq = {
     {
       q: '¿Y si acabo de empezar y no tengo nada?',
       a: 'Mejor: no hay nada que deshacer. Si no tienes perfiles, se crean en las dos primeras semanas y arrancamos desde cero con el plan ya hecho.',
+    },
+    {
+      q: '¿Qué significa eso de «validar» antes de gastar?',
+      a: 'Que durante los dos primeros meses no ponemos dinero en anuncios. Publicamos, medimos y averiguamos qué temas y formatos mueven a tu gente. Solo cuando algo ya funciona sin pagar, se le pone presupuesto detrás. Así no se quema dinero probando.',
     },
     {
       q: 'Eso del agente con «Skills de Claude», ¿qué es exactamente?',
@@ -407,7 +393,7 @@ export const cta = {
   title: 'Te cuento qué haría con lo tuyo',
   sub: 'Media hora. Qué haríamos, en qué orden y cuánto costaría. Sin compromiso y sin powerpoint.',
   primary: 'Reservar mi hora',
-  secondary: 'Ver el método completo',
+  secondary: 'Ver la estrategia',
 };
 
 // ─── Pie ────────────────────────────────────────────────────────────────────
@@ -416,7 +402,7 @@ export const footer = {
   tagline: 'Estrategia de comunicación y un agente que la ejecuta, para negocios sin departamento de marketing.',
   columns: [
     {
-      title: 'El método',
+      title: 'La estrategia',
       links: [
         { label: 'Cómo funciona', href: '#metodo' },
         { label: 'Las tres fases', href: '#metodo' },
@@ -432,8 +418,9 @@ export const footer = {
       ],
     },
     {
-      title: 'Contacto',
+      title: 'Gerson',
       links: [
+        { label: 'Ver mi portafolio', href: config.portfolioUrl, external: true },
         { label: 'Reservar consultoría', href: config.bookUrl, external: true },
         { label: 'Dudas frecuentes', href: '#dudas' },
       ],

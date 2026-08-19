@@ -2,16 +2,14 @@ import {
   config,
   hero,
   marquee,
-  problem,
-  tried,
-  turn,
+  wall,
+  gerson,
   method,
   includes,
   agent,
   videos,
   fit,
   pricing,
-  about,
   faq,
   cta,
   footer,
@@ -26,9 +24,6 @@ import {
   BarsGraphic,
   ScriptsGraphic,
   OrbitGraphic,
-  BlankGraphic,
-  DecayGraphic,
-  FlatGraphic,
   GrowthChart,
   VideoThumbs,
   AgentOrbit,
@@ -63,7 +58,6 @@ function SectionHead({
 }
 
 const heroGraphics = { bars: BarsGraphic, scripts: ScriptsGraphic, orbit: OrbitGraphic };
-const problemGraphics = { blank: BlankGraphic, decay: DecayGraphic, flat: FlatGraphic };
 
 export default function Home() {
   return (
@@ -143,79 +137,102 @@ export default function Home() {
         </div>
       </div>
 
-      {/* ─── 01 · El problema ────────────────────────────────────────── */}
+      {/* ─── 01 · Los seis oficios ───────────────────────────────────── */}
       <section className="section">
         <div className="shell">
-          <SectionHead num={problem.num} kicker={problem.kicker} aside={problem.aside} title={problem.title} />
-          <div className="grid-auto">
-            {problem.cards.map((card, i) => {
-              const G = problemGraphics[card.graphic as keyof typeof problemGraphics];
-              return (
-                <Reveal key={card.title} delay={i * 80}>
-                  <SpotlightCard>
-                    <div className="tag">{card.tag}</div>
-                    <h3 className="card__title">{card.title}</h3>
-                    <p className="card__text">{card.text}</p>
-                    <div className="card__foot">
-                      <G />
-                      <div className="card__caption">{card.caption}</div>
-                    </div>
-                  </SpotlightCard>
-                </Reveal>
-              );
-            })}
-          </div>
-          <Reveal as="p" className="punch">
-            {problem.punch[0]}
-            <br />
-            <span className="accent">{problem.punch[1]}</span>.
-          </Reveal>
-        </div>
-      </section>
+          <SectionHead
+            num={wall.num}
+            kicker={wall.kicker}
+            aside={wall.aside}
+            title={wall.title}
+            intro={wall.intro}
+          />
 
-      {/* ─── 02 · Lo que ya probaste ─────────────────────────────────── */}
-      <section className="section">
-        <div className="shell">
-          <SectionHead num={tried.num} kicker={tried.kicker} aside={tried.aside} title={tried.title} />
+          <div className="crafts">
+            {wall.crafts.map((craft, i) => (
+              <Reveal key={craft.name} delay={i * 60}>
+                <SpotlightCard className="craft">
+                  <div className="craft__num">{String(i + 1).padStart(2, '0')}</div>
+                  <h3 className="craft__name">{craft.name}</h3>
+                  <p className="craft__desc">{craft.desc}</p>
+                </SpotlightCard>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal as="p" className="block-title tried-title">
+            {wall.triedTitle}
+          </Reveal>
           <div className="tried">
-            {tried.rows.map((row, i) => (
+            {wall.tried.map((row, i) => (
               <Reveal key={row.n} delay={i * 80} className="tried__row">
                 <span className="tried__n">{row.n}</span>
                 <span className="tried__text">
-                  {row.text}
-                  <span className="tried__strike" />
+                  {/* El tachado se dibuja sobre esta etiqueta, no sobre toda la
+                      fila, para que mida exactamente lo que mide el texto. */}
+                  <span className="tried__label">
+                    {row.text}
+                    <span className="tried__strike" />
+                  </span>
                 </span>
                 <span className="tried__result">{row.result}</span>
               </Reveal>
             ))}
           </div>
+
           <Reveal as="p" className="punch">
-            {tried.punch[0]}
+            {wall.punch[0]}
             <br />
-            {tried.punch[1]} <span className="accent">·</span>
+            <span className="accent">{wall.punch[1]}</span>.
           </Reveal>
         </div>
       </section>
 
-      {/* ─── El giro ─────────────────────────────────────────────────── */}
-      <section className="turn">
-        <div className="turn__glow" />
-        <div className="shell turn__inner">
-          <Reveal as="div" className="turn__kicker">
-            {turn.kicker}
+      {/* ─── 02 · Hola, soy Gerson ───────────────────────────────────── */}
+      <section id="gerson" className="section anchor">
+        <div className="shell">
+          <SectionHead num={gerson.num} kicker={gerson.kicker} aside={gerson.aside} title={gerson.title} />
+
+          <div className="about">
+            <Reveal className="about__photo">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/gerson.webp" alt={`${gerson.name}, ${gerson.role.toLowerCase()}`} width={546} height={859} />
+              <div className="about__caption">
+                <div className="about__name">{gerson.name}</div>
+                <div className="about__role">{gerson.role}</div>
+              </div>
+            </Reveal>
+            <Reveal delay={90}>
+              {gerson.story.map((p, i) => (
+                <p key={p} className={i === 0 ? 'about__lead' : 'about__bio'}>
+                  {p}
+                </p>
+              ))}
+              <blockquote className="about__quote">{gerson.quote}</blockquote>
+              <div className="about__tags">
+                {gerson.tags.map((t) => (
+                  <span key={t} className="tagpill">
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </Reveal>
+          </div>
+
+          <Reveal as="p" className="punch punch--sm">
+            {gerson.closing}
           </Reveal>
-          <Reveal as="div">
-            <h2 className="turn__title">
-              {turn.title.split(turn.accent)[0]}
-              <span className="accent">{turn.accent}</span>
-              {turn.title.split(turn.accent)[1]}
-            </h2>
-          </Reveal>
-          <Reveal as="p" className="turn__sub">
-            {turn.sub}
-          </Reveal>
-          <Reveal as="p" className="turn__note">
-            {turn.note}
+
+          <Reveal className="stats">
+            {gerson.stats.map((s) => (
+              <div key={s.label} className="stat">
+                <div className="stat__value accent">
+                  <CountUp to={s.value} />
+                  {s.suffix}
+                </div>
+                <div className="stat__label">{s.label}</div>
+              </div>
+            ))}
           </Reveal>
         </div>
       </section>
@@ -455,48 +472,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── 09 · Quién está detrás ──────────────────────────────────── */}
-      <section className="section">
-        <div className="shell">
-          <SectionHead num={about.num} kicker={about.kicker} aside={about.aside} title={about.title} />
-
-          <div className="about">
-            <Reveal className="about__photo">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/gerson.webp" alt={`${about.name}, ${about.role.toLowerCase()}`} width={546} height={859} />
-              <div className="about__caption">
-                <div className="about__name">{about.name}</div>
-                <div className="about__role">{about.role}</div>
-              </div>
-            </Reveal>
-            <Reveal delay={90}>
-              <blockquote className="about__quote">{about.quote}</blockquote>
-              <p className="about__bio">{about.bio}</p>
-              <div className="about__tags">
-                {about.tags.map((t) => (
-                  <span key={t} className="tagpill">
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </Reveal>
-          </div>
-
-          <Reveal className="stats">
-            {about.stats.map((s) => (
-              <div key={s.label} className="stat">
-                <div className="stat__value accent">
-                  <CountUp to={s.value} />
-                  {s.suffix}
-                </div>
-                <div className="stat__label">{s.label}</div>
-              </div>
-            ))}
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ─── 10 · Dudas ──────────────────────────────────────────────── */}
+      {/* ─── 09 · Dudas ──────────────────────────────────────────────── */}
       <section id="dudas" className="section anchor">
         <div className="shell">
           <SectionHead num={faq.num} kicker={faq.kicker} aside={faq.aside} title={faq.title} />
