@@ -34,15 +34,22 @@ export const slideNames = [
 // ─── 1 · Portada ────────────────────────────────────────────────────────────
 
 export const s1 = {
-  badge: 'Desde 80 € al mes · sin permanencia',
   line1: 'Hoy todos sabemos que hay que estar en digital.',
   line2: 'Casi nadie lo hace bien.',
-  lead: 'Y no es por falta de ganas. Pasa que, para que publicar te traiga clientes de verdad, alguien tiene que controlar de esto:',
+  /** Presenta el slider: por qué hacerlo bien no es tan fácil. */
+  before: 'Porque hacerlo bien significa controlar de todo esto:',
   /** Van rotando en la portada, uno detrás de otro. */
   crafts: ['Marketing', 'Publicidad', 'Inteligencia artificial', 'Ventas', 'Campañas', 'Editar vídeo'],
-  after: 'Seis oficios. Y tú ya tienes uno: el tuyo.',
-  /** Frase que remata el hueco entre "sé que hay que hacerlo" y "sé hacerlo". */
-  gap: 'Por eso la mayoría publica mucho y vende poco.',
+  /** La frase clave: de esto va la web. Lo que el visitante se lleva. */
+  summary: 'Yo me encargo de todo eso por ti:',
+  /** Las cuatro cosas que recibe, en una línea cada una. */
+  gets: [
+    'La estrategia de seis meses',
+    'Los guiones de lo que grabas',
+    'Los vídeos ya editados',
+    'Un ayudante que contesta tus mensajes',
+  ],
+  after: 'Tú solo tienes que ponerle la cara.',
   cta: 'Cuéntame tu caso',
   scroll: 'Sigue',
 };

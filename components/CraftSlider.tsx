@@ -6,11 +6,11 @@ import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 /**
  * Los seis oficios, pasando uno detrás de otro en la portada.
  *
- * La gracia es que el visitante no lee una lista: ve cómo van cayendo, uno
- * tras otro, y entiende el peso sin que se lo expliquen.
+ * La gracia es que no lees una lista: ves cómo van cayendo, uno tras otro, y
+ * entiendes el peso sin que te lo expliquen.
  *
- * Se para al pasar el ratón por encima, para poder leerlos con calma. Y con
- * "reducir movimiento" activado se muestran todos a la vez, sin rotación.
+ * Se para al pasar el ratón por encima. Con "reducir movimiento" se muestran
+ * los seis a la vez, sin rotación.
  */
 export default function CraftSlider({ items, interval = 2000 }: { items: string[]; interval?: number }) {
   const reduce = useReducedMotion();
@@ -23,7 +23,6 @@ export default function CraftSlider({ items, interval = 2000 }: { items: string[
     return () => clearInterval(t);
   }, [reduce, paused, items.length, interval]);
 
-  // Sin animación: la lista entera, que se lee igual de bien.
   if (reduce) {
     return (
       <ul className="cslider cslider--static">
@@ -38,36 +37,34 @@ export default function CraftSlider({ items, interval = 2000 }: { items: string[
   }
 
   return (
-    <div
-      className="cslider"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-    >
+    <div className="cslider" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
       <div className="cslider__stage">
-        <AnimatePresence mode="wait">
+        {/* Sin mode="wait": el que sale y el que entra se cruzan, así el
+            hueco nunca se queda vacío a media transición. */}
+        <AnimatePresence initial={false}>
           <motion.div
             key={items[i]}
             className="cslider__item"
-            initial={{ y: '100%', opacity: 0 }}
-            animate={{ y: '0%', opacity: 1 }}
-            exit={{ y: '-100%', opacity: 0 }}
-            transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ y: 26, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -26, opacity: 0 }}
+            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
           >
             <span className="cslider__n">{String(i + 1).padStart(2, '0')}</span>
-            {items[i]}
+            <span className="cslider__word">{items[i]}</span>
           </motion.div>
         </AnimatePresence>
       </div>
 
       {/* Barritas de avance: se ve cuántos quedan */}
-      <div className="cslider__bars" aria-hidden="true">
+      <div className="cslider__bars">
         {items.map((it, n) => (
           <button
             key={it}
             type="button"
             className={`cslider__bar ${n === i ? 'is-active' : ''}`}
             onClick={() => setI(n)}
-            tabIndex={-1}
+            aria-label={it}
           >
             {n === i && !paused && (
               <motion.span
@@ -80,13 +77,6 @@ export default function CraftSlider({ items, interval = 2000 }: { items: string[
           </button>
         ))}
       </div>
-
-      {/* Para lectores de pantalla: la lista completa, sin rotación. */}
-      <ul className="visually-hidden">
-        {items.map((it) => (
-          <li key={it}>{it}</li>
-        ))}
-      </ul>
     </div>
   );
 }

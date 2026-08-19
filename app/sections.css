@@ -127,26 +127,42 @@ html {
     radial-gradient(900px 520px at 15% -10%, rgba(217, 45, 32, 0.22), transparent 62%),
     radial-gradient(700px 480px at 88% 4%, rgba(122, 11, 16, 0.4), transparent 66%);
 }
-.hero__badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 13px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  font-weight: 600;
-  color: var(--red);
-  border: 1px solid var(--red-line);
-  border-radius: 999px;
-  padding: 9px 18px;
-  background: rgba(217, 45, 32, 0.07);
+.hero__before {
+  font-size: clamp(16px, 1.6vw, 20px);
+  color: var(--ink-64);
 }
-.hero__pulse {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--red);
-  animation: beat 2.6s infinite;
+
+/* Las cuatro cosas que recibe: es el resumen de la oferta, así que va
+   destacado con una línea roja a la izquierda. */
+.hero__summary {
+  font-size: clamp(18px, 1.9vw, 24px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-top: 4px;
+}
+.hero__gets {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 28px;
+  border-left: 2px solid var(--red);
+  padding-left: 20px;
+}
+.hero__gets li {
+  display: flex;
+  gap: 10px;
+  font-size: clamp(15px, 1.5vw, 19px);
+  line-height: 1.35;
+  color: var(--ink-80);
+}
+.hero__gets i {
+  font-style: normal;
+  font-weight: 700;
+  flex: 0 0 auto;
+}
+@media (max-width: 720px) {
+  .hero__gets {
+    grid-template-columns: 1fr;
+  }
 }
 
 .scroll-hint {
@@ -176,20 +192,22 @@ html {
 }
 .cslider__stage {
   position: relative;
-  height: clamp(52px, 7vw, 82px);
+  height: clamp(46px, 5.4vw, 66px);
   overflow: hidden;
-  display: flex;
-  align-items: center;
 }
 .cslider__item {
   position: absolute;
   inset: 0;
   display: flex;
   align-items: center;
-  gap: 16px;
-  font-size: clamp(30px, 4.6vw, 62px);
+  gap: 14px;
+}
+/* El tamaño baja respecto a la primera versión: "Inteligencia artificial"
+   no cabía y se salía del marco recortada. */
+.cslider__word {
+  font-size: clamp(26px, 3.8vw, 50px);
   font-weight: 600;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.03em;
   color: var(--red);
   white-space: nowrap;
 }
@@ -242,9 +260,8 @@ html {
 }
 
 .hero__after {
-  font-size: clamp(17px, 1.7vw, 22px);
-  font-weight: 500;
-  color: var(--ink-72);
+  font-size: clamp(16px, 1.6vw, 20px);
+  color: var(--ink-56);
 }
 
 /* Párrafo de cuerpo: más pequeño que .lead, para los bloques que explican */

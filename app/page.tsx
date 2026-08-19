@@ -38,11 +38,6 @@ export default function Home() {
         <div className="hero__glow" />
         <Particles />
 
-        <In variants={rise} className="hero__badge">
-          <span className="hero__pulse" />
-          {s1.badge}
-        </In>
-
         <motion.h1 variants={stagger} className="big">
           <In variants={riseBig} as="span">
             <span className="big__line">{s1.line1}</span>
@@ -52,8 +47,8 @@ export default function Home() {
           </In>
         </motion.h1>
 
-        <In variants={rise} className="lead">
-          {s1.lead}
+        <In variants={rise} className="hero__before">
+          {s1.before}
         </In>
 
         {/* Los seis oficios, rotando */}
@@ -61,8 +56,20 @@ export default function Home() {
           <CraftSlider items={s1.crafts} />
         </In>
 
+        {/* De esto va la web: qué recibe si trabaja conmigo */}
+        <In variants={rise} className="hero__summary">
+          {s1.summary}
+        </In>
+        <motion.ul variants={stagger} className="hero__gets">
+          {s1.gets.map((g) => (
+            <motion.li key={g} variants={rise}>
+              <i className="accent">✓</i>
+              {g}
+            </motion.li>
+          ))}
+        </motion.ul>
         <In variants={rise} className="hero__after">
-          {s1.after} <span className="accent">{s1.gap}</span>
+          {s1.after}
         </In>
 
         <In variants={rise} className="actions">
