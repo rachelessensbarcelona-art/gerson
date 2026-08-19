@@ -111,7 +111,13 @@ html {
 /* ─── 1 · Portada ──────────────────────────────────────────────────────── */
 
 .slide--hero .slide__inner {
-  gap: clamp(20px, 3vh, 40px);
+  gap: clamp(14px, 2.2vh, 28px);
+}
+/* El titular de portada es largo (tres líneas), así que baja de tamaño
+   respecto al resto para que quepa el botón sin recortar. */
+.slide--hero .big {
+  font-size: clamp(32px, 5.5vw, 78px);
+  max-width: 21ch;
 }
 .hero__glow {
   position: absolute;
@@ -159,7 +165,111 @@ html {
   z-index: 3;
 }
 
-/* ─── 2 · Los seis oficios ─────────────────────────────────────────────── */
+
+/* ─── Slider de los seis oficios (portada) ─────────────────────────────────
+   Van pasando de uno en uno. Ocupa una franja fija para que el resto de la
+   portada no baile cada vez que cambia la palabra. */
+
+.cslider {
+  width: 100%;
+  max-width: 640px;
+}
+.cslider__stage {
+  position: relative;
+  height: clamp(52px, 7vw, 82px);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+.cslider__item {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: clamp(30px, 4.6vw, 62px);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  color: var(--red);
+  white-space: nowrap;
+}
+.cslider__n {
+  font-size: clamp(12px, 1.1vw, 15px);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.28);
+  flex: 0 0 auto;
+}
+.cslider__bars {
+  display: flex;
+  gap: 6px;
+  margin-top: 16px;
+}
+.cslider__bar {
+  position: relative;
+  flex: 1;
+  height: 3px;
+  border: 0;
+  padding: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  overflow: hidden;
+  cursor: pointer;
+}
+.cslider__fill {
+  position: absolute;
+  inset: 0;
+  background: var(--red);
+  transform-origin: 0 50%;
+}
+.cslider__bar.is-active {
+  background: rgba(217, 45, 32, 0.28);
+}
+/* Versión sin movimiento: la lista entera */
+.cslider--static {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px 24px;
+}
+.cslider--static li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: clamp(18px, 2vw, 26px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--red);
+}
+
+.hero__after {
+  font-size: clamp(17px, 1.7vw, 22px);
+  font-weight: 500;
+  color: var(--ink-72);
+}
+
+/* Párrafo de cuerpo: más pequeño que .lead, para los bloques que explican */
+.body {
+  font-size: clamp(16px, 1.55vw, 20px);
+  line-height: 1.55;
+  color: var(--ink-72);
+  max-width: 54ch;
+}
+
+.punch--sm {
+  font-size: clamp(18px, 2vw, 28px);
+  max-width: 42ch;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ─── (libre) ──────────────────────────────────────────────────────────── */
 
 .crafts {
   display: grid;
@@ -689,4 +799,62 @@ html {
   html {
     scroll-snap-type: none;
   }
+}
+
+/* ─── 2 · Quién soy (retrato redondo) ──────────────────────────────────────
+   Pantalla centrada: el retrato es pequeño y va arriba, para que el peso lo
+   lleve lo que se cuenta y no la foto. */
+
+.slide--me {
+  text-align: center;
+}
+.slide--me .slide__inner {
+  align-items: center;
+  max-width: 780px;
+  gap: clamp(14px, 1.8vh, 22px);
+}
+
+.avatar {
+  position: relative;
+  width: clamp(130px, 15vh, 190px);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  margin-bottom: 6px;
+}
+.avatar img {
+  width: 78%;
+  height: 78%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 50% 28%; /* encuadra la cara, no el pecho */
+  border: 1px solid rgba(255, 255, 255, 0.16);
+}
+.avatar__ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px dashed rgba(217, 45, 32, 0.55);
+}
+.avatar__glow {
+  position: absolute;
+  inset: -18%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%, rgba(217, 45, 32, 0.3), transparent 66%);
+  pointer-events: none;
+}
+.avatar__role {
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-42);
+  font-weight: 600;
+}
+
+.body--center {
+  max-width: 60ch;
+}
+.slide--me .punch {
+  max-width: 34ch;
+  margin-top: 10px;
 }

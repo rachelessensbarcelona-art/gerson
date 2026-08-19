@@ -1,13 +1,14 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { config, s1, s2, s3, s4, s5, s6, s7, s8, s9, footer } from '@/lib/content';
+import { config, s1, s2, s3, s4, s5, s6, s7, s8, footer } from '@/lib/content';
 import Particles from '@/components/Particles';
 import Price from '@/components/Price';
+import CraftSlider from '@/components/CraftSlider';
 import { CursorTrail } from '@/components/Interactions';
 import { Slide, SlideDots, In, rise, riseBig, pop, stagger } from '@/components/Deck';
 
-const IDS = ['inicio', 'lio', 'gerson', 'idea', 'plan', 'robot', 'tu', 'precio', 'empezar'];
+const IDS = ['inicio', 'gerson', 'como', 'plan', 'ayudante', 'tu', 'precio', 'empezar'];
 
 /** Botón de reserva. Se repite en varias pantallas. */
 function Book({ children, big = false }: { children: React.ReactNode; big?: boolean }) {
@@ -52,14 +53,22 @@ export default function Home() {
         </motion.h1>
 
         <In variants={rise} className="lead">
-          {s1.sub}
+          {s1.lead}
+        </In>
+
+        {/* Los seis oficios, rotando */}
+        <In variants={rise}>
+          <CraftSlider items={s1.crafts} />
+        </In>
+
+        <In variants={rise} className="hero__after">
+          {s1.after} <span className="accent">{s1.gap}</span>
         </In>
 
         <In variants={rise} className="actions">
           <Book big>{s1.cta}</Book>
         </In>
 
-        {/* Pista de que hay más abajo */}
         <motion.div
           className="scroll-hint"
           variants={rise}
@@ -74,69 +83,62 @@ export default function Home() {
         </motion.div>
       </Slide>
 
-      {/* ───────── 2 · El lío ───────── */}
-      <Slide id="lio" tag={s2.tag}>
-        <In variants={riseBig} as="h2" className="big big--mid">
-          {s2.title}
+      {/* ───────── 2 · Quién soy ───────── */}
+      <Slide id="gerson" tag={s2.tag} className="slide--me">
+        {/* Retrato pequeño y redondo, con un anillo girando alrededor: el
+            mismo lenguaje que la órbita del ayudante, para que la web se
+            sienta de una sola pieza. */}
+        <In variants={pop} className="avatar">
+          <motion.span
+            className="avatar__ring"
+            animate={{ rotate: 360 }}
+            transition={{ duration: 26, repeat: Infinity, ease: 'linear' }}
+            aria-hidden="true"
+          />
+          <span className="avatar__glow" aria-hidden="true" />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/gerson.webp" alt="Gerson" width={506} height={890} />
         </In>
-        <motion.ul variants={stagger} className="crafts">
-          {s2.crafts.map((c, i) => (
-            <motion.li key={c} variants={pop} className="crafts__item">
-              <span className="crafts__n">{String(i + 1).padStart(2, '0')}</span>
-              {c}
-            </motion.li>
-          ))}
-        </motion.ul>
+
+        <In variants={riseBig} as="h2" className="big big--mid">
+          {s2.hello}
+        </In>
+        <In variants={rise} className="avatar__role">
+          {s2.role}
+        </In>
+
+        {s2.story.map((l) => (
+          <In key={l} variants={rise} as="p" className="body body--center">
+            {l}
+          </In>
+        ))}
+
         <In variants={rise} className="punch">
           {s2.punch}
+          <br />
+          <span className="accent">{s2.punchAccent}</span>
         </In>
       </Slide>
 
-      {/* ───────── 3 · Quién soy ───────── */}
-      <Slide id="gerson" tag={s3.tag} className="slide--split">
-        <div className="split">
-          <In variants={pop} className="split__media">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/gerson.webp" alt="Gerson" width={546} height={859} />
-            <span className="split__role">{s3.role}</span>
-          </In>
-          <div className="split__text">
-            <In variants={riseBig} as="h2" className="big big--mid">
-              {s3.hello}
-            </In>
-            {s3.lines.map((l) => (
-              <In key={l} variants={rise} as="p" className="lead">
-                {l}
-              </In>
-            ))}
-            <In variants={rise} className="punch punch--left">
-              {s3.punch}
-              <br />
-              <span className="accent">{s3.punchAccent}</span>
-            </In>
-          </div>
-        </div>
-      </Slide>
-
-      {/* ───────── 4 · La idea ───────── */}
-      <Slide id="idea" tag={s4.tag}>
+      {/* ───────── 3 · Cómo lo hago ───────── */}
+      <Slide id="como" tag={s3.tag}>
         <motion.h2 variants={stagger} className="big">
           <In variants={riseBig} as="span">
-            <span className="big__line">{s4.line1}</span>
+            <span className="big__line">{s3.line1}</span>
           </In>
           <In variants={riseBig} as="span">
-            <span className="big__line accent">{s4.line2}</span>
+            <span className="big__line accent">{s3.line2}</span>
           </In>
         </motion.h2>
         <In variants={rise} className="lead">
-          {s4.sub}
+          {s3.lead}
         </In>
 
         <motion.div variants={stagger} className="versus">
           <motion.div variants={rise} className="versus__col versus__col--wrong">
-            <div className="versus__label">{s4.wrong.label}</div>
+            <div className="versus__label">{s3.wrong.label}</div>
             <ul>
-              {s4.wrong.items.map((i) => (
+              {s3.wrong.items.map((i) => (
                 <li key={i}>
                   <i>✕</i>
                   {i}
@@ -145,9 +147,9 @@ export default function Home() {
             </ul>
           </motion.div>
           <motion.div variants={rise} className="versus__col versus__col--right">
-            <div className="versus__label">{s4.right.label}</div>
+            <div className="versus__label">{s3.right.label}</div>
             <ul>
-              {s4.right.items.map((i) => (
+              {s3.right.items.map((i) => (
                 <li key={i}>
                   <i className="accent">✓</i>
                   {i}
@@ -156,15 +158,22 @@ export default function Home() {
             </ul>
           </motion.div>
         </motion.div>
+
+        <In variants={rise} className="punch punch--sm">
+          {s3.punch}
+        </In>
       </Slide>
 
-      {/* ───────── 5 · El plan ───────── */}
-      <Slide id="plan" tag={s5.tag}>
+      {/* ───────── 4 · El plan ───────── */}
+      <Slide id="plan" tag={s4.tag}>
         <In variants={riseBig} as="h2" className="big big--mid">
-          {s5.title}
+          {s4.title}
+        </In>
+        <In variants={rise} className="lead">
+          {s4.lead}
         </In>
         <motion.div variants={stagger} className="steps">
-          {s5.steps.map((st) => (
+          {s4.steps.map((st) => (
             <motion.div key={st.n} variants={rise} className="step">
               <div className="step__n">{st.n}</div>
               <div className="step__months">{st.months}</div>
@@ -173,20 +182,23 @@ export default function Home() {
             </motion.div>
           ))}
         </motion.div>
-        <In variants={rise} className="punch">
-          {s5.punch}
+        <In variants={rise} className="punch punch--sm">
+          {s4.punch}
         </In>
       </Slide>
 
-      {/* ───────── 6 · Tu robot ───────── */}
-      <Slide id="robot" tag={s6.tag} className="slide--split">
+      {/* ───────── 5 · Tu ayudante ───────── */}
+      <Slide id="ayudante" tag={s5.tag} className="slide--split">
         <div className="split split--rev">
           <div className="split__text">
             <In variants={riseBig} as="h2" className="big big--mid">
-              {s6.title}
+              {s5.title}
+            </In>
+            <In variants={rise} as="p" className="body">
+              {s5.lead}
             </In>
             <motion.ul variants={stagger} className="ticks">
-              {s6.bullets.map((b) => (
+              {s5.bullets.map((b) => (
                 <motion.li key={b} variants={rise}>
                   <i className="accent">✓</i>
                   {b}
@@ -194,7 +206,7 @@ export default function Home() {
               ))}
             </motion.ul>
             <In variants={rise} className="note">
-              {s6.note}
+              {s5.note}
             </In>
           </div>
           <In variants={pop} className="split__media split__media--orbit">
@@ -216,20 +228,23 @@ export default function Home() {
                 animate={{ scale: [1, 1.05, 1] }}
                 transition={{ duration: 3.4, repeat: Infinity, ease: 'easeInOut' }}
               >
-                {s6.core}
+                {s5.core}
               </motion.div>
             </div>
           </In>
         </div>
       </Slide>
 
-      {/* ───────── 7 · Tú qué haces ───────── */}
-      <Slide id="tu" tag={s7.tag}>
+      {/* ───────── 6 · Tu parte ───────── */}
+      <Slide id="tu" tag={s6.tag}>
         <In variants={riseBig} as="h2" className="big big--mid">
-          {s7.title}
+          {s6.title}
+        </In>
+        <In variants={rise} className="lead">
+          {s6.lead}
         </In>
         <motion.div variants={stagger} className="steps">
-          {s7.items.map((it) => (
+          {s6.items.map((it) => (
             <motion.div key={it.big} variants={rise} className="step step--you">
               <div className="step__big accent">{it.big}</div>
               <div className="step__when">{it.when}</div>
@@ -237,36 +252,39 @@ export default function Home() {
             </motion.div>
           ))}
         </motion.div>
-        <In variants={rise} className="punch">
-          {s7.punch}
+        <In variants={rise} className="punch punch--sm">
+          {s6.punch}
         </In>
       </Slide>
 
-      {/* ───────── 8 · Precio ───────── */}
-      <Slide id="precio" tag={s8.tag} className="slide--price">
+      {/* ───────── 7 · Precio ───────── */}
+      <Slide id="precio" tag={s7.tag} className="slide--price">
         <In variants={riseBig} as="h2" className="big big--mid">
-          {s8.title}
+          {s7.title}
+        </In>
+        <In variants={rise} className="lead">
+          {s7.lead}
         </In>
         <Price />
         <In variants={rise} className="price__free">
-          {s8.free}
+          {s7.free}
         </In>
       </Slide>
 
-      {/* ───────── 9 · Empezar ───────── */}
-      <Slide id="empezar" tag={s9.tag} className="slide--end">
+      {/* ───────── 8 · Empezar ───────── */}
+      <Slide id="empezar" tag={s8.tag} className="slide--end">
         <div className="end__glow" />
         <In variants={riseBig} as="h2" className="big">
-          {s9.title}
+          {s8.title}
         </In>
         <In variants={rise} className="lead">
-          {s9.sub}
+          {s8.lead}
         </In>
         <In variants={rise} className="actions">
-          <Book big>{s9.cta}</Book>
+          <Book big>{s8.cta}</Book>
         </In>
         <In variants={rise} className="small">
-          {s9.small}
+          {s8.small}
         </In>
 
         <motion.footer variants={rise} className="foot">

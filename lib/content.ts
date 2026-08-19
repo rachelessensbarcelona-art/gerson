@@ -1,11 +1,11 @@
 /**
  * TODOS los textos de la web viven aquí.
  *
- * La web son 9 pantallas. Cada bloque de abajo es una pantalla, en orden.
- * Si quieres cambiar una frase, se cambia aquí y ya está.
+ * La web son 8 pantallas. Cada bloque de abajo es una pantalla, en orden.
  *
- * Regla al escribir: frases cortas, palabras normales. Si una frase no se
- * entiende leyéndola en voz alta a la primera, sobra algo.
+ * El tono: Gerson hablándole a una persona, de tú, como si estuvieran
+ * tomando un café. Explica, no vende. Si una frase suena a folleto o a
+ * agencia, se reescribe.
  */
 
 // ─── Ajustes rápidos ────────────────────────────────────────────────────────
@@ -19,15 +19,14 @@ export const config = {
   basePrice: 40,
 };
 
-/** Nombre corto de cada pantalla — sale en los puntitos de la derecha. */
+/** Nombre corto de cada pantalla — sale al pasar el ratón por los puntitos. */
 export const slideNames = [
   'Inicio',
-  'El lío',
   'Quién soy',
-  'La idea',
+  'Cómo lo hago',
   'El plan',
-  'Tu robot',
-  'Tú qué haces',
+  'Tu ayudante',
+  'Tu parte',
   'Precio',
   'Empezar',
 ];
@@ -35,110 +34,125 @@ export const slideNames = [
 // ─── 1 · Portada ────────────────────────────────────────────────────────────
 
 export const s1 = {
-  badge: 'Desde 80 € al mes',
-  line1: 'Publicas.',
-  line2: 'Y no pasa nada.',
-  sub: 'No es culpa tuya. Es que nadie te dio un plan.',
-  cta: 'Hablamos gratis',
-  scroll: 'Baja',
+  badge: 'Desde 80 € al mes · sin permanencia',
+  line1: 'Hoy todos sabemos que hay que estar en digital.',
+  line2: 'Casi nadie lo hace bien.',
+  lead: 'Y no es por falta de ganas. Pasa que, para que publicar te traiga clientes de verdad, alguien tiene que controlar de esto:',
+  /** Van rotando en la portada, uno detrás de otro. */
+  crafts: ['Marketing', 'Publicidad', 'Inteligencia artificial', 'Ventas', 'Campañas', 'Editar vídeo'],
+  after: 'Seis oficios. Y tú ya tienes uno: el tuyo.',
+  /** Frase que remata el hueco entre "sé que hay que hacerlo" y "sé hacerlo". */
+  gap: 'Por eso la mayoría publica mucho y vende poco.',
+  cta: 'Cuéntame tu caso',
+  scroll: 'Sigue',
 };
 
-// ─── 2 · El lío (los seis oficios) ──────────────────────────────────────────
+// ─── 2 · Quién soy ──────────────────────────────────────────────────────────
 
 export const s2 = {
-  tag: 'El lío',
-  title: 'Para que funcione\nhay que saber de seis cosas.',
-  crafts: ['Marketing', 'Publicidad', 'Inteligencia artificial', 'Ventas', 'Campañas', 'Editar vídeo'],
-  punch: 'Nadie tiene tiempo para eso.',
-};
-
-// ─── 3 · Quién soy ──────────────────────────────────────────────────────────
-
-export const s3 = {
-  tag: 'Quién soy',
+  tag: 'Quién te escribe',
   hello: 'Hola, soy Gerson.',
-  lines: [
-    'Llevo años trabajando con equipos digitales.',
-    'Monté mi consultoría y mi equipo de edición.',
+  story: [
+    'Llevo años metido en esto, trabajando con equipos digitales. Por el camino monté mi consultoría y mi propio equipo de edición.',
+    'Y he visto el mismo error mil veces: gente con un negocio que funciona quemando dinero en anuncios antes de saber qué quería oír su gente.',
+    'Así que le di la vuelta al orden.',
   ],
-  punch: 'Y siempre veía el mismo fallo:',
-  punchAccent: 'gastar antes de saber.',
+  punch: 'Primero averiguamos qué funciona.',
+  punchAccent: 'Y solo entonces gastamos.',
   role: 'Consultor de comunicación digital',
 };
 
-// ─── 4 · La idea ────────────────────────────────────────────────────────────
+// ─── 3 · Cómo lo hago ───────────────────────────────────────────────────────
 
-export const s4 = {
-  tag: 'La idea',
+export const s3 = {
+  tag: 'Cómo lo hago',
   line1: 'Primero probamos.',
   line2: 'Después gastamos.',
-  sub: 'Casi todo el mundo lo hace al revés. Por eso quema el dinero.',
-  // Las dos columnas del "antes / después"
-  wrong: { label: 'Como se hace normalmente', items: ['Pagas anuncios', 'A ver si suena la flauta', 'Se va el dinero'] },
-  right: { label: 'Como lo hacemos', items: ['Probamos sin pagar', 'Vemos qué funciona', 'Ahí ponemos el dinero'] },
+  lead: 'Suena de cajón, pero casi nadie lo hace así. Y justo ahí es donde se va el dinero de la mayoría.',
+  wrong: {
+    label: 'Lo que suele pasar',
+    items: [
+      'Pagas anuncios desde el primer día',
+      'Pruebas a ver si suena la flauta',
+      'Cuando ves que no funciona, el presupuesto ya voló',
+    ],
+  },
+  right: {
+    label: 'Lo que hacemos aquí',
+    items: [
+      'Publicamos y medimos sin pagar nada',
+      'Vemos qué temas mueven a tu gente',
+      'Y solo entonces ponemos dinero detrás',
+    ],
+  },
+  punch: 'Los dos primeros meses no gastas un euro en publicidad.',
 };
 
-// ─── 5 · El plan ────────────────────────────────────────────────────────────
+// ─── 4 · El plan ────────────────────────────────────────────────────────────
 
-export const s5 = {
+export const s4 = {
   tag: 'El plan',
   title: 'Seis meses. Tres pasos.',
+  lead: 'Te cuento qué pasa en cada uno.',
   steps: [
     {
       n: '1',
       months: 'Mes 1 y 2',
       name: 'Probar',
-      text: 'Vemos qué le gusta a tu gente. Sin pagar un euro en anuncios.',
+      text: 'Averiguamos qué le interesa a tu gente. Tú grabas con guiones que yo te escribo, publicamos sin fallar y medimos pieza a pieza. Todavía sin poner un euro en anuncios.',
     },
     {
       n: '2',
       months: 'Mes 3 y 4',
       name: 'Construir',
-      text: 'Repetimos lo que funcionó. Y ahora sí, en bonito.',
+      text: 'Ya sabemos qué funciona, así que lo repetimos y le subimos el nivel: tus colores, tu letra, tu forma de contarlo. Empiezas a parecer una marca y no publicaciones sueltas.',
     },
     {
       n: '3',
       months: 'Mes 5 y 6',
       name: 'Crecer',
-      text: 'Ponemos dinero solo detrás de lo que ya funciona.',
+      text: 'Ahora sí ponemos dinero, pero solo detrás de lo que ya te funcionó gratis. Por eso no se quema presupuesto probando: se invierte en llegar a más gente.',
     },
   ],
   punch: 'Yo pongo el plan, los guiones y los vídeos. Tú pones la cara.',
 };
 
-// ─── 6 · Tu robot ───────────────────────────────────────────────────────────
+// ─── 5 · Tu ayudante ────────────────────────────────────────────────────────
 
-export const s6 = {
-  tag: 'Tu robot',
-  title: 'Y te dejo un robot\nque habla como tú.',
+export const s5 = {
+  tag: 'Y algo más',
+  title: 'Te dejo un ayudante\nque contesta por ti.',
+  lead: 'Te escriben a las once de la noche preguntando el precio. Cuando lo ves al día siguiente, esa persona ya ha comprado en otro sitio. Eso se acaba.',
   bullets: [
-    'Contesta precios y horarios.',
-    'A las tres de la mañana.',
-    'Con tus palabras, no con las de un manual.',
-    'Si la cosa se pone seria, te avisa.',
+    'Contesta precios, horarios y las dudas de siempre',
+    'A cualquier hora, también los domingos',
+    'Con tus palabras, porque se las enseño yo',
+    'Y cuando la conversación se pone seria, te avisa',
   ],
-  note: 'Está hecho con Skills de Claude, la IA de Anthropic. Se lo enseño yo, uno a uno, con tu forma de trabajar.',
+  note: 'Está montado con Skills de Claude, la IA de Anthropic. No es un bot genérico con tu logo: te configuro uno con tu forma de trabajar, tus precios y hasta las cosas que nunca dirías.',
   core: 'Claude',
 };
 
-// ─── 7 · Tú qué haces ───────────────────────────────────────────────────────
+// ─── 6 · Tu parte ───────────────────────────────────────────────────────────
 
-export const s7 = {
-  tag: 'Tú qué haces',
+export const s6 = {
+  tag: 'Tu parte',
   title: 'Tú solo haces tres cosas.',
+  lead: 'El resto corre de mi cuenta. No tienes que aprender ninguna herramienta.',
   items: [
-    { big: '1 hora', when: 'una vez', text: 'Me cuentas tu negocio.' },
-    { big: '1 tarde', when: 'al mes', text: 'Grabas con el móvil. Con el guion ya escrito.' },
-    { big: '5 min', when: 'a la semana', text: 'Miras lo que hay hecho y dices que sí.' },
+    { big: '1 hora', when: 'una vez', text: 'Nos sentamos y me cuentas tu negocio: qué vendes, a quién y qué te ha funcionado hasta ahora.' },
+    { big: '1 tarde', when: 'al mes', text: 'Grabas con el móvil. Con el guion ya escrito, para que no te quedes mirando la cámara sin saber qué decir.' },
+    { big: '5 min', when: 'a la semana', text: 'Entras, miras lo que hay preparado y le das al botón. Si algo no te convence, lo dices y se cambia.' },
   ],
-  punch: 'El resto lo llevo yo.',
+  punch: 'Ni editar, ni pelearte con la app, ni pensar qué subir el lunes.',
 };
 
-// ─── 8 · Precio ─────────────────────────────────────────────────────────────
+// ─── 7 · Precio ─────────────────────────────────────────────────────────────
 
-export const s8 = {
-  tag: 'Precio',
+export const s7 = {
+  tag: 'Lo que cuesta',
   title: 'Se entiende en una línea.',
+  lead: 'Una cuota fija por el plan, más los vídeos que quieras ese mes. Ya está: sin extras ni sorpresas a final de mes.',
   base: 'el plan',
   videosLabel: 'los vídeos',
   totalLabel: 'al mes',
@@ -151,17 +165,16 @@ export const s8 = {
     { label: 'Animado', price: 60 },
   ],
   includedTitle: 'El plan siempre incluye',
-  included: ['La estrategia de 6 meses', 'Los guiones', 'Tu robot', 'Publicar solo', 'Tus números explicados'],
-  free: 'Sin permanencia. Te vas cuando quieras.',
-  cta: 'Hablamos gratis',
+  included: ['La estrategia de 6 meses', 'Los guiones', 'Tu ayudante', 'Publicar solo', 'Tus números explicados'],
+  free: 'Sin permanencia: si un mes no te encaja, lo dejas y ya. El plan es tuyo y te lo llevas.',
 };
 
-// ─── 9 · Empezar ────────────────────────────────────────────────────────────
+// ─── 8 · Empezar ────────────────────────────────────────────────────────────
 
-export const s9 = {
+export const s8 = {
   tag: 'Empezar',
   title: 'La primera charla\nes gratis.',
-  sub: 'Media hora. Te digo qué haría con lo tuyo y cuánto costaría. Ya está.',
+  lead: 'Media hora. Me cuentas qué vendes, te digo qué haría yo con lo tuyo y cuánto te costaría. Si veo que no encaja, te lo digo y tan amigos.',
   cta: 'Reservar mi media hora',
   small: 'No se cobra nada hasta después de hablar.',
 };

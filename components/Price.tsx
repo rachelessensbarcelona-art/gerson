@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { config, s8 } from '@/lib/content';
+import { config, s7 } from '@/lib/content';
 import { In, rise } from './Deck';
 
 /**
@@ -21,14 +21,14 @@ export default function Price() {
       <In variants={rise} className="price__formula">
         <div className="price__cell">
           <span className="price__num">{config.basePrice}€</span>
-          <span className="price__lbl">{s8.base}</span>
+          <span className="price__lbl">{s7.base}</span>
         </div>
         <span className="price__op">+</span>
         <div className="price__cell">
           <span className="price__num tabular">
             {qty}×{unit}€
           </span>
-          <span className="price__lbl">{s8.videosLabel}</span>
+          <span className="price__lbl">{s7.videosLabel}</span>
         </div>
         <span className="price__op">=</span>
         <div className="price__cell">
@@ -48,15 +48,15 @@ export default function Price() {
               </motion.span>
             </AnimatePresence>
           </span>
-          <span className="price__lbl">{s8.totalLabel}</span>
+          <span className="price__lbl">{s7.totalLabel}</span>
         </div>
       </In>
 
       <In variants={rise} className="price__controls">
         <div className="price__group">
-          <div className="price__q">{s8.qtyLabel}</div>
+          <div className="price__q">{s7.qtyLabel}</div>
           <div className="price__chips">
-            {s8.qtyOptions.map((n) => (
+            {s7.qtyOptions.map((n) => (
               <button
                 key={n}
                 type="button"
@@ -71,9 +71,9 @@ export default function Price() {
         </div>
 
         <div className="price__group">
-          <div className="price__q">{s8.unitLabel}</div>
+          <div className="price__q">{s7.unitLabel}</div>
           <div className="price__chips">
-            {s8.unitOptions.map((o) => (
+            {s7.unitOptions.map((o) => (
               <button
                 key={o.label}
                 type="button"
@@ -89,9 +89,9 @@ export default function Price() {
       </In>
 
       <In variants={rise} className="price__included">
-        <span className="price__included-title">{s8.includedTitle}</span>
+        <span className="price__included-title">{s7.includedTitle}</span>
         <ul>
-          {s8.included.map((i) => (
+          {s7.included.map((i) => (
             <li key={i}>
               <i className="accent">✓</i>
               {i}
