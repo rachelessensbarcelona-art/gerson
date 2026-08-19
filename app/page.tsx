@@ -462,9 +462,8 @@ export default function Home() {
 
           <div className="about">
             <Reveal className="about__photo">
-              {/* Foto propia y de tamaño conocido: <img> plano evita cargar el
-                  optimizador de Next, que en export estático no se usa. */}
-              <img src="./gerson.webp" alt={`${about.name}, ${about.role.toLowerCase()}`} width={546} height={859} />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/gerson.webp" alt={`${about.name}, ${about.role.toLowerCase()}`} width={546} height={859} />
               <div className="about__caption">
                 <div className="about__name">{about.name}</div>
                 <div className="about__role">{about.role}</div>

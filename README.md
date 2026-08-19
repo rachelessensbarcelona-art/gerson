@@ -47,17 +47,8 @@ npm run build   # deja el sitio listo en la carpeta out/
 
 ## Publicar
 
-Ya está montado: **cada vez que se suba algo a `main`, la web se recompila y se
-publica sola** (ver `.github/workflows/deploy.yml`).
-
-Para activarlo la primera vez, en GitHub:
-**Settings → Pages → Source → GitHub Actions**.
-
-Queda en `https://rachelessensbarcelona-art.github.io/gerson/`.
-
-> Si algún día la mueves a Vercel o a un dominio propio, en `next.config.mjs`
-> no hay que tocar nada: el prefijo de la URL sale de la variable
-> `NEXT_PUBLIC_BASE_PATH`, que solo define el workflow de Pages.
+Está conectado a **Vercel**: cada vez que se sube algo a `main`, Vercel
+recompila y publica la web sola. No hay que hacer nada más.
 
 ---
 
