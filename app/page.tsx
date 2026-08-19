@@ -1,549 +1,292 @@
-import {
-  config,
-  hero,
-  marquee,
-  wall,
-  gerson,
-  method,
-  includes,
-  agent,
-  videos,
-  fit,
-  pricing,
-  faq,
-  cta,
-  footer,
-} from '@/lib/content';
+'use client';
 
+import { motion } from 'framer-motion';
+import { config, s1, s2, s3, s4, s5, s6, s7, s8, s9, footer } from '@/lib/content';
 import Particles from '@/components/Particles';
-import Faq from '@/components/Faq';
-import PricingCalculator from '@/components/PricingCalculator';
-import FloatingCta from '@/components/FloatingCta';
-import { Reveal, SpotlightCard, Magnetic, CountUp, ScrollProgress, CursorTrail } from '@/components/Interactions';
-import {
-  BarsGraphic,
-  ScriptsGraphic,
-  OrbitGraphic,
-  GrowthChart,
-  VideoThumbs,
-  AgentOrbit,
-} from '@/components/Graphics';
+import Price from '@/components/Price';
+import { CursorTrail } from '@/components/Interactions';
+import { Slide, SlideDots, In, rise, riseBig, pop, stagger } from '@/components/Deck';
 
-/** Cabecera de sección reutilizable: número, título y etiqueta. */
-function SectionHead({
-  num,
-  kicker,
-  aside,
-  title,
-  intro,
-}: {
-  num: string;
-  kicker: string;
-  aside: string;
-  title: string;
-  intro?: string;
-}) {
+const IDS = ['inicio', 'lio', 'gerson', 'idea', 'plan', 'robot', 'tu', 'precio', 'empezar'];
+
+/** Botón de reserva. Se repite en varias pantallas. */
+function Book({ children, big = false }: { children: React.ReactNode; big?: boolean }) {
   return (
-    <Reveal className="sec-head">
-      <div className="meta">
-        <span className="kicker">
-          <b>{num} /</b> {kicker}
-        </span>
-        <span className="aside">{aside}</span>
-      </div>
-      <h2>{title}</h2>
-      {intro && <p>{intro}</p>}
-    </Reveal>
+    <motion.a
+      href={config.bookUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`btn btn--primary ${big ? 'btn--xl' : ''}`}
+      whileHover={{ scale: 1.04 }}
+      whileTap={{ scale: 0.97 }}
+      transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+    >
+      {children}
+    </motion.a>
   );
 }
-
-const heroGraphics = { bars: BarsGraphic, scripts: ScriptsGraphic, orbit: OrbitGraphic };
 
 export default function Home() {
   return (
     <>
-      <ScrollProgress />
       <CursorTrail />
-      <FloatingCta />
+      <SlideDots ids={IDS} />
 
-      {/* ─── Portada ─────────────────────────────────────────────────── */}
-      <section id="top" className="hero">
+      {/* ───────── 1 · Portada ───────── */}
+      <Slide id="inicio" className="slide--hero">
         <div className="hero__glow" />
-        <div className="hero__grid" />
         <Particles />
 
-        <div className="shell hero__inner">
-          <div className="hero__badge">
-            <span className="hero__pulse" />
-            <span className="hero__badge-text">{hero.badge}</span>
-            <span className="hero__rule" />
-            <span className="hero__aside">{hero.aside}</span>
-          </div>
+        <In variants={rise} className="hero__badge">
+          <span className="hero__pulse" />
+          {s1.badge}
+        </In>
 
-          <h1 className="hero__title">
-            {hero.headline.map((line, i) => (
-              <span key={line.text} className="hero__line">
-                <span className="hero__line-in" style={{ animationDelay: `${0.05 + i * 0.1}s` }}>
-                  {line.accent ? <em className="accent">{line.text}</em> : line.text}
-                </span>
-              </span>
-            ))}
-          </h1>
+        <motion.h1 variants={stagger} className="big">
+          <In variants={riseBig} as="span">
+            <span className="big__line">{s1.line1}</span>
+          </In>
+          <In variants={riseBig} as="span">
+            <span className="big__line accent">{s1.line2}</span>
+          </In>
+        </motion.h1>
 
-          <div className="hero__body">
-            <div>
-              <p className="hero__sub">{hero.sub}</p>
-              <div className="hero__cards">
-                {hero.cards.map((card) => {
-                  const G = heroGraphics[card.kind as keyof typeof heroGraphics];
-                  return (
-                    <div key={card.title} className="hero__card">
-                      <G />
-                      <div className="hero__card-title">{card.title}</div>
-                      <div className="hero__card-sub">{card.sub}</div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
+        <In variants={rise} className="lead">
+          {s1.sub}
+        </In>
 
-            <div className="hero__actions">
-              <Magnetic>
-                <a href={config.bookUrl} target="_blank" rel="noopener noreferrer" className="btn btn--primary">
-                  {hero.ctaPrimary}
-                </a>
-              </Magnetic>
-              <a href="#metodo" className="btn btn--ghost">
-                {hero.ctaSecondary}
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+        <In variants={rise} className="actions">
+          <Book big>{s1.cta}</Book>
+        </In>
 
-      {/* ─── Marquesina ──────────────────────────────────────────────── */}
-      <div className="marquee">
-        <div className="marquee__track">
-          {[0, 1].map((copy) => (
-            <div key={copy} className="marquee__group" aria-hidden={copy === 1}>
-              {marquee.map((item) => (
-                <span key={item} className="marquee__item">
-                  {item}
-                  <i className="accent">✳</i>
-                </span>
-              ))}
-            </div>
+        {/* Pista de que hay más abajo */}
+        <motion.div
+          className="scroll-hint"
+          variants={rise}
+          animate={{ y: [0, 9, 0] }}
+          transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
+          aria-hidden="true"
+        >
+          <span>{s1.scroll}</span>
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M12 5v14M5 12l7 7 7-7" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </motion.div>
+      </Slide>
+
+      {/* ───────── 2 · El lío ───────── */}
+      <Slide id="lio" tag={s2.tag}>
+        <In variants={riseBig} as="h2" className="big big--mid">
+          {s2.title}
+        </In>
+        <motion.ul variants={stagger} className="crafts">
+          {s2.crafts.map((c, i) => (
+            <motion.li key={c} variants={pop} className="crafts__item">
+              <span className="crafts__n">{String(i + 1).padStart(2, '0')}</span>
+              {c}
+            </motion.li>
           ))}
-        </div>
-      </div>
+        </motion.ul>
+        <In variants={rise} className="punch">
+          {s2.punch}
+        </In>
+      </Slide>
 
-      {/* ─── 01 · Los seis oficios ───────────────────────────────────── */}
-      <section className="section">
-        <div className="shell">
-          <SectionHead
-            num={wall.num}
-            kicker={wall.kicker}
-            aside={wall.aside}
-            title={wall.title}
-            intro={wall.intro}
-          />
-
-          <div className="crafts">
-            {wall.crafts.map((craft, i) => (
-              <Reveal key={craft.name} delay={i * 60}>
-                <SpotlightCard className="craft">
-                  <div className="craft__num">{String(i + 1).padStart(2, '0')}</div>
-                  <h3 className="craft__name">{craft.name}</h3>
-                  <p className="craft__desc">{craft.desc}</p>
-                </SpotlightCard>
-              </Reveal>
+      {/* ───────── 3 · Quién soy ───────── */}
+      <Slide id="gerson" tag={s3.tag} className="slide--split">
+        <div className="split">
+          <In variants={pop} className="split__media">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/gerson.webp" alt="Gerson" width={546} height={859} />
+            <span className="split__role">{s3.role}</span>
+          </In>
+          <div className="split__text">
+            <In variants={riseBig} as="h2" className="big big--mid">
+              {s3.hello}
+            </In>
+            {s3.lines.map((l) => (
+              <In key={l} variants={rise} as="p" className="lead">
+                {l}
+              </In>
             ))}
+            <In variants={rise} className="punch punch--left">
+              {s3.punch}
+              <br />
+              <span className="accent">{s3.punchAccent}</span>
+            </In>
           </div>
-
-          <Reveal as="p" className="block-title tried-title">
-            {wall.triedTitle}
-          </Reveal>
-          <div className="tried">
-            {wall.tried.map((row, i) => (
-              <Reveal key={row.n} delay={i * 80} className="tried__row">
-                <span className="tried__n">{row.n}</span>
-                <span className="tried__text">
-                  {/* El tachado se dibuja sobre esta etiqueta, no sobre toda la
-                      fila, para que mida exactamente lo que mide el texto. */}
-                  <span className="tried__label">
-                    {row.text}
-                    <span className="tried__strike" />
-                  </span>
-                </span>
-                <span className="tried__result">{row.result}</span>
-              </Reveal>
-            ))}
-          </div>
-
-          <Reveal as="p" className="punch">
-            {wall.punch[0]}
-            <br />
-            <span className="accent">{wall.punch[1]}</span>.
-          </Reveal>
         </div>
-      </section>
+      </Slide>
 
-      {/* ─── 02 · Hola, soy Gerson ───────────────────────────────────── */}
-      <section id="gerson" className="section anchor">
-        <div className="shell">
-          <SectionHead num={gerson.num} kicker={gerson.kicker} aside={gerson.aside} title={gerson.title} />
+      {/* ───────── 4 · La idea ───────── */}
+      <Slide id="idea" tag={s4.tag}>
+        <motion.h2 variants={stagger} className="big">
+          <In variants={riseBig} as="span">
+            <span className="big__line">{s4.line1}</span>
+          </In>
+          <In variants={riseBig} as="span">
+            <span className="big__line accent">{s4.line2}</span>
+          </In>
+        </motion.h2>
+        <In variants={rise} className="lead">
+          {s4.sub}
+        </In>
 
-          <div className="about">
-            <Reveal className="about__photo">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/gerson.webp" alt={`${gerson.name}, ${gerson.role.toLowerCase()}`} width={546} height={859} />
-              <div className="about__caption">
-                <div className="about__name">{gerson.name}</div>
-                <div className="about__role">{gerson.role}</div>
-              </div>
-            </Reveal>
-            <Reveal delay={90}>
-              {gerson.story.map((p, i) => (
-                <p key={p} className={i === 0 ? 'about__lead' : 'about__bio'}>
-                  {p}
-                </p>
+        <motion.div variants={stagger} className="versus">
+          <motion.div variants={rise} className="versus__col versus__col--wrong">
+            <div className="versus__label">{s4.wrong.label}</div>
+            <ul>
+              {s4.wrong.items.map((i) => (
+                <li key={i}>
+                  <i>✕</i>
+                  {i}
+                </li>
               ))}
-              <blockquote className="about__quote">{gerson.quote}</blockquote>
-              <div className="about__tags">
-                {gerson.tags.map((t) => (
-                  <span key={t} className="tagpill">
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </Reveal>
-          </div>
-
-          <Reveal as="p" className="punch punch--sm">
-            {gerson.closing}
-          </Reveal>
-
-          <Reveal className="stats">
-            {gerson.stats.map((s) => (
-              <div key={s.label} className="stat">
-                <div className="stat__value accent">
-                  <CountUp to={s.value} />
-                  {s.suffix}
-                </div>
-                <div className="stat__label">{s.label}</div>
-              </div>
-            ))}
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ─── 03 · El método ──────────────────────────────────────────── */}
-      <section id="metodo" className="section anchor">
-        <div className="shell">
-          <SectionHead
-            num={method.num}
-            kicker={method.kicker}
-            aside={method.aside}
-            title={method.title}
-            intro={method.intro}
-          />
-
-          <Reveal className="chart-card">
-            <div className="chart-card__head">
-              <span>{method.chart.left}</span>
-              <span>{method.chart.right}</span>
-            </div>
-            <GrowthChart />
-            <div className="chart-card__legend">
-              {method.chart.legend.map((l, i) => (
-                <div key={l.name} className={`legend ${i === 0 ? 'is-active' : ''}`}>
-                  <div className="legend__months">{l.months}</div>
-                  <div className="legend__name">{l.name}</div>
-                </div>
+            </ul>
+          </motion.div>
+          <motion.div variants={rise} className="versus__col versus__col--right">
+            <div className="versus__label">{s4.right.label}</div>
+            <ul>
+              {s4.right.items.map((i) => (
+                <li key={i}>
+                  <i className="accent">✓</i>
+                  {i}
+                </li>
               ))}
-            </div>
-          </Reveal>
+            </ul>
+          </motion.div>
+        </motion.div>
+      </Slide>
 
-          {method.phases.map((phase) => (
-            <Reveal key={phase.name} className="phase">
-              <div className="phase__head">
-                <div className="phase__progress" style={{ width: `${phase.progress}%` }} />
-                <div className="phase__tag">{phase.tag}</div>
-                <div className="phase__title-row">
-                  <h3 className="phase__name">{phase.name}</h3>
-                  <span className="phase__motto">{phase.motto}</span>
-                </div>
-                <p className="phase__desc">{phase.desc}</p>
-              </div>
-              <div className="phase__split">
-                <div className="phase__steps">
-                  <h4 className="micro-title">Qué pasa durante estas semanas</h4>
-                  <ul>
-                    {phase.steps.map((s) => (
-                      <li key={s}>
-                        <span className="dot" />
-                        {s}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="phase__outcome">
-                  <h4 className="micro-title">A dónde llegamos</h4>
-                  <div className="phase__outcome-big">{phase.outcome}</div>
-                  <p className="phase__outcome-sub">{phase.outcomeSub}</p>
-                </div>
-              </div>
-            </Reveal>
+      {/* ───────── 5 · El plan ───────── */}
+      <Slide id="plan" tag={s5.tag}>
+        <In variants={riseBig} as="h2" className="big big--mid">
+          {s5.title}
+        </In>
+        <motion.div variants={stagger} className="steps">
+          {s5.steps.map((st) => (
+            <motion.div key={st.n} variants={rise} className="step">
+              <div className="step__n">{st.n}</div>
+              <div className="step__months">{st.months}</div>
+              <div className="step__name">{st.name}</div>
+              <p className="step__text">{st.text}</p>
+            </motion.div>
           ))}
-        </div>
-      </section>
+        </motion.div>
+        <In variants={rise} className="punch">
+          {s5.punch}
+        </In>
+      </Slide>
 
-      {/* ─── 04 · Qué entra ──────────────────────────────────────────── */}
-      <section className="section">
-        <div className="shell">
-          <SectionHead num={includes.num} kicker={includes.kicker} aside={includes.aside} title={includes.title} />
-          <Reveal className="table">
-            <div className="table__head">
-              {includes.head.map((h, i) => (
-                <div key={h} className={i === 2 ? 'right' : ''}>
-                  {h}
-                </div>
+      {/* ───────── 6 · Tu robot ───────── */}
+      <Slide id="robot" tag={s6.tag} className="slide--split">
+        <div className="split split--rev">
+          <div className="split__text">
+            <In variants={riseBig} as="h2" className="big big--mid">
+              {s6.title}
+            </In>
+            <motion.ul variants={stagger} className="ticks">
+              {s6.bullets.map((b) => (
+                <motion.li key={b} variants={rise}>
+                  <i className="accent">✓</i>
+                  {b}
+                </motion.li>
               ))}
+            </motion.ul>
+            <In variants={rise} className="note">
+              {s6.note}
+            </In>
+          </div>
+          <In variants={pop} className="split__media split__media--orbit">
+            <div className="orbit">
+              <div className="orbit__glow" />
+              <motion.div
+                className="orbit__ring orbit__ring--1"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 22, repeat: Infinity, ease: 'linear' }}
+              />
+              <motion.div
+                className="orbit__ring orbit__ring--2"
+                animate={{ rotate: -360 }}
+                transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
+              />
+              <div className="orbit__ring orbit__ring--3" />
+              <motion.div
+                className="orbit__core"
+                animate={{ scale: [1, 1.05, 1] }}
+                transition={{ duration: 3.4, repeat: Infinity, ease: 'easeInOut' }}
+              >
+                {s6.core}
+              </motion.div>
             </div>
-            {includes.rows.map(([what, desc, when]) => (
-              <div key={what} className="table__row">
-                <div className="table__what">{what}</div>
-                <div className="table__desc">{desc}</div>
-                <div className="table__when">{when}</div>
-              </div>
-            ))}
-          </Reveal>
+          </In>
         </div>
-      </section>
+      </Slide>
 
-      {/* ─── 05 · El agente (Skills de Claude) ───────────────────────── */}
-      <section id="agente" className="section anchor">
-        <div className="shell">
-          <SectionHead num={agent.num} kicker={agent.kicker} aside={agent.aside} title={agent.title} />
+      {/* ───────── 7 · Tú qué haces ───────── */}
+      <Slide id="tu" tag={s7.tag}>
+        <In variants={riseBig} as="h2" className="big big--mid">
+          {s7.title}
+        </In>
+        <motion.div variants={stagger} className="steps">
+          {s7.items.map((it) => (
+            <motion.div key={it.big} variants={rise} className="step step--you">
+              <div className="step__big accent">{it.big}</div>
+              <div className="step__when">{it.when}</div>
+              <p className="step__text">{it.text}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+        <In variants={rise} className="punch">
+          {s7.punch}
+        </In>
+      </Slide>
 
-          <Reveal className="agent">
-            <div className="agent__left">
-              <div className="explainer">
-                <div className="explainer__title">{agent.explainer.title}</div>
-                <p className="explainer__body">{agent.explainer.body}</p>
-              </div>
-              <p className="agent__pitch">{agent.pitch}</p>
-              <div className="agent__note">{agent.note}</div>
-            </div>
-            <div className="agent__right">
-              <AgentOrbit />
-            </div>
-          </Reveal>
+      {/* ───────── 8 · Precio ───────── */}
+      <Slide id="precio" tag={s8.tag} className="slide--price">
+        <In variants={riseBig} as="h2" className="big big--mid">
+          {s8.title}
+        </In>
+        <Price />
+        <In variants={rise} className="price__free">
+          {s8.free}
+        </In>
+      </Slide>
 
-          <div className="grid-auto skills">
-            {agent.skills.map((skill, i) => (
-              <Reveal key={skill.name} delay={i * 70}>
-                <SpotlightCard className="skill">
-                  <div className="skill__chip">Skill</div>
-                  <h3 className="skill__name">{skill.name}</h3>
-                  <p className="skill__desc">{skill.desc}</p>
-                </SpotlightCard>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* ───────── 9 · Empezar ───────── */}
+      <Slide id="empezar" tag={s9.tag} className="slide--end">
+        <div className="end__glow" />
+        <In variants={riseBig} as="h2" className="big">
+          {s9.title}
+        </In>
+        <In variants={rise} className="lead">
+          {s9.sub}
+        </In>
+        <In variants={rise} className="actions">
+          <Book big>{s9.cta}</Book>
+        </In>
+        <In variants={rise} className="small">
+          {s9.small}
+        </In>
 
-      {/* ─── 06 · Los vídeos ─────────────────────────────────────────── */}
-      <section className="section">
-        <div className="shell">
-          <SectionHead
-            num={videos.num}
-            kicker={videos.kicker}
-            aside={videos.aside}
-            title={videos.title}
-            intro={videos.sub}
-          />
-          <div className="grid-auto">
-            {videos.tiers.map((tier, i) => (
-              <Reveal key={tier.name} delay={i * 80}>
-                <SpotlightCard accent={tier.style === 'accent'}>
-                  <VideoThumbs style={tier.style as 'plain' | 'accent' | 'motion'} />
-                  <div className="tier-row">
-                    <div className="tier-row__name">{tier.name}</div>
-                    <div className="tier-row__price accent">{tier.price} €</div>
-                  </div>
-                  <p className="card__text">{tier.desc}</p>
-                </SpotlightCard>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ─── 07 · ¿Es para ti? ───────────────────────────────────────── */}
-      <section className="section">
-        <div className="shell">
-          <SectionHead num={fit.num} kicker={fit.kicker} aside={fit.aside} title={fit.title} intro={fit.sub} />
-
-          <div className="fit">
-            <Reveal>
-              <div className="card card--accent fit__col">
-                <h3 className="fit__title">
-                  <span className="fit__mark fit__mark--yes">✓</span>
-                  {fit.yes.title}
-                </h3>
-                <ul className="fit__list">
-                  {fit.yes.items.map((it) => (
-                    <li key={it}>
-                      <i className="accent">✓</i>
-                      {it}
-                    </li>
-                  ))}
-                </ul>
-                <div className="fit__note">{fit.yes.note}</div>
-              </div>
-            </Reveal>
-            <Reveal delay={90}>
-              <div className="card fit__col">
-                <h3 className="fit__title">
-                  <span className="fit__mark fit__mark--no">✕</span>
-                  {fit.no.title}
-                </h3>
-                <ul className="fit__list fit__list--muted">
-                  {fit.no.items.map((it) => (
-                    <li key={it}>
-                      <i>✕</i>
-                      {it}
-                    </li>
-                  ))}
-                </ul>
-                <div className="fit__note">{fit.no.note}</div>
-              </div>
-            </Reveal>
-          </div>
-
-          <div className="grid-auto commitment">
-            {fit.commitment.map((c, i) => (
-              <Reveal key={c.title} delay={i * 80}>
-                <SpotlightCard>
-                  <div className="commitment__big accent">{c.big}</div>
-                  <h3 className="commitment__title">{c.title}</h3>
-                  <p className="card__text">{c.text}</p>
-                </SpotlightCard>
-              </Reveal>
-            ))}
-          </div>
-
-          <Reveal className="card card--accent why">
-            <h3 className="why__title">{fit.why.title}</h3>
-            {fit.why.body.map((p) => (
-              <p key={p} className="why__body">
-                {p}
-              </p>
-            ))}
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ─── 08 · Precios ────────────────────────────────────────────── */}
-      <section id="precios" className="section anchor">
-        <div className="shell">
-          <SectionHead
-            num={pricing.num}
-            kicker={pricing.kicker}
-            aside={pricing.aside}
-            title={pricing.title}
-            intro={pricing.sub}
-          />
-          <PricingCalculator />
-
-          <Reveal className="pills">
-            {pricing.pills.map((p, i) => (
-              <span key={i} className="pill">
-                {p[0]} <b>{p[1]}</b>
-                {p[2] ?? ''}
-              </span>
-            ))}
-          </Reveal>
-          <Reveal as="p" className="footnote">
-            {pricing.footnote}
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ─── 09 · Dudas ──────────────────────────────────────────────── */}
-      <section id="dudas" className="section anchor">
-        <div className="shell">
-          <SectionHead num={faq.num} kicker={faq.kicker} aside={faq.aside} title={faq.title} />
-          <Reveal>
-            <Faq />
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ─── CTA final ───────────────────────────────────────────────── */}
-      <section className="section cta-section">
-        <div className="shell">
-          <Reveal className="cta">
-            <div className="cta__eyebrow">{cta.eyebrow}</div>
-            <h2 className="cta__title">{cta.title}</h2>
-            <p className="cta__sub">{cta.sub}</p>
-            <div className="cta__actions">
-              <Magnetic>
-                <a href={config.bookUrl} target="_blank" rel="noopener noreferrer" className="btn btn--primary">
-                  {cta.primary}
-                </a>
-              </Magnetic>
-              <a href="#metodo" className="btn btn--ghost">
-                {cta.secondary}
+        <motion.footer variants={rise} className="foot">
+          <div className="foot__links">
+            {footer.links.map((l) => (
+              <a
+                key={l.label}
+                href={l.href}
+                {...(('external' in l && l.external) ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+              >
+                {l.label}
               </a>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ─── Pie ─────────────────────────────────────────────────────── */}
-      <footer className="footer">
-        <div className="shell">
-          <div className="footer__grid">
-            <div>
-              <div className="footer__logo">
-                Gerson<span className="accent">_</span>
-              </div>
-              <p className="footer__tagline">{footer.tagline}</p>
-            </div>
-            {footer.columns.map((col) => (
-              <div key={col.title}>
-                <h5 className="footer__col-title">{col.title}</h5>
-                <ul className="footer__links">
-                  {col.links.map((l) => (
-                    <li key={l.label}>
-                      <a
-                        href={l.href}
-                        {...(('external' in l && l.external) ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                      >
-                        {l.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
             ))}
           </div>
-          <div className="footer__bottom">
+          <div className="foot__meta">
             <span>{footer.copyright}</span>
-            <span className="footer__legal">
-              {footer.legal.map((l) => (
-                <a key={l.label} href={l.href}>
-                  {l.label}
-                </a>
-              ))}
-            </span>
             <span>{footer.place}</span>
           </div>
-        </div>
-      </footer>
+        </motion.footer>
+      </Slide>
     </>
   );
 }

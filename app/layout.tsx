@@ -32,6 +32,13 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" className={figtree.variable}>
+      <head>
+        {/* Sin JavaScript, Framer Motion deja el contenido en opacity:0.
+            Esto lo fuerza visible para que la web se lea igual. */}
+        <noscript>
+          <style>{`.slide__inner, .slide__inner * { opacity: 1 !important; filter: none !important; transform: none !important; }`}</style>
+        </noscript>
+      </head>
       <body>
         {/* Grano sobre todo el sitio */}
         <div className="grain" aria-hidden="true" />
