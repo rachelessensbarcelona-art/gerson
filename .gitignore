@@ -1,0 +1,12 @@
+# dependencias
+/node_modules
+
+# build de Next
+/.next
+/out
+next-env.d.ts
+
+# varios
+.DS_Store
+*.log
+.env*.local

@@ -1,39 +1,104 @@
-# Gerson — web premium
+# Gerson — web
 
-Sitio de una sola página para la consultoría de comunicación digital de Gerson.
-HTML/CSS/JS estático, sin build ni dependencias — se puede servir tal cual
-(por ejemplo con GitHub Pages apuntando a `main` / raíz).
+Web de una sola página para la consultoría de comunicación digital de Gerson.
+Hecha en **Next.js** (App Router) y exportada como sitio estático, así que se
+puede alojar en GitHub Pages gratis.
 
-## Estructura
+---
 
-- `index.html` — la web completa (una sola página).
-- `assets/`
-  - `site.js` — lógica de la página: enlaces de reserva, estados `hover`,
-    calculadora de precios, revelado al hacer scroll, acordeón de dudas y
-    barra de progreso.
-  - `cursor-trail.js` — estela del cursor (se desactiva sola en móvil / sin
-    ratón o con "reducir movimiento" activado).
-  - `gerson.webp` — foto de Gerson usada en la sección "Quién está detrás".
-- `design/` — bundle original exportado desde Claude Design (transcripciones
-  de chat, prototipo `.dc.html`, capturas). Se conserva como referencia del
-  diseño; no hace falta para servir el sitio.
+## Cómo cambiar los textos
 
-## Antes de publicar
+**Todo el copy está en un único archivo: [`lib/content.ts`](lib/content.ts).**
 
-- **Enlace de reserva**: cambia `BOOK_URL` al principio de `assets/site.js`
-  (ahora mismo apunta a `https://cal.com/gerson`, un valor de ejemplo).
-- **Aviso legal / Privacidad**: los enlaces del footer están vacíos (`href="#"`)
-  a falta de esas páginas.
-- **Franja de lanzamiento**: la sección "Los 10 primeros se llevan la
-  estrategia..." está siempre visible; bórrala en `index.html` (bloque con la
-  etiqueta "Lanzamiento") cuando ya no aplique.
+Ahí dentro está cada titular, cada párrafo, cada pregunta frecuente y cada
+precio, ordenados igual que aparecen en la web. Para cambiar una frase se edita
+ahí y ya está — no hace falta tocar ningún componente.
 
-## Desarrollo local
+Arriba del todo de ese archivo está lo que más se toca:
 
-No requiere instalación. Para verlo:
-
-```
-python3 -m http.server 8000
+```ts
+export const config = {
+  bookUrl: 'https://cal.com/gerson',  // ← tu enlace de reservas
+  basePrice: 40,                       // ← la cuota fija mensual
+  showLaunch: true,                    // ← false oculta la franja de lanzamiento
+};
 ```
 
-y abrir `http://localhost:8000`.
+---
+
+## Trabajar en local
+
+Hace falta [Node.js](https://nodejs.org) 20 o superior.
+
+```bash
+npm install     # solo la primera vez
+npm run dev     # abre http://localhost:3000
+```
+
+Los cambios se ven al instante al guardar.
+
+Para generar la versión final:
+
+```bash
+npm run build   # deja el sitio listo en la carpeta out/
+```
+
+---
+
+## Publicar
+
+Ya está montado: **cada vez que se suba algo a `main`, la web se recompila y se
+publica sola** (ver `.github/workflows/deploy.yml`).
+
+Para activarlo la primera vez, en GitHub:
+**Settings → Pages → Source → GitHub Actions**.
+
+Queda en `https://rachelessensbarcelona-art.github.io/gerson/`.
+
+> Si algún día la mueves a Vercel o a un dominio propio, en `next.config.mjs`
+> no hay que tocar nada: el prefijo de la URL sale de la variable
+> `NEXT_PUBLIC_BASE_PATH`, que solo define el workflow de Pages.
+
+---
+
+## Cómo está organizado
+
+```
+app/
+  layout.tsx        tipografía, metadatos y grano de fondo
+  page.tsx          la página: monta las secciones en orden
+  globals.css       sistema de diseño (colores, tipos, botones, tarjetas)
+  sections.css      estilos de cada sección
+components/
+  Interactions.tsx  revelados, estela del cursor, foco de luz, botón magnético,
+                    barra de progreso y contadores
+  Particles.tsx     campo de partículas de la portada
+  Graphics.tsx      gráficos SVG (curva de 6 meses, miniaturas, órbita…)
+  PricingCalculator.tsx   calculadora de precios
+  Faq.tsx           acordeón de dudas
+  FloatingCta.tsx   botón de reserva flotante
+lib/
+  content.ts        ← TODOS LOS TEXTOS
+public/
+  gerson.webp       la foto
+design/             bundle original de Claude Design (solo referencia)
+```
+
+### Detalles de diseño
+
+La web lleva partículas conectadas en la portada, un foco de luz que sigue al
+ratón dentro de las tarjetas, botones que se acercan al cursor, estela del
+ratón, grano sobre todo el sitio, contadores que suben al aparecer, la curva de
+los seis meses que se dibuja sola y tachados que se pintan al hacer scroll.
+
+Todo eso se desactiva solo si el visitante tiene activado *reducir movimiento*
+en su sistema, y las partículas y la estela ni se cargan en móvil.
+
+---
+
+## Pendiente
+
+- [ ] Poner el enlace real de reservas en `lib/content.ts` (`config.bookUrl`)
+- [ ] Escribir las páginas de **Aviso legal** y **Privacidad** (en el pie los
+      enlaces están vacíos)
+- [ ] Quitar la franja de lanzamiento cuando ya no aplique (`config.showLaunch`)
