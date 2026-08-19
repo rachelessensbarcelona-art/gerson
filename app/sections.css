@@ -845,8 +845,10 @@ html {
   margin-bottom: 6px;
 }
 .avatar img {
-  width: 78%;
+  /* Cuadrada por construcción para que el círculo no se deforme. */
   height: 78%;
+  aspect-ratio: 1;
+  width: auto;
   border-radius: 50%;
   object-fit: cover;
   object-position: 50% 28%; /* encuadra la cara, no el pecho */
@@ -854,13 +856,23 @@ html {
 }
 .avatar__ring {
   position: absolute;
-  inset: 0;
+  /* Cuadrado forzado: con inset:0 sobre una caja no cuadrada el anillo salía
+     ovalado. aspect-ratio + centrado lo mantiene redondo siempre. */
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  height: 100%;
+  aspect-ratio: 1;
   border-radius: 50%;
   border: 1px dashed rgba(217, 45, 32, 0.55);
 }
 .avatar__glow {
   position: absolute;
-  inset: -18%;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  height: 136%;
+  aspect-ratio: 1;
   border-radius: 50%;
   background: radial-gradient(circle at 50% 50%, rgba(217, 45, 32, 0.3), transparent 66%);
   pointer-events: none;

@@ -53,6 +53,11 @@ export default function Home() {
           </In>
         </motion.h1>
 
+        {/* Por qué no le funciona: lo digital cambia */}
+        <In variants={rise} className="lead">
+          {s1.lead}
+        </In>
+
         <In variants={rise} className="hero__before">
           {s1.before}
         </In>
@@ -62,7 +67,7 @@ export default function Home() {
           <CraftSlider items={s1.crafts} />
         </In>
 
-        {/* De esto va la web: qué recibe si trabaja conmigo */}
+        {/* De esto va la web: qué recibe si trabaja con el equipo */}
         <In variants={rise} className="hero__summary">
           {s1.summary}
         </In>

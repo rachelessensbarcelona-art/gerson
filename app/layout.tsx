@@ -15,11 +15,11 @@ const figtree = Figtree({
 export const metadata: Metadata = {
   title: 'Gerson · Estrategia de comunicación digital',
   description:
-    'Te monto la estrategia de seis meses, te digo qué grabar cada semana y te dejo un agente de IA con Skills de Claude que contesta como tú. Suscripción mensual, sin permanencia.',
+    'Tu negocio ya está en redes, pero no llegan los resultados. Nuestro equipo se encarga de la estrategia de seis meses, los guiones, los vídeos editados y un ayudante que contesta tus mensajes. Sin permanencia.',
   openGraph: {
     title: 'Gerson · Estrategia de comunicación digital',
     description:
-      'Estrategia de seis meses, guiones cada semana y tu propio agente con Skills de Claude. Sin permanencia.',
+      'Estrategia de seis meses, guiones, vídeos editados y un ayudante que contesta por ti. Sin permanencia.',
     locale: 'es_ES',
     type: 'website',
   },
