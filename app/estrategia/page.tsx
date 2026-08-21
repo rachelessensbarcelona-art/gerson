@@ -37,6 +37,17 @@ export default function Estrategia() {
           <In variants={rise} as="p" className="doc__lead">
             {strategy.lead}
           </In>
+          {/* El precio, arriba del todo: quien entra aquí ya quiere saberlo. */}
+          <In variants={rise} className="sprice doc__price">
+            <div className="sprice__left">
+              <span className="sprice__label">{strategy.price.label}</span>
+              <span className="sprice__detail">{strategy.videosNote}</span>
+            </div>
+            <div className="sprice__right">
+              <span className="sprice__num">{config.strategyPrice} €</span>
+              <span className="sprice__note">{strategy.price.note}</span>
+            </div>
+          </In>
         </motion.header>
 
         <motion.section

@@ -1,14 +1,15 @@
 'use client';
 
+import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { config, s1, s2, s3, s4, s5, s6, s7, s8, footer } from '@/lib/content';
+import { config, s1, s2, s3, s4, s5, s6, s7, footer } from '@/lib/content';
 import Particles from '@/components/Particles';
-import Price from '@/components/Price';
 import CraftSlider from '@/components/CraftSlider';
+import Plans, { StrategyPrice } from '@/components/Plans';
 import { CursorTrail } from '@/components/Interactions';
 import { Slide, SlideDots, In, rise, riseBig, pop, stagger } from '@/components/Deck';
 
-const IDS = ['inicio', 'gerson', 'como', 'plan', 'ayudante', 'tu', 'precio', 'empezar'];
+const IDS = ['inicio', 'problema', 'estrategia', 'meses', 'videos', 'equipo', 'empezar'];
 
 /** Botón de reserva. Se repite en varias pantallas. */
 function Book({ children, big = false }: { children: React.ReactNode; big?: boolean }) {
@@ -53,28 +54,15 @@ export default function Home() {
           </In>
         </motion.h1>
 
-        {/* Por qué no le funciona: lo digital cambia */}
         <In variants={rise} className="lead">
           {s1.lead}
         </In>
 
-        <In variants={rise} className="hero__before">
-          {s1.before}
-        </In>
-
-        {/* Los seis oficios, rotando */}
-        <In variants={rise}>
-          <CraftSlider items={s1.crafts} />
-        </In>
-
-        {/* De esto va la web: qué recibe si trabaja con el equipo */}
-        <In variants={rise} className="hero__summary">
-          {s1.summary}
-        </In>
+        {/* Qué hacemos, en tres golpes */}
         <motion.ul variants={stagger} className="hero__gets">
           {s1.gets.map((g) => (
             <motion.li key={g} variants={rise}>
-              <i className="accent">✓</i>
+              <i className="accent">→</i>
               {g}
             </motion.li>
           ))}
@@ -85,6 +73,9 @@ export default function Home() {
 
         <In variants={rise} className="actions">
           <Book big>{s1.cta}</Book>
+          <Link href="/estrategia" className="btn btn--ghost btn--xl">
+            {s1.ctaGhost}
+          </Link>
         </In>
 
         <motion.div
@@ -101,46 +92,25 @@ export default function Home() {
         </motion.div>
       </Slide>
 
-      {/* ───────── 2 · Quién soy ───────── */}
-      <Slide id="gerson" tag={s2.tag} className="slide--me">
-        {/* Retrato pequeño y redondo, con un anillo girando alrededor: el
-            mismo lenguaje que la órbita del ayudante, para que la web se
-            sienta de una sola pieza. */}
-        <In variants={pop} className="avatar">
-          <motion.span
-            className="avatar__ring"
-            animate={{ rotate: 360 }}
-            transition={{ duration: 26, repeat: Infinity, ease: 'linear' }}
-            aria-hidden="true"
-          />
-          <span className="avatar__glow" aria-hidden="true" />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/gerson.webp" alt="Gerson" width={506} height={890} />
-        </In>
-
+      {/* ───────── 2 · El problema ───────── */}
+      <Slide id="problema" tag={s2.tag}>
         <In variants={riseBig} as="h2" className="big big--mid">
-          {s2.hello}
+          {s2.title}
         </In>
-        <In variants={rise} className="avatar__role">
-          {s2.role}
+        <In variants={rise} className="lead">
+          {s2.lead}
         </In>
-
-        {s2.story.map((l) => (
-          <In key={l} variants={rise} as="p" className="body body--center">
-            {l}
-          </In>
-        ))}
-
-        <In variants={rise} className="punch">
+        <In variants={rise}>
+          <CraftSlider items={s2.crafts} />
+        </In>
+        <In variants={rise} className="punch punch--sm">
           {s2.punch}
-          <br />
-          <span className="accent">{s2.punchAccent}</span>
         </In>
       </Slide>
 
-      {/* ───────── 3 · Cómo lo hago ───────── */}
-      <Slide id="como" tag={s3.tag}>
-        <motion.h2 variants={stagger} className="big">
+      {/* ───────── 3 · La estrategia ───────── */}
+      <Slide id="estrategia" tag={s3.tag}>
+        <motion.h2 variants={stagger} className="big big--mid">
           <In variants={riseBig} as="span">
             <span className="big__line">{s3.line1}</span>
           </In>
@@ -152,7 +122,6 @@ export default function Home() {
           {s3.lead}
         </In>
 
-        {/* Las tres cosas que consigue la estrategia, de un vistazo */}
         <motion.ul variants={stagger} className="wins">
           {s3.wins.map((w) => (
             <motion.li key={w.word} variants={rise}>
@@ -162,43 +131,19 @@ export default function Home() {
           ))}
         </motion.ul>
 
-        <motion.div variants={stagger} className="versus">
-          <motion.div variants={rise} className="versus__col versus__col--wrong">
-            <div className="versus__label">{s3.wrong.label}</div>
-            <ul>
-              {s3.wrong.items.map((i) => (
-                <li key={i}>
-                  <i>✕</i>
-                  {i}
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-          <motion.div variants={rise} className="versus__col versus__col--right">
-            <div className="versus__label">{s3.right.label}</div>
-            <ul>
-              {s3.right.items.map((i) => (
-                <li key={i}>
-                  <i className="accent">✓</i>
-                  {i}
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-        </motion.div>
+        <StrategyPrice />
 
-        <In variants={rise} className="punch punch--sm">
-          {s3.punch}
+        <In variants={rise}>
+          <Link href="/estrategia" className="textlink">
+            {s3.price.link} →
+          </Link>
         </In>
       </Slide>
 
-      {/* ───────── 4 · El plan ───────── */}
-      <Slide id="plan" tag={s4.tag}>
+      {/* ───────── 4 · Los seis meses ───────── */}
+      <Slide id="meses" tag={s4.tag}>
         <In variants={riseBig} as="h2" className="big big--mid">
           {s4.title}
-        </In>
-        <In variants={rise} className="lead">
-          {s4.lead}
         </In>
         <motion.div variants={stagger} className="steps">
           {s4.steps.map((st) => (
@@ -215,116 +160,86 @@ export default function Home() {
         </In>
       </Slide>
 
-      {/* ───────── 5 · Tu ayudante ───────── */}
-      <Slide id="ayudante" tag={s5.tag} className="slide--split">
-        <div className="split split--rev">
-          <div className="split__text">
-            <In variants={riseBig} as="h2" className="big big--mid">
-              {s5.title}
-            </In>
-            <In variants={rise} as="p" className="body">
-              {s5.lead}
-            </In>
-            <motion.ul variants={stagger} className="ticks">
-              {s5.bullets.map((b) => (
-                <motion.li key={b} variants={rise}>
-                  <i className="accent">✓</i>
-                  {b}
-                </motion.li>
-              ))}
-            </motion.ul>
-            <In variants={rise} className="note">
-              {s5.note}
-            </In>
-          </div>
-          <In variants={pop} className="split__media split__media--orbit">
-            <div className="orbit">
-              <div className="orbit__glow" />
-              <motion.div
-                className="orbit__ring orbit__ring--1"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 22, repeat: Infinity, ease: 'linear' }}
-              />
-              <motion.div
-                className="orbit__ring orbit__ring--2"
-                animate={{ rotate: -360 }}
-                transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
-              />
-              <div className="orbit__ring orbit__ring--3" />
-              <motion.div
-                className="orbit__core"
-                animate={{ scale: [1, 1.05, 1] }}
-                transition={{ duration: 3.4, repeat: Infinity, ease: 'easeInOut' }}
-              >
-                {s5.core}
-              </motion.div>
-            </div>
-          </In>
-        </div>
-      </Slide>
-
-      {/* ───────── 6 · Tu parte ───────── */}
-      <Slide id="tu" tag={s6.tag}>
+      {/* ───────── 5 · Los vídeos ───────── */}
+      <Slide id="videos" tag={s5.tag}>
         <In variants={riseBig} as="h2" className="big big--mid">
-          {s6.title}
+          {s5.title}
         </In>
         <In variants={rise} className="lead">
-          {s6.lead}
+          {s5.lead}
         </In>
-        <motion.div variants={stagger} className="steps">
-          {s6.items.map((it) => (
-            <motion.div key={it.big} variants={rise} className="step step--you">
-              <div className="step__big accent">{it.big}</div>
-              <div className="step__when">{it.when}</div>
-              <p className="step__text">{it.text}</p>
-            </motion.div>
-          ))}
-        </motion.div>
-        <In variants={rise} className="punch punch--sm">
-          {s6.punch}
+        <Plans />
+        <In variants={rise} className="plans__foot">
+          <span>{s5.includes}</span>
+          <span className="plans__note">{s5.note}</span>
         </In>
       </Slide>
 
-      {/* ───────── 7 · Precio ───────── */}
-      <Slide id="precio" tag={s7.tag} className="slide--price">
-        <In variants={riseBig} as="h2" className="big big--mid">
+      {/* ───────── 6 · El equipo ───────── */}
+      <Slide id="equipo" tag={s6.tag} className="slide--team">
+        <div className="team">
+          <In variants={pop} className="avatar">
+            <motion.span
+              className="avatar__ring"
+              animate={{ rotate: 360 }}
+              transition={{ duration: 26, repeat: Infinity, ease: 'linear' }}
+              aria-hidden="true"
+            />
+            <span className="avatar__glow" aria-hidden="true" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/gerson.webp" alt="Gerson" width={506} height={890} />
+          </In>
+
+          <div className="team__text">
+            <In variants={riseBig} as="h2" className="big big--mid">
+              {s6.title}
+            </In>
+            <In variants={rise} className="avatar__role">
+              {s6.role}
+            </In>
+            {s6.story.map((l) => (
+              <In key={l} variants={rise} as="p" className="body">
+                {l}
+              </In>
+            ))}
+          </div>
+        </div>
+
+        {/* El ayudante, que antes ocupaba una pantalla entera */}
+        <In variants={rise} className="extra">
+          <span className="extra__title">{s6.extra.title}</span>
+          <span className="extra__text">{s6.extra.text}</span>
+        </In>
+      </Slide>
+
+      {/* ───────── 7 · Empezar ───────── */}
+      <Slide id="empezar" tag={s7.tag} className="slide--end" bg={<div className="end__glow" />}>
+        <In variants={riseBig} as="h2" className="big">
           {s7.title}
         </In>
         <In variants={rise} className="lead">
           {s7.lead}
         </In>
-        <Price />
-        <In variants={rise} className="price__free">
-          {s7.free}
-        </In>
-      </Slide>
-
-      {/* ───────── 8 · Empezar ───────── */}
-      <Slide id="empezar" tag={s8.tag} className="slide--end" bg={<div className="end__glow" />}>
-        <In variants={riseBig} as="h2" className="big">
-          {s8.title}
-        </In>
-        <In variants={rise} className="lead">
-          {s8.lead}
-        </In>
         <In variants={rise} className="actions">
-          <Book big>{s8.cta}</Book>
+          <Book big>{s7.cta}</Book>
         </In>
         <In variants={rise} className="small">
-          {s8.small}
+          {s7.small}
         </In>
 
         <motion.footer variants={rise} className="foot">
           <div className="foot__links">
-            {footer.links.map((l) => (
-              <a
-                key={l.label}
-                href={l.href}
-                {...(('external' in l && l.external) ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-              >
-                {l.label}
-              </a>
-            ))}
+            {footer.links.map((l) =>
+              'external' in l && l.external ? (
+                <a key={l.label} href={l.href} target="_blank" rel="noopener noreferrer">
+                  {l.label}
+                </a>
+              ) : (
+                <Link key={l.label} href={l.href}>
+                  {l.label}
+                </Link>
+              ),
+            )}
           </div>
           <div className="foot__meta">
             <span>{footer.copyright}</span>
