@@ -2,14 +2,15 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { config, s1, s2, s3, s4, s5, s6, s7, footer } from '@/lib/content';
+import { config, s1, s2, s3, s4, s5, s6, s7, s8, footer } from '@/lib/content';
 import Particles from '@/components/Particles';
 import CraftSlider from '@/components/CraftSlider';
 import Plans, { StrategyPrice } from '@/components/Plans';
+import SkillCore from '@/components/SkillCore';
 import { CursorTrail } from '@/components/Interactions';
 import { Slide, SlideDots, In, rise, riseBig, pop, stagger } from '@/components/Deck';
 
-const IDS = ['inicio', 'problema', 'estrategia', 'meses', 'videos', 'equipo', 'empezar'];
+const IDS = ['inicio', 'problema', 'estrategia', 'meses', 'videos', 'skill', 'equipo', 'empezar'];
 
 /** Botón de reserva. Se repite en varias pantallas. */
 function Book({ children, big = false }: { children: React.ReactNode; big?: boolean }) {
@@ -175,56 +176,70 @@ export default function Home() {
         </In>
       </Slide>
 
-      {/* ───────── 6 · El equipo ───────── */}
-      <Slide id="equipo" tag={s6.tag} className="slide--team">
-        <div className="team">
-          <In variants={pop} className="avatar">
-            <motion.span
-              className="avatar__ring"
-              animate={{ rotate: 360 }}
-              transition={{ duration: 26, repeat: Infinity, ease: 'linear' }}
-              aria-hidden="true"
-            />
-            <span className="avatar__glow" aria-hidden="true" />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/gerson.webp" alt="Gerson" width={506} height={890} />
-          </In>
-
-          <div className="team__text">
+      {/* ───────── 6 · Tu Skill ───────── */}
+      <Slide id="skill" tag={s6.tag} className="slide--skill">
+        <div className="skill">
+          <div className="skill__text">
             <In variants={riseBig} as="h2" className="big big--mid">
               {s6.title}
             </In>
-            <In variants={rise} className="avatar__role">
-              {s6.role}
+            <In variants={rise} as="p" className="body">
+              {s6.lead}
             </In>
-            {s6.story.map((l) => (
-              <In key={l} variants={rise} as="p" className="body">
-                {l}
-              </In>
-            ))}
-          </div>
-        </div>
 
-        {/* El ayudante, que antes ocupaba una pantalla entera */}
-        <In variants={rise} className="extra">
-          <span className="extra__title">{s6.extra.title}</span>
-          <span className="extra__text">{s6.extra.text}</span>
-        </In>
+            <In variants={rise} className="skill__works">
+              <span className="skill__works-title">{s6.worksTitle}</span>
+              <span className="skill__chips">
+                {s6.works.map((w) => (
+                  <span key={w} className="skill__chip">
+                    {w}
+                  </span>
+                ))}
+              </span>
+            </In>
+
+            <In variants={rise} className="note">
+              {s6.note}
+            </In>
+          </div>
+
+          <In variants={pop} className="skill__viz">
+            <SkillCore core={s6.core} tasks={s6.tasks} />
+          </In>
+        </div>
       </Slide>
 
-      {/* ───────── 7 · Empezar ───────── */}
-      <Slide id="empezar" tag={s7.tag} className="slide--end" bg={<div className="end__glow" />}>
-        <In variants={riseBig} as="h2" className="big">
+      {/* ───────── 7 · El equipo ───────── */}
+      <Slide id="equipo" tag={s7.tag} className="slide--team">
+        <In variants={riseBig} as="h2" className="big big--mid">
           {s7.title}
         </In>
         <In variants={rise} className="lead">
           {s7.lead}
         </In>
+        <motion.div variants={stagger} className="facts">
+          {s7.facts.map((f) => (
+            <motion.div key={f.label} variants={rise} className="fact">
+              <span className="fact__big accent">{f.big}</span>
+              <span className="fact__label">{f.label}</span>
+            </motion.div>
+          ))}
+        </motion.div>
+      </Slide>
+
+      {/* ───────── 8 · Empezar ───────── */}
+      <Slide id="empezar" tag={s8.tag} className="slide--end" bg={<div className="end__glow" />}>
+        <In variants={riseBig} as="h2" className="big">
+          {s8.title}
+        </In>
+        <In variants={rise} className="lead">
+          {s8.lead}
+        </In>
         <In variants={rise} className="actions">
-          <Book big>{s7.cta}</Book>
+          <Book big>{s8.cta}</Book>
         </In>
         <In variants={rise} className="small">
-          {s7.small}
+          {s8.small}
         </In>
 
         <motion.footer variants={rise} className="foot">

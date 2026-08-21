@@ -31,6 +31,7 @@ export const slideNames = [
   'La estrategia',
   'Los seis meses',
   'Los vídeos',
+  'Tu Skill',
   'El equipo',
   'Empezar',
 ];
@@ -108,25 +109,41 @@ export const s5 = {
   note: 'Se paga mes a mes. Lo dejas cuando quieras.',
 };
 
-// ─── 6 · El equipo ──────────────────────────────────────────────────────────
+// ─── 6 · Tu Skill ───────────────────────────────────────────────────────────
 
 export const s6 = {
-  tag: 'El equipo',
-  title: 'Detrás hay un equipo.',
-  role: 'Gerson · Consultor de comunicación digital',
-  story: [
-    'Consultoría propia y editores en plantilla.',
-    'Llevamos años viendo negocios gastar en anuncios sin saber si servían de algo. Por eso empezamos al revés.',
-  ],
-  extra: {
-    title: 'Y un ayudante que contesta por ti',
-    text: 'Responde precios y horarios a cualquier hora, con tus palabras. Cuando alguien va en serio, te avisa. Lo montamos a tu medida con la IA de Claude.',
-  },
+  tag: 'Tu Skill',
+  title: 'Una Skill hecha\npara tu negocio.',
+  /** Explicación sin tecnicismos: qué demonios es una Skill. */
+  lead: 'Una Skill es un manual de instrucciones para tu asistente de inteligencia artificial. Se lo lee una vez y a partir de ahí trabaja como trabajarías tú.',
+  /** El centro del gráfico. */
+  core: 'Tu Skill',
+  /** Lo que hace, girando alrededor del núcleo. */
+  tasks: ['Tus campañas', 'Tus redes', 'Tus mensajes', 'Tus guiones', 'Tus números'],
+  /** Con qué asistentes funciona. */
+  worksTitle: 'Funciona con el asistente que ya uses',
+  works: ['Claude', 'ChatGPT', 'El que prefieras'],
+  /** El remate: por qué la suya no es como la de otro. */
+  note: 'No es una Skill genérica. La escribimos con tus precios, tu forma de hablar y tu manera de vender. Te la instalas y ya la tienes trabajando.',
 };
 
-// ─── 7 · Empezar ────────────────────────────────────────────────────────────
+// ─── 7 · El equipo ──────────────────────────────────────────────────────────
 
 export const s7 = {
+  tag: 'El equipo',
+  title: 'Detrás hay un equipo.',
+  lead: 'Consultoría propia y editores en plantilla. Llevamos años viendo negocios gastar en anuncios sin saber si servían de algo. Por eso empezamos al revés.',
+  /** Tres datos que dan confianza sin necesidad de foto. */
+  facts: [
+    { big: '6', label: 'trabajos que dejas de tener que aprender' },
+    { big: '3', label: 'pasos hasta que las redes traigan clientes' },
+    { big: '0', label: 'permanencia: lo dejas cuando quieras' },
+  ],
+};
+
+// ─── 8 · Empezar ────────────────────────────────────────────────────────────
+
+export const s8 = {
   tag: 'Empezar',
   title: 'Hablemos media hora.',
   lead: 'Nos cuentas qué vendes y te decimos qué haríamos con tu negocio.',

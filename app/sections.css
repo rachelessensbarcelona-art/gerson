@@ -1371,3 +1371,178 @@ html:has(.doc) {
 .doc__price {
   margin-top: 32px;
 }
+
+/* ─── 6 · Tu Skill ─────────────────────────────────────────────────────────
+   Texto a la izquierda, núcleo a la derecha. El núcleo es lo que se mira
+   primero, así que se lleva casi la mitad de la pantalla. */
+
+.skill {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+  gap: clamp(28px, 4vw, 64px);
+  align-items: center;
+  width: 100%;
+}
+.skill__text {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 2vh, 22px);
+}
+.skill__viz {
+  display: grid;
+  place-items: center;
+}
+@media (max-width: 900px) {
+  .skill {
+    grid-template-columns: 1fr;
+  }
+  .skill__viz {
+    max-width: 340px;
+  }
+}
+
+.skill__works {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.skill__works-title {
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-46);
+  font-weight: 600;
+}
+.skill__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.skill__chip {
+  font-size: 15px;
+  font-weight: 600;
+  border: 1px solid var(--red-line);
+  border-radius: 999px;
+  padding: 9px 18px;
+  background: rgba(217, 45, 32, 0.08);
+}
+
+/* ─── El núcleo ────────────────────────────────────────────────────────── */
+
+.core {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+}
+.core__canvas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.core__glow {
+  position: absolute;
+  inset: 12%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%, rgba(217, 45, 32, 0.35), transparent 66%);
+}
+.core__ring {
+  position: absolute;
+  border-radius: 50%;
+}
+.core__ring--1 {
+  inset: 2%;
+  border: 1px dashed rgba(217, 45, 32, 0.3);
+}
+.core__ring--2 {
+  inset: 17%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.core__ring--3 {
+  inset: 30%;
+  border: 1px solid rgba(217, 45, 32, 0.4);
+}
+
+/* Las tareas, repartidas por el anillo exterior */
+.core__orbit {
+  position: absolute;
+  inset: 0;
+}
+.core__slot {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 50%;
+  height: 0;
+  transform-origin: 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.core__task {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  background: rgba(10, 10, 10, 0.9);
+  backdrop-filter: blur(6px);
+}
+
+.core__center {
+  position: relative;
+  z-index: 2;
+  width: 34%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: linear-gradient(160deg, var(--red), #4e0904);
+  box-shadow: 0 26px 70px -18px rgba(217, 45, 32, 0.95);
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 10px;
+}
+.core__center span {
+  font-size: clamp(12px, 1.2vw, 15px);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+/* ─── 7 · El equipo (sin foto) ─────────────────────────────────────────── */
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  width: 100%;
+}
+.fact {
+  border-top: 1px solid var(--line-strong);
+  padding-top: 20px;
+}
+.fact__big {
+  display: block;
+  font-size: clamp(40px, 5vw, 68px);
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  line-height: 1;
+}
+.fact__label {
+  display: block;
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--ink-56);
+  margin-top: 12px;
+}
+@media (max-width: 720px) {
+  .facts {
+    grid-template-columns: 1fr;
+  }
+}
