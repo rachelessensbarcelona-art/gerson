@@ -3,6 +3,8 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { config, strategy } from '@/lib/content';
+import Countdown from '@/components/Countdown';
+import { PriceTag } from '@/components/Plans';
 import { In, rise, riseBig, stagger } from '@/components/Deck';
 
 /**
@@ -43,10 +45,8 @@ export default function Estrategia() {
               <span className="sprice__label">{strategy.price.label}</span>
               <span className="sprice__detail">{strategy.videosNote}</span>
             </div>
-            <div className="sprice__right">
-              <span className="sprice__num">{config.strategyPrice} €</span>
-              <span className="sprice__note">{strategy.price.note}</span>
-            </div>
+            <PriceTag note={strategy.price.note} />
+            <Countdown />
           </In>
         </motion.header>
 

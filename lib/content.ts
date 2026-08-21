@@ -22,6 +22,32 @@ export const config = {
   portfolioUrl: '#',
   /** Precio de la estrategia completa de 6 meses. Pago único. */
   strategyPrice: 199,
+  /**
+   * El precio de siempre, el que sale tachado al lado del de oferta.
+   * Si algún día no quieres tachado, pon aquí el mismo número que arriba y
+   * desaparece solo (y con él el porcentaje de descuento).
+   */
+  strategyPriceBefore: 579,
+  /**
+   * Cuándo se acaba la oferta. Se escribe año-mes-día y hora, en hora de
+   * España (eso es lo que significa el +02:00 del final).
+   *
+   * Cuando llegue esa fecha, el cronómetro y el tachado desaparecen solos:
+   * la web no se queda con un reloj a cero ni prometiendo un descuento que
+   * ya no existe. Para lanzar otra oferta, cambia la fecha y ya está.
+   */
+  offerEndsAt: '2026-08-28T23:59:00+02:00',
+};
+
+/** Textos del cronómetro. Cada unidad va en singular y plural: "1 día", "2 días". */
+export const countdown = {
+  title: 'La oferta acaba en',
+  units: {
+    d: ['día', 'días'],
+    h: ['hora', 'horas'],
+    m: ['minuto', 'minutos'],
+    s: ['segundo', 'segundos'],
+  },
 };
 
 /** Nombre de cada pantalla — sale al pasar el ratón por los puntitos. */
