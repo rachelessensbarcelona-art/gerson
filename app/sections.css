@@ -160,7 +160,7 @@ html {
   letter-spacing: -0.012em;
   font-weight: 500;
   color: var(--ink-80);
-  max-width: 40ch;
+  max-width: 46ch;
   border-left: 2px solid var(--red);
   padding-left: 20px;
 }

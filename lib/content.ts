@@ -43,9 +43,12 @@ export const s1 = {
   line2: 'Pero no te llegan clientes.',
   lead: 'Casi siempre pasa lo mismo: se sube lo que uno cree que gusta, sin saber si a tu gente le interesa.',
   /** El resumen de la oferta, en una sola frase.
-   *  Antes era una lista de tres flechas y cargaba demasiado la portada:
-   *  seguida se lee de un vistazo y deja la pantalla mucho más limpia. */
-  offer: 'Nosotros te decimos qué grabar, lo editamos y lo publicamos. Tú solo grabas.',
+   *
+   *  Tiene que responder al problema de arriba, no ir por su cuenta: si el
+   *  titular dice "subes vídeos a ciegas", esta frase empieza por ahí — no
+   *  adivinamos — y solo después cuenta quién hace el trabajo. */
+  offer:
+    'Nosotros no adivinamos: probamos, miramos qué funciona y te decimos qué grabar. Lo editamos y lo publicamos. Tú solo grabas.',
   cta: 'Escríbenos por WhatsApp',
   ctaGhost: 'Ver la estrategia',
   scroll: 'Sigue',
