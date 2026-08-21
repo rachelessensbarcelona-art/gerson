@@ -42,9 +42,10 @@ export const s1 = {
   line1: 'Ya subes vídeos a tus redes.',
   line2: 'Pero no te llegan clientes.',
   lead: 'Casi siempre pasa lo mismo: se sube lo que uno cree que gusta, sin saber si a tu gente le interesa.',
-  /** Qué hacemos, en tres golpes. Verbos concretos, nada de jerga. */
-  gets: ['Te decimos qué grabar cada semana', 'Editamos y publicamos por ti', 'Y miramos qué funciona de verdad'],
-  after: 'Tú solo grabas.',
+  /** El resumen de la oferta, en una sola frase.
+   *  Antes era una lista de tres flechas y cargaba demasiado la portada:
+   *  seguida se lee de un vistazo y deja la pantalla mucho más limpia. */
+  offer: 'Nosotros te decimos qué grabar, lo editamos y lo publicamos. Tú solo grabas.',
   cta: 'Escríbenos por WhatsApp',
   ctaGhost: 'Ver la estrategia',
   scroll: 'Sigue',

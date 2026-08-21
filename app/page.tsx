@@ -59,17 +59,9 @@ export default function Home() {
           {s1.lead}
         </In>
 
-        {/* Qué hacemos, en tres golpes */}
-        <motion.ul variants={stagger} className="hero__gets">
-          {s1.gets.map((g) => (
-            <motion.li key={g} variants={rise}>
-              <i className="accent">→</i>
-              {g}
-            </motion.li>
-          ))}
-        </motion.ul>
-        <In variants={rise} className="hero__after">
-          {s1.after}
+        {/* El resumen de la oferta, en una línea */}
+        <In variants={rise} as="p" className="hero__offer">
+          {s1.offer}
         </In>
 
         <In variants={rise} className="actions">

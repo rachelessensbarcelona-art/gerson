@@ -151,29 +151,18 @@ html {
   letter-spacing: -0.02em;
   margin-top: 4px;
 }
-.hero__gets {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 8px 28px;
+/* El resumen de la oferta. Una sola línea, en blanco y algo más marcada que
+   el párrafo de arriba: es lo que tiene que quedarse quien solo lea la
+   portada. La barra roja la separa del resto sin añadir ruido. */
+.hero__offer {
+  font-size: clamp(17px, 1.7vw, 22px);
+  line-height: 1.45;
+  letter-spacing: -0.012em;
+  font-weight: 500;
+  color: var(--ink-80);
+  max-width: 40ch;
   border-left: 2px solid var(--red);
   padding-left: 20px;
-}
-.hero__gets li {
-  display: flex;
-  gap: 10px;
-  font-size: clamp(15px, 1.5vw, 19px);
-  line-height: 1.35;
-  color: var(--ink-80);
-}
-.hero__gets i {
-  font-style: normal;
-  font-weight: 700;
-  flex: 0 0 auto;
-}
-@media (max-width: 720px) {
-  .hero__gets {
-    grid-template-columns: 1fr;
-  }
 }
 
 .scroll-hint {
@@ -268,11 +257,6 @@ html {
   font-weight: 600;
   letter-spacing: -0.02em;
   color: var(--red);
-}
-
-.hero__after {
-  font-size: clamp(16px, 1.6vw, 20px);
-  color: var(--ink-56);
 }
 
 /* Párrafo de cuerpo: más pequeño que .lead, para los bloques que explican */
