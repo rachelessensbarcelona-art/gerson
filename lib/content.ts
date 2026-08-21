@@ -135,6 +135,8 @@ export const s5 = {
     { name: 'Ritmo', videos: 16, price: 157, per: 'semana', freq: '4 vídeos por semana', featured: true },
     { name: 'Máximo', videos: 24, price: 217, per: 'semana', freq: '6 vídeos por semana' },
   ],
+  /** Solo se ve en móvil, debajo del carrusel de planes. */
+  swipe: 'Desliza para ver los tres',
   includes: 'Te decimos qué grabar, lo editamos y lo publicamos.',
   note: 'Se paga mes a mes. Lo dejas cuando quieras.',
 };

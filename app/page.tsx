@@ -8,7 +8,7 @@ import CraftSlider from '@/components/CraftSlider';
 import Plans, { StrategyPrice } from '@/components/Plans';
 import SkillCore from '@/components/SkillCore';
 import { CursorTrail } from '@/components/Interactions';
-import { Slide, SlideDots, In, rise, riseBig, pop, stagger } from '@/components/Deck';
+import { Slide, SlideDots, ScrollProgress, In, rise, riseBig, pop, stagger } from '@/components/Deck';
 
 const IDS = ['inicio', 'problema', 'estrategia', 'meses', 'videos', 'skill', 'equipo', 'empezar'];
 
@@ -33,6 +33,7 @@ export default function Home() {
   return (
     <>
       <CursorTrail />
+      <ScrollProgress />
       <SlideDots ids={IDS} />
 
       {/* ───────── 1 · Portada ───────── */}

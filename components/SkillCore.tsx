@@ -112,8 +112,17 @@ export default function SkillCore({ core, tasks }: { core: string; tasks: string
             >
               <motion.span
                 className="core__task"
-                {...(reduce ? {} : { animate: { rotate: -360 }, transition: { duration: 60, repeat: Infinity, ease: 'linear' as const } })}
-                style={{ rotate: -angle }}
+                /* La vuelta va de -angle a -angle-360, no de 0 a -360: el
+                   `animate` pisa lo que ponga `style`, así que arrancando en
+                   0 la etiqueta se quedaba torcida su ángulo entero y daba
+                   la vuelta ladeada. Empezando en -angle compensa siempre
+                   justo lo que gira el anillo y el texto se lee derecho. */
+                {...(reduce
+                  ? { style: { rotate: -angle } }
+                  : {
+                      animate: { rotate: [-angle, -angle - 360] },
+                      transition: { duration: 60, repeat: Infinity, ease: 'linear' as const },
+                    })}
               >
                 {t}
               </motion.span>

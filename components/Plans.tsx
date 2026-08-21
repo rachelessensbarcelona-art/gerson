@@ -17,6 +17,25 @@ const eur = (n: number) => n.toFixed(1).replace('.', ',').replace(',0', '');
  */
 export default function Plans() {
   return (
+    <>
+      <PlanCards />
+      {/* Solo se ve en móvil, donde las tarjetas van en carrusel. La flecha se
+          mueve sola: quieto, un cartel que pone "desliza" se ignora. */}
+      <motion.div variants={rise} className="plans__swipe" aria-hidden="true">
+        <span>{s5.swipe}</span>
+        <motion.i
+          animate={{ x: [0, 7, 0] }}
+          transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
+        >
+          →
+        </motion.i>
+      </motion.div>
+    </>
+  );
+}
+
+function PlanCards() {
+  return (
     <motion.div variants={stagger} className="plans">
       {s5.plans.map((p) => (
         <motion.a

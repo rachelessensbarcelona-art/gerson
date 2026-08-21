@@ -1,6 +1,13 @@
 'use client';
 
-import { motion, useInView, useReducedMotion, type Variants } from 'framer-motion';
+import {
+  motion,
+  useInView,
+  useReducedMotion,
+  useScroll,
+  useSpring,
+  type Variants,
+} from 'framer-motion';
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { slideNames } from '@/lib/content';
 
@@ -104,6 +111,34 @@ export function Slide({
         {children}
       </motion.div>
     </section>
+  );
+}
+
+/* ───────────────────────────────────────────────────────────────────────────
+   Barra de avance.
+
+   En el ordenador los puntitos de la derecha ya dicen por dónde vas, pero en
+   móvil están ocultos y no queda ninguna señal: no se sabe si quedan dos
+   pantallas o diez, y eso hace que la gente abandone antes de llegar al
+   precio. Esta barra llena el hueco sin ocupar sitio.
+
+   `useScroll` da el avance de 0 a 1 y el muelle lo suaviza, para que no vaya
+   a tirones cuando el snap salta de una pantalla a otra.
+   ─────────────────────────────────────────────────────────────────────────── */
+
+export function ScrollProgress() {
+  const reduce = useReducedMotion();
+  const { scrollYProgress } = useScroll();
+  const width = useSpring(scrollYProgress, { stiffness: 120, damping: 26, restDelta: 0.001 });
+
+  if (reduce) return null;
+
+  return (
+    <motion.div
+      className="progress"
+      style={{ scaleX: width }}
+      aria-hidden="true"
+    />
   );
 }
 
