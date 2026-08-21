@@ -1,14 +1,18 @@
 import type { Metadata, Viewport } from 'next';
-import { Figtree } from 'next/font/google';
+import { DM_Sans } from 'next/font/google';
 import './globals.css';
 import './sections.css';
 
 // next/font descarga la fuente en build y la sirve desde el propio dominio:
 // sin petición a Google en producción y sin salto de texto al cargar.
-const figtree = Figtree({
+//
+// DM Sans es variable: pide el rango entero y así los titulares pueden ir en
+// un peso ligero (que a 90 px se ve mucho más elegante) sin cargar un archivo
+// por peso.
+const dmSans = DM_Sans({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700', '800'],
-  variable: '--font-figtree',
+  axes: ['opsz'],
+  variable: '--font-sans',
   display: 'swap',
 });
 
@@ -31,7 +35,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" className={figtree.variable}>
+    <html lang="es" className={dmSans.variable}>
       <head>
         {/* Sin JavaScript, Framer Motion deja el contenido en opacity:0.
             Esto lo fuerza visible para que la web se lea igual. */}

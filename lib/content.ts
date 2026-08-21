@@ -16,8 +16,8 @@
 // ─── Ajustes rápidos ────────────────────────────────────────────────────────
 
 export const config = {
-  /** Enlace de reserva. Cámbialo por tu Calendly / Cal.com real. */
-  bookUrl: 'https://cal.com/gerson',
+  /** Enlace de contacto: abre una conversación de WhatsApp. */
+  bookUrl: 'https://wa.link/7xing6',
   /** Enlace al portafolio. Ponlo cuando lo tengas publicado. */
   portfolioUrl: '#',
   /** Precio de la estrategia completa de 6 meses. Pago único. */
@@ -45,7 +45,7 @@ export const s1 = {
   /** Qué hacemos, en tres golpes. Verbos concretos, nada de jerga. */
   gets: ['Te decimos qué grabar cada semana', 'Editamos y publicamos por ti', 'Y miramos qué funciona de verdad'],
   after: 'Tú solo grabas.',
-  cta: 'Reservar consultoría',
+  cta: 'Escríbenos por WhatsApp',
   ctaGhost: 'Ver la estrategia',
   scroll: 'Sigue',
 };
@@ -146,8 +146,8 @@ export const s7 = {
 export const s8 = {
   tag: 'Empezar',
   title: 'Hablemos media hora.',
-  lead: 'Nos cuentas qué vendes y te decimos qué haríamos con tu negocio.',
-  cta: 'Reservar consultoría',
+  lead: 'Escríbenos por WhatsApp, nos cuentas qué vendes y te decimos qué haríamos con tu negocio.',
+  cta: 'Escríbenos por WhatsApp',
   small: 'Gratis y sin compromiso.',
 };
 
@@ -157,7 +157,7 @@ export const footer = {
   links: [
     { label: 'La estrategia completa', href: '/estrategia' },
     { label: 'Portafolio', href: config.portfolioUrl, external: true },
-    { label: 'Reservar', href: config.bookUrl, external: true },
+    { label: 'WhatsApp', href: config.bookUrl, external: true },
     { label: 'Aviso legal', href: '#' },
     { label: 'Privacidad', href: '#' },
   ],
@@ -240,6 +240,6 @@ export const strategy = {
   ],
   videosNote: 'Los vídeos se contratan aparte, desde 83 € al mes.',
   ctaTitle: '¿Lo vemos con tu caso?',
-  ctaLead: 'Media hora, gratis. Te decimos qué haríamos y cuánto costaría.',
-  cta: 'Reservar consultoría',
+  ctaLead: 'Media hora, gratis. Nos escribes, te decimos qué haríamos y cuánto costaría.',
+  cta: 'Escríbenos por WhatsApp',
 };

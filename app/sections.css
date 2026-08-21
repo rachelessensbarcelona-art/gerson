@@ -35,10 +35,10 @@ html {
 }
 
 .slide__tag {
-  font-size: clamp(12px, 1.1vw, 14px);
-  letter-spacing: 0.2em;
+  font-size: clamp(11px, 1vw, 13px);
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--red);
 }
 
@@ -48,15 +48,20 @@ html {
 
 .big {
   font-size: clamp(40px, 7.4vw, 108px);
-  line-height: 0.98;
-  letter-spacing: -0.04em;
-  font-weight: 500;
+  line-height: 1;
+  /* Peso 400 y tracking negativo: a este tamaño, cuanto más fino el trazo,
+     más caro se ve. El grosor lo compensa el eje óptico de DM Sans.
+     El tracking se queda en -0.022: DM Sans ya viene apretada de fábrica y
+     pasar de ahí junta las letras hasta que cuesta leerlas. */
+  font-weight: 400;
+  letter-spacing: -0.022em;
   white-space: pre-line;
   max-width: 18ch;
 }
 .big--mid {
   font-size: clamp(34px, 5.4vw, 76px);
-  line-height: 1.03;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
   max-width: 22ch;
 }
 .big__line {
@@ -65,16 +70,17 @@ html {
 
 .lead {
   font-size: clamp(18px, 1.9vw, 26px);
-  line-height: 1.45;
+  line-height: 1.5;
+  letter-spacing: -0.012em;
   color: var(--ink-72);
   max-width: 46ch;
 }
 
 .punch {
   font-size: clamp(22px, 2.8vw, 40px);
-  font-weight: 600;
-  letter-spacing: -0.03em;
-  line-height: 1.15;
+  font-weight: 500;
+  letter-spacing: -0.028em;
+  line-height: 1.2;
   max-width: 24ch;
 }
 .punch--left {
@@ -272,7 +278,8 @@ html {
 /* Párrafo de cuerpo: más pequeño que .lead, para los bloques que explican */
 .body {
   font-size: clamp(16px, 1.55vw, 20px);
-  line-height: 1.55;
+  line-height: 1.6;
+  letter-spacing: -0.008em;
   color: var(--ink-72);
   max-width: 54ch;
 }
@@ -948,8 +955,8 @@ html:has(.doc) {
 .doc__title {
   font-size: clamp(38px, 6.4vw, 84px);
   line-height: 1;
-  letter-spacing: -0.04em;
-  font-weight: 500;
+  letter-spacing: -0.025em;
+  font-weight: 400;
   white-space: pre-line;
   margin-bottom: 24px;
 }

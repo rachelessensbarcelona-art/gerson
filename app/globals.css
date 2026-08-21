@@ -55,10 +55,16 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--ink);
-  font-family: var(--font-figtree), -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   font-size: 16px;
   line-height: 1.5;
+  /* DM Sans es variable con eje óptico: deja que ajuste el grosor del trazo
+     según el tamaño, que es lo que hace que los titulares grandes se vean
+     finos y el texto pequeño siga legible. */
+  font-optical-sizing: auto;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   overflow-x: hidden;
 }
 
@@ -234,10 +240,9 @@ img {
   height: 52px;
   padding: 0 30px;
   border-radius: 999px;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
   white-space: nowrap;
   cursor: pointer;
   border: 1px solid transparent;
