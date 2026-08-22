@@ -21,7 +21,7 @@ export const config = {
   /** Enlace al portafolio. Ponlo cuando lo tengas publicado. */
   portfolioUrl: '#',
   /** Precio de la estrategia completa de 6 meses. Pago único. */
-  strategyPrice: 199,
+  strategyPrice: 399,
   /**
    * El precio de siempre, el que sale tachado al lado del de oferta.
    * Si algún día no quieres tachado, pon aquí el mismo número que arriba y
