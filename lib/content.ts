@@ -27,7 +27,7 @@ export const config = {
    * Si algún día no quieres tachado, pon aquí el mismo número que arriba y
    * desaparece solo (y con él el porcentaje de descuento).
    */
-  strategyPriceBefore: 579,
+  strategyPriceBefore: 899,
   /**
    * Cuándo se acaba la oferta. Se escribe año-mes-día y hora, en hora de
    * España (eso es lo que significa el +02:00 del final).
